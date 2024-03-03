@@ -61,10 +61,7 @@ body {
   display: flex;
   gap: 14px;
 }
-#header-icons > i:nth-child(1),
-#header-icons > i:nth-child(3) {
-  /* display: none; */
-}
+
 
 /* Main */
 
@@ -193,7 +190,7 @@ body {
   gap: 10px;
   width: 100%;
   padding-block-end: 20px;
-  border-bottom: 1px solid #3e3e3e;
+  border-bottom: 1px solid #9595952e;
 }
 
 .entr-category > div:nth-child(1) {
@@ -255,12 +252,17 @@ body {
 }
 
 /* Job section */
+
+.job-category{
+  padding-block-end: 20px;
+}
+
 .job-category > .button {
   display: flex;
   width: 100%;
   padding: 10px 0;
   border-radius: 10px;
-  background-color: rgba(102, 102, 102, 0.291);
+  background-color: rgb(255 255 255 / 18%);
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.439);
   align-items: center;
   justify-content: center;
