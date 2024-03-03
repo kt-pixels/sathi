@@ -7,83 +7,87 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
     />
+    <link
+      rel="stylesheet"
+      href="myProjects/webProject/icofont/css/icofont.min.css"
+    />
     <link rel="stylesheet" href="Style/style.css" />
     <!-- <style>
-      /* * {
-        -webkit-user-select: none;
-      } */
-      body {
-        font-family: Arial, sans-serif;
-        background-color: #333;
-        margin: 0;
-        padding: 0;
-        color: white;
-      }
+* {
+-webkit-user-select: none;
+}
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #333;
+            margin: 0;
+            padding: 0;
+            color: white;
+        }
 
-      #header {
-        background: linear-gradient(to bottom, #000000, #333);
-        padding: 10px;
-        text-align: center;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        height: 60px;
-      }
+        #header {
+            background: linear-gradient(to bottom, #000000, #333);
+            padding: 10px;
+            text-align: center;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 60px; 
+        }
 
-      #header-title {
-        display: flex;
-        align-items: center;
-      }
+        #header-title {
+            display: flex;
+            align-items: center;
+        }
 
-      #logo {
-        max-width: 50px;
-        height: auto;
-        margin-right: 10px;
-      }
+        #logo {
+            max-width: 50px;
+            height: auto;
+            margin-right: 10px;
+        }
 
-      #header-icons {
-        display: flex;
-      }
+        #header-icons {
+            display: flex;
+        }
 
-      #header-icons i {
-        font-size: 25px;
-        margin: 0 10px;
-      }
+        #header-icons i {
+            font-size: 25px; 
+            margin: 0 10px; 
+        }
 
-      #main {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 20px;
-        padding: 20px;
-      }
+        #main {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            padding: 20px;
+        }
 
-      .button {
-        background-color: #444;
-        border: none;
-        border-radius: 15px;
-        color: white;
-        padding: 0;
-        text-align: center;
-        text-decoration: none;
-        cursor: pointer;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        min-width: 150px;
-        height: 150px;
-        transition: background-color 0.3s, color 0.3s;
-      }
+        .button {
+            background-color: #444;
+            border: none;
+            border-radius: 15px;
+            color: white;
+            padding: 0;
+            text-align: center;
+            text-decoration: none;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-width: 150px;
+            height: 150px;
+            transition: background-color 0.3s, color 0.3s;
+        }
 
-      .button:hover {
-        background: linear-gradient(to bottom, #000000, #333);
-      }
+        .button:hover {
+            background: linear-gradient(to bottom, #000000, #333);
+        }
     </style> -->
   </head>
   <body>
     <div id="header">
       <div id="header-title">
         <!-- <img id="logo" src="file:///android_asset/img/Logo.png" alt="logo" /> -->
-        <img id="logo" src="images/logo.png" alt="logo" />
+        <img id="logo" src="images/logo.png" alt="logo" width="50px" />
         <h1>Saathi</h1>
       </div>
       <div id="header-icons">
@@ -106,101 +110,78 @@
     </div>
 
     <div id="main">
-      <!-- <button class="button" onclick="location.href='saathi_appmanager';">
-        App Manager
-      </button>
-      <button class="button" onclick="location.href='saathi_pdfreader';">
-        PDF Reader
-      </button>
-      <button class="button" onclick="location.href='saathi_ocr';">OCR</button>
-      <button class="button" onclick="location.href='go:saathi_ai';">
-        Saathi AI
-      </button>
-      <button class="button" onclick="location.href='go:app_store';">
-        App Store
-      </button> -->
-      <div class="saathi_ai">
-        <p>Saathi AI</p>
-        <img src="images/sathiAi.png" alt="" />
-      </div>
-
-      <div class="cards-collection">
-        <p>Saathi App Manager</p>
-        <div class="cards">
-          <div class="card">
-            <img src="images/app_manager.png" alt="" />
-            <p>App Manager</p>
+      <div class="categories">
+        <div class="main-box">
+          <div class="text">
+            <h2>Saathi</h2>
+            <p>Your All-in-One Companion for Productivity, Entertainment, Learning, and Career Advancement</p>
           </div>
-          <div class="card">
-            <img src="images/app_store.jpg" alt="" />
+          <div class="images">
+            <img src="/images/roboto.webp" alt="" />
+          <img src="/images/leaf.webp" alt="" />
+          </div>
+        </div>
+        <h2>Information & Learning</h2>
+        <div class="info-category">
+          <div class="button" onclick="location.href='go:edu_world';">
+            <img src="images/appstore.webp" alt="">
             <p>App Store</p>
           </div>
-          <div class="card">
-            <img src="images/pdf.png" alt="" />
+          <div class="button" onclick="location.href='go:pd_news';">
+            <img src="images/books.webp" alt="">
+            <p>Education</p>
+          </div>
+          <div class="button" onclick="location.href='go:pd_news';">
+            <img src="images/newnews.webp" alt="">
+            <p>News</p>
+          </div>
+        </div>
+        <h2>Utility Tools</h2>
+        <div class="category">
+          <div class="cat-button" onclick="location.href='saathi_appmanager';">
+            <p>App Manager</p>
+          </div>
+          <div class="cat-button" onclick="location.href='saathi_ocr';">
+            <p>OCR</p>
+          </div>
+          <div class="cat-button" onclick="location.href='saathi_pdfreader';">
             <p>PDF Reader</p>
           </div>
-        </div>
-      </div>
-
-      <div class="audioHub-side">
-        <p>Audio Hub</p>
-        <div class="audio-cards">
-          <div class="button" onclick="location.href='go:radio_list';">
-            <img src="images/radio.jpg" alt="">
-            <p>Online Radio</p>
-          </div>
-          <div class="button" onclick="location.href='go:T2Audio';">
-            <img src="images/audio.jpg" alt="">
-            <p>T2Audio</p>
+          <div class="cat-button" onclick="location.href='go:saathi_ai';">
+            <p>Saathi AI</p>
           </div>
         </div>
-      </div>
-
-      <div class="educationHub-side">
-        <p>Saathi EduFun Hub</p>
-        <div class="edu-cards">
-          <!-- <button class="button" onclick="location.href='go:edu_world';">
-            Education World
-          </button>
-          <button class="button" onclick="location.href='go:fun_zone';">
-            Fun Zone
-          </button>
-          <button class="button" onclick="location.href='go:jobs_villa';">
-            Jobs Villa
-          </button>
-          <button class="button" onclick="location.href='go:pd_news';">
-            News & Podcasts
-          </button> -->
-
-          <div class="cards">
-            <div class="card">
-              <img src="images/education.jpg" alt="">
-              <p>Education</p>
+        <h2>Entertainment</h2>
+        <div class="entr-category">
+          <div class="">
+            <div class="button" onclick="location.href='go:radio_list';">
+              <img src="images/on_radio.png" alt="">
+              <p>Online Radio</p>
             </div>
-            <div class="card">
-              <img src="images/fun_zone.jfif" alt="">
+            <div class="button" onclick="location.href='go:T2Audio';">
+              <img src="images/audio.webp" alt="">
+              <p>T2Audio</p>
+            </div>
+            <div class="button fun" onclick="location.href='go:fun_zone';">
+              <img src="images/glass.webp" alt="">
+              <img src="images/fun.webp" alt="">
               <p>Fun Zone</p>
             </div>
-            <div class="card">
-              <img src="images/jobs.jpg" alt="">
-              <p>Jobs</p>
-            </div>
-            <div class="card">
-              <img src="images/news.avif" alt="">
-              <p>News</p>
-            </div>
+          </div>
+          <!-- <div class="button" onclick="location.href='go:fun_zone';">
+            <img src="images/fun.webp" alt="">
+            <img src="images/glass.webp" alt="">
+            <p>Fun Zone</p>
+          </div> -->
+        </div>
+        <h2>Career & Opportunities</h2>
+        <div class="job-category">
+          <div class="button" onclick="location.href='go:jobs_villa';">
+            <!-- Jobs Villa -->
+            <img src="images/job.webp" alt="">
           </div>
         </div>
       </div>
-      
-    </div>
-
-    <div class="bottom-icons">
-      <i class="fas fa-home" aria-label="Home"></i>
-      <i class="fas fa-folder-open" aria-label="App Manager"></i>
-      <i class="fas fa-brain" aria-label="Saathi AI"></i>
-      <i class="far fa-newspaper" aria-label="Latest News"></i>
-      <i class="fas fa-gamepad" aria-label="Fun Zone"></i>
     </div>
   </body>
 </html>
