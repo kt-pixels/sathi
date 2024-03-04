@@ -37,6 +37,10 @@ body {
   font-style: normal;
 }
 
+a {
+  color: #0095ff;
+}
+
 #header {
   display: flex;
   justify-content: space-between;
@@ -61,7 +65,6 @@ body {
   display: flex;
   gap: 14px;
 }
-
 
 /* Main */
 
@@ -174,12 +177,17 @@ body {
   width: 60px;
 }
 
-.info-category > .button > p {
+.info-category > .button > a > p {
   color: white;
   font-weight: 400;
   font-size: 12px;
   margin: 0;
   margin-block-start: 10px;
+  /* text-decoration: none; */
+}
+
+.info-category > .button > a {
+  text-decoration: none;
 }
 
 /* EnterTainment section */
@@ -253,7 +261,7 @@ body {
 
 /* Job section */
 
-.job-category{
+.job-category {
   padding-block-end: 20px;
 }
 
@@ -271,4 +279,298 @@ body {
 
 .job-category > .button > img {
   width: 38%;
+}
+
+/* 
+APP STORE PAGE CODING STARTED FROM HERE
+*/
+
+/* Main Container */
+
+.app_store_box {
+  background-color: rgba(255, 255, 255, 0.361);
+  padding: 10px;
+  border-radius: 10px;
+  display: flex;
+  gap: 10px;
+  box-shadow: 0px 25px 20px -20px rgba(0, 0, 0, 0.45);
+}
+
+.app_store_box > button {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  color: white;
+  font-size: 18px;
+}
+
+.app_store_box > h2 {
+  text-align: center;
+  color: white;
+  margin: 0;
+  font-size: 26px;
+}
+
+.app_store_box > img {
+  position: absolute;
+  width: 70px;
+  top: 10px;
+  right: 10px;
+  transform: rotate(-14deg);
+  filter: drop-shadow(4px 4px 1px rgb(42, 42, 42));
+}
+
+/* Query Section */
+
+.prev_next-input {
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-block-end: 20px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.12), 0 2px 2px rgba(0, 0, 0, 0.12);
+}
+
+.prev_next-input > b:nth-child(1) {
+  position: absolute;
+  left: 20px;
+  color: white;
+}
+
+.prev_next-input > b:nth-child(2) {
+  position: absolute;
+  right: 20px;
+  color: white;
+}
+
+.prev_next-input > input {
+  background-color: rgba(139, 139, 139, 0.517);
+  width: 100%;
+  padding: 10px 40px;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  color: white;
+  outline: none;
+}
+
+.prev_next-input > input::placeholder {
+  color: white; /* Desired color code */
+}
+
+/* Full body Content */
+
+.select_Yours {
+  padding: 10px;
+  /* border: 1px solid rgba(147, 146, 146, 0.318);
+  border-radius: 10px; */
+}
+
+.my_options {
+  display: flex;
+  gap: 10px;
+  margin-block-end: 10px;
+}
+
+.my_options > select {
+  background-color: rgba(139, 139, 139, 0.517);
+  width: 100%;
+  padding: 8px;
+  border: none;
+  border-radius: 10px;
+  font-size: 14px;
+  color: white;
+  outline: none;
+}
+
+.find_selected {
+  padding-block-end: 20px;
+  border-bottom: 1px solid #80808061;
+}
+
+.find_selected > button {
+  width: 100%;
+  border: none;
+  background-color: #cdcdcd87;
+  border-radius: 10px;
+  padding: 6px;
+  color: white;
+}
+
+#result {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding-block-start: 30px;
+}
+
+#result > p {
+  margin: 0;
+  color: white;
+  font-weight: 400;
+  padding: 6px;
+  border-radius: 10px;
+  background-color: #b9b9b94d;
+  border: 1px solid gray;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.12), 0 2px 2px rgba(0, 0, 0, 0.12);
+}
+
+#result > p > i {
+  font-style: normal;
+}
+
+#dwn {
+  padding: 10px;
+  color: white;
+  font-size: 14px;
+  font-weight: 500;
+  margin-block-start: 20px;
+  background-color: #a1a1a140;
+  border-radius: 10px;
+}
+
+#dwn > i {
+  font-style: normal;
+}
+
+#dwn > i > ul,
+#dwn > i > ol {
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  list-style: auto;
+  font-size: 12px;
+  padding-left: 20px;
+  letter-spacing: 1px;
+}
+
+#dwn > i > ul > li > ul {
+  padding: 0;
+  list-style: disc;
+  font-size: 12px;
+  padding-top: 10px;
+}
+
+#dwn > a {
+  color: #0095ff;
+}
+
+.rtejustify > span > span > a {
+  color: #0095ff;
+}
+
+.rtejustify > a {
+  color: #0095ff;
+}
+
+/* 
+EDUCATION PAGE STYLE CODE 
+*/
+
+#edu_header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #59595977;
+  border-radius: 10px;
+  padding-right: 10px;
+  box-shadow: 0px 25px 20px -20px rgba(0, 0, 0, 0.816);
+  border: 1px solid rgba(128, 128, 128, 0.596);
+  /* margin: 10px; */
+}
+
+#edu_header > #header-title {
+  display: flex;
+  align-items: center;
+}
+#edu_header > #header-title > h1 {
+  color: white;
+  font-size: 16px;
+  padding-left: 10px;
+}
+#edu_header > #header-icons {
+  color: white;
+  display: flex;
+  gap: 14px;
+}
+
+.hidden,
+#result {
+  display: none;
+}
+
+#myInput {
+  background: transparent;
+  border: none;
+  color: white;
+  outline: none;
+  padding: 10px;
+}
+
+#myInput::placeholder {
+  color: white;
+}
+
+.education_background {
+  display: flex;
+  margin-block: 20px;
+  align-items: center;
+  justify-content: center;
+  background-color: #8f8f8f6b;
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.12), 0 2px 2px rgba(0, 0, 0, 0.12);
+  /* box-shadow: 0px 25px 20px -20px rgba(0, 0, 0, 0.45); */
+}
+
+.education_background > img {
+  width: 85%;
+}
+
+/* edu_buttons */
+
+/* .edu_buttons {
+  display: flex;
+  /* flex-wrap: wrap; *
+  gap: 10px;
+} */
+
+.edu_buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.edu_buttons > div {
+  display: flex;
+  gap: 10px;
+  height: 100%;
+  width: 100%;
+}
+
+.edu_btn {
+  flex: 1;
+  padding: 15px;
+  border-radius: 10px;
+  background-color: #bbbbbb70;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  /* width: 80%;
+  height: 80%; */
+}
+
+.edu_btn > img {
+  width: 60%;
+}
+
+.edu_btn > p {
+  text-align: center;
+  color: white;
+  font-weight: 400;
+  margin: 0;
+  padding-block-start: 10px;
+  font-size: 14px;
 }

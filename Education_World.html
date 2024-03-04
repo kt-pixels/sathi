@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Education World</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.min.css"
+    />
+    <link rel="stylesheet" href="Style/style.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.9.0/dist/sweetalert2.min.js"></script>
+    <!-- <style>
+      /* * {
+        -webkit-user-select: none;
+      } */
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #333;
+        margin: 0;
+        padding: 0;
+        color: white;
+      }
+
+      #header {
+        background: linear-gradient(to bottom, #000000, #333);
+        padding: 10px;
+        text-align: center;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 60px;
+      }
+
+      #header-title {
+        display: flex;
+        align-items: center;
+      }
+
+      #header-icons {
+        display: flex;
+      }
+
+      #header-icons i {
+        font-size: 25px;
+        margin: 0 10px;
+      }
+
+      #main {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        padding: 20px;
+      }
+
+      .button {
+        background-color: #444;
+        border: none;
+        border-radius: 15px;
+        color: white;
+        padding: 0;
+        text-align: center;
+        text-decoration: none;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-width: 150px;
+        height: 150px;
+        transition: background-color 0.3s, color 0.3s;
+      }
+
+      .button:hover {
+        background: linear-gradient(to bottom, #000000, #333);
+      }
+
+      .swal2-modal,
+      .swal2-container.in {
+        background: #333;
+      }
+
+      .hidden,
+      #result {
+        display: none;
+      }
+
+      #myInput {
+        background: transparent;
+        border: none;
+        color: white;
+        outline: none;
+      }
+
+      #result {
+        text-align: center;
+      }
+    </style> -->
+  </head>
+  <body>
+    <div id="edu_header">
+      <div id="header-title">
+        <h1>Education World</h1>
+        <input
+          class="hidden"
+          type="text"
+          id="myInput"
+          placeholder="Search for topics..."
+        />
+      </div>
+      <div id="header-icons">
+        <i title="Toggle search, Button" class="fa fa-search"></i>
+        <i title="Help, Button" class="fa fa-question-circle"></i>
+      </div>
+    </div>
+    <div id="result" aria-live="polite"></div>
+    <div id="main">
+      <div class="education_background">
+        <img src="images/edu.webp" alt="" />
+      </div>
+      <div class="edu_buttons">
+        <div class="">
+          <div
+            class="edu_btn"
+            onclick="window.location.href='https://2020sp.github.io/spApp/Anatomy%20And%20Physiology/'"
+          >
+            <img src="images/physics.webp" alt="" />
+            <!-- <p>Anatomy & Physiology</p> -->
+          </div>
+          <div class="edu_btn" onclick="window.location.href='go:ncert'">
+            <img src="images/Audiobooks.webp" alt="" />
+            <!-- <p>Audiobooks (NCERT)</p> -->
+          </div>
+          <div class="edu_btn" onclick="window.location.href='go:bgf'">
+            <img src="images/Biography.webp" alt="" />
+            <!-- <p>Biography</p> -->
+          </div>
+        </div>
+        <div class="">
+          <div
+            class="edu_btn"
+            onclick="window.location.href='https://2020sp.github.io/spApp/Botany/'"
+          >
+            <img src="images/Botany.webp" alt="" />
+            <!-- <p>Botany</p> -->
+          </div>
+          <div
+            class="edu_btn"
+            onclick="window.location.href='https://2020sp.github.io/spApp/Cell%20Biology/'"
+          >
+            <img src="images/Cell Biology.webp" alt="" />
+            <!-- <p>Cell Biology</p> -->
+          </div>
+          <div
+            class="edu_btn"
+            onclick="window.location.href='https://2020sp.github.io/spApp/Chemistry/'"
+          >
+            <img src="images/Chemistry.webp" alt="" />
+            <!-- <p>Chemistry</p> -->
+          </div>
+        </div>
+        <div class="">
+          <div
+            class="edu_btn"
+            onclick="window.location.href='https://2020sp.github.io/spApp/Climatology/'"
+          >
+            <img src="images/Climatology.webp" alt="" />
+            <!-- <p>Climatology</p> -->
+          </div>
+          <div class="edu_btn" onclick="window.location.href='go:computer'">
+            <img src="images/Computer Science.webp" alt="" />
+            <!-- <p>Computer Science</p> -->
+          </div>
+          <div
+            class="edu_btn"
+            onclick="window.location.href='https://2020sp.github.io/spApp/Ecology/'"
+          >
+            <img src="images/Ecology.webp" alt="" />
+            <!-- <p>Ecology</p> -->
+          </div>
+        </div>
+        <div class="">
+          <div class="edu_btn" onclick="window.location.href='go:esc'">
+            <img src="images/Ecology.webp" alt="" />
+            <!-- <p>English Speaking Course</p> -->
+          </div>
+          <div
+            class="edu_btn"
+            onclick="window.location.href='https://2020sp.github.io/spApp/Electricity%20Physics/'"
+          >
+            <img src="images/Electricity Physics.webp" alt="" />
+            <!-- <p>Electricity Physics</p> -->
+          </div>
+          <div
+            class="edu_btn"
+            onclick="window.location.href='go:gk'"
+          >
+            <img src="images/General Knowledge.webp" alt="" />
+            <!-- <p>General Knowledge</p> -->
+          </div>
+        </div>
+        <div class="">
+          <div class="edu_btn" onclick="window.location.href='https://2020sp.github.io/spApp/Geology/'">
+            <img src="images/Geology.webp" alt="" />
+            <!-- <p>Geology</p> -->
+          </div>
+          <div class="edu_btn" onclick="window.location.href='https://2020sp.github.io/spApp/Hindi%20Grammer'">
+            <img src="images/Hindi Grammer.webp" alt="" />
+            <!-- <p>Hindi Grammer</p> -->
+          </div>
+          <div class="edu_btn" onclick="window.location.href='https://2020sp.github.io/spApp/Home%20Science'">
+            <img src="images/Home Science.webp" alt="" />
+            <!-- <p>Home Science</p> -->
+          </div>
+        </div>
+        <div class="">
+          <div class="edu_btn" onclick="window.location.href='https://2020sp.github.io/spApp/Human%20Nutrition/'">
+            <img src="images/Human Nutrition.webp" alt="" />
+            <!-- <p>Human Nutrition</p> -->
+          </div>
+          <div class="edu_btn" onclick="window.location.href='https://2020sp.github.io/spApp/Human%20Physiology/'">
+            <img src="images/Human Physiology.webp" alt="" />
+            <!-- <p>Human Physiology</p> -->
+          </div>
+          <div class="edu_btn" onclick="window.location.href='https://2020sp.github.io/spApp/Mechanical%20Science/'">
+            <img src="images/Mechanical Science.webp" alt="" />
+            <!-- <p>Mechanical Science</p> -->
+          </div>
+        </div>
+        <div class="">
+          <div class="edu_btn" onclick="window.location.href='https://2020sp.github.io/spApp/Meteorology/'">
+            <img src="images/Meteorology.webp" alt="" />
+            <!-- <p>Meteorology</p> -->
+          </div>
+          <div class="edu_btn" onclick="window.location.href='https://2020sp.github.io/spApp/Mythology/'">
+            <img src="images/Mythology.webp" alt="" />
+            <!-- <p>Mythology</p> -->
+          </div>
+          <div class="edu_btn" onclick="window.location.href='https://2020sp.github.io/spApp/Physical%20Education/'">
+            <img src="images/Physical Education.webp" alt="" />
+            <!-- <p>Physical Education</p> -->
+          </div>
+        </div>
+        <div class="">
+          <div class="edu_btn" onclick="window.location.href='https://2020sp.github.io/spApp/Physics/'">
+            <img src="images/Physic.webp" alt="" />
+            <!-- <p>Physics</p> -->
+          </div>
+          <div class="edu_btn" onclick="window.location.href='https://2020sp.github.io/spApp/Political%20Science/'">
+            <img src="images/Political Science.webp" alt="" />
+            <!-- <p>Political Science</p> -->
+          </div>
+          <div class="edu_btn" onclick="window.location.href='https://2020sp.github.io/spApp/%E0%A4%B0%E0%A4%BE%E0%A4%9C%E0%A4%B8%E0%A5%8D%E0%A4%A5%E0%A4%BE%E0%A4%A8%20%E0%A4%95%E0%A5%80%20%E0%A4%95%E0%A4%B2%E0%A4%BE%20%E0%A4%94%E0%A4%B0%20%E0%A4%B8%E0%A4%82%E0%A4%B8%E0%A5%8D%E0%A4%95%E0%A5%83%E0%A4%A4%E0%A4%BF/'">
+            <img src="images/Rajasthan's Art & Culture.webp" alt="" />
+            <!-- <p>Rajasthan's Art & Culture</p> -->
+          </div>
+        </div>
+        <div class="">
+          <div class="edu_btn" onclick="window.location.href='https://2020sp.github.io/spApp/Space%20Science/'">
+            <img src="images/Space Science.webp" alt="">
+            <!-- <p>Space Science</p> -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      $(".fa-question-circle").click(function () {
+        Swal.fire({
+          title: "Need Help?",
+          html: "Your feedback is invaluable. If there's anything we've missed or if you have additional questions, don't hesitate to reach out.<br/><br/>Click *Yes* to connect with us and enhance your experience.",
+          icon: "question",
+          allowOutsideClick: false,
+          showCancelButton: true,
+          cancelButtonText: "No",
+          confirmButtonText: "Yes",
+          focusConfirm: true,
+          reverseButtons: true,
+        }).then((result) => {
+          if (result.isConfirmed) {
+            window.open(
+              "http://wa.me/919582674239?text=Request - " +
+                encodeURIComponent($("title").text())
+            );
+          }
+        });
+      });
+      $("#myInput").keyup(function () {
+        var filter = $(this).val(),
+          count = 0;
+        if (filter == "") {
+          $("#result").hide();
+        } else {
+          $("#result").show();
+        }
+        $("#main button").each(function () {
+          if ($(this).text().search(new RegExp(filter, "i")) < 0) {
+            $(this).hide();
+          } else {
+            $(this).show();
+            count++;
+          }
+        });
+        if (count == "0") {
+          $("#result").text("No match found!");
+        } else if (count == "1") {
+          $("#result").text("Only 1 match.");
+        } else {
+          $("#result").text("We found " + count + " matches.");
+        }
+      });
+      $(".fa-search").click(function () {
+        $("h1,#myInput").toggleClass("hidden").focus();
+      });
+    </script>
+  </body>
+</html>
