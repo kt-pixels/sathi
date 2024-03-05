@@ -30,8 +30,16 @@ box-shadow: 0px 25px 20px -20px rgba(0, 0, 0, 0.45);
 }
 */
 
+* {
+  -webkit-user-select: none;
+}
+select {
+  -webkit-appearance: none;
+}
+
 body {
   background-color: #450283;
+  color: white;
   font-family: "Montserrat", sans-serif;
   font-weight: 100;
   font-style: normal;
@@ -39,6 +47,19 @@ body {
 
 a {
   color: #0095ff;
+}
+
+#i {
+  font-size: 14px;
+}
+
+#icon{
+  font-size: 18px;
+}
+
+#result > p > #p_wait{
+  font-size: 14px;
+  text-align: center;
 }
 
 #header {
@@ -64,6 +85,10 @@ a {
   color: white;
   display: flex;
   gap: 14px;
+}
+
+#header-icons > i {
+  font-size: 14px;
 }
 
 /* Main */
@@ -514,7 +539,7 @@ EDUCATION PAGE STYLE CODE
 .education_world_container > #result {
   display: none;
 } */
-.found_results{
+.found_results {
   background-color: #7a7a7a8c;
   text-align: center;
   padding: 10px;
@@ -619,26 +644,26 @@ EDUCATION PAGE STYLE CODE
 NEWS PAGE STYLE CODE
 */
 
-.all_news{
+.all_news {
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
 
-.all_news > .button{
+.all_news > .button {
   background-color: rgba(255, 255, 255, 0.216);
   text-align: center;
   padding: 10px;
   border-radius: 10px;
-  box-shadow: 0 1px 1px rgba(0,0,0,0.12), 0 2px 2px rgba(0,0,0,0.12);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.12), 0 2px 2px rgba(0, 0, 0, 0.12);
 }
 
-.all_news > .button > img{
+.all_news > .button > img {
   width: 50%;
   padding-block-end: 20px;
 }
 
-.all_news > .button > p{
+.all_news > .button > p {
   margin: 0;
   padding-block-start: 10px;
   font-size: 16px;
@@ -646,4 +671,248 @@ NEWS PAGE STYLE CODE
   font-weight: 400;
   letter-spacing: 2px;
   border-top: 1px solid #c9c9c92d;
+}
+
+/* 
+BHAGWAT GITA PAGE STYLE
+*/
+#MyTitle {
+  font-weight: 600;
+  overflow: hidden;
+  text-align: center;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #fdfdfd42;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.12), 0 2px 2px rgba(0, 0, 0, 0.12);
+  /* box-shadow: 0px 12px 20px -9px rgba(0, 0, 0, 0.356); */
+  margin-block-start: 20px;
+}
+.marquee {
+  white-space: nowrap;
+  text-align: center;
+  width: 100%;
+  transform: translateX(100%);
+  animation: scroll-left 10s linear infinite;
+}
+@keyframes scroll-left {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+#btns button {
+  background: #ffffff40;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  text-align: center;
+  height: 35px;
+  width: 35px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.12), 0 2px 2px rgba(0, 0, 0, 0.12);
+}
+#btns #prev,
+#btns #next {
+  height: 45px;
+  width: 45px;
+}
+#btns #play,
+#btns #pause {
+  font-size: 22px;
+  font-weight: bold;
+  height: 55px;
+  width: 55px;
+}
+#btns #play {
+  color: #ffffff;
+}
+#btns #pause {
+  color: #ffffff;
+}
+i {
+  font-size: 0px;
+}
+#pbRate {
+  /* background: black;
+  border: solid 1px white;
+  color: white;
+  text-align-last: center;
+  width: 55px; */
+
+  background: #60606082;
+  border: solid 1px white;
+  color: white;
+  text-align-last: center;
+  width: 55px;
+  margin-block-start: 20px;
+  padding: 5px;
+  border-radius: 10px;
+  outline: none;
+}
+
+#pbRate > optgroup {
+  background-color: rgb(0 13 171 / 51%);
+  padding: 5px;
+  border: none;
+}
+
+#pbRate > optgroup > option {
+  background-color: rgba(255, 255, 255, 0.495);
+}
+#progress-bar {
+  display: block;
+  height: 5px;
+  margin-left: 28%;
+  margin-top: 10px;
+  position: absolute;
+  width: 40%;
+  background: url(https://i.ibb.co/n108ZL0/progress-bg.png) no-repeat;
+}
+#progress {
+  float: left;
+  background: url(https://i.ibb.co/nC43tVd/progress.png) no-repeat;
+  display: inline-block;
+  height: 5px;
+}
+.PBP {
+  margin-top: 35px;
+  width: 98%;
+}
+#current {
+  display: block;
+  float: left;
+  position: absolute;
+  font-weight: bold;
+  background-color: rgba(164, 164, 164, 0.326);
+  padding: 5px;
+  border-radius: 5px;
+}
+#duration {
+  float: right;
+  font-weight: bold;
+  background-color: rgba(164, 164, 164, 0.326);
+  padding: 5px;
+  border-radius: 5px;
+}
+#playlist {
+  display: block;
+  margin: auto;
+  background: #59595977;
+  padding: 10px;
+  border-radius: 10px;
+}
+#playlist li {
+  list-style: none;
+  background-color: rgba(255, 255, 255, 0.216);
+  border: 1px solid #555;
+  color: white;
+  padding: 10px;
+  border-radius: 10px;
+  margin: 5px 0;
+  cursor: pointer;
+  font-weight: 400;
+}
+#playlist li.active {
+  background: #0000002e;
+  color: white;
+  font-weight: bold;
+}
+.active::before {
+  content: "Selected:";
+  font-size: 0px;
+}
+#Toast {
+  background: rgb(255, 255, 255);
+  bottom: 5px;
+  display: none;
+  position: fixed;
+  text-align: center;
+  width: 95%;
+  padding: 10px 0;
+  color: black;
+  border-radius: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+#btns {
+  padding-block-end: 20px;
+  border-bottom: 1px solid #ffffff3d;
+}
+
+/* 
+DEVOTIONAL CONTAINER
+*/
+
+.devotional_container{
+  margin-block-start: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 20px;
+    padding: 10px;
+}
+
+.devotional_container > .button{
+  display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 10px;
+    background-color: #a1a1a163;
+    border-radius: 20px;
+    align-items: center;
+    box-shadow: 0 3px 5px rgb(0 0 0 / 19%), 0 2px 2px rgb(0 0 0 / 27%);
+}
+
+.devotional_container > .button:nth-child(1) > img{
+  width: 150px;
+  filter: invert(100%) drop-shadow(1px 1px 4px black);
+}
+
+.devotional_container > .button > img{
+  width: 150px;
+  filter: drop-shadow(1px 1px 4px black);
+}
+
+.devotional_container > .button > p{
+  font-size: 16px;
+  font-weight: 500;
+}
+
+/* 
+E PAPER STYLE
+*/
+
+#splash{
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  text-align: center;
+}
+
+#splash > #title{
+  font-size: 20px;
+  font-weight: 300;
+  margin-block-start: 10px;
+  background-color: rgba(209, 209, 209, 0.329);
+  border-radius: 10px;
+  width: 100%;
+  padding: 10px;
+  text-align: center;
+  box-shadow: 0 1px 1px rgba(0,0,0,0.12), 0 2px 2px rgba(0,0,0,0.12);
+}
+
+#splash > i{
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  background-color: rgba(144, 144, 144, 0.431);
+  border-radius: 10px;
+  border: 1px solid gray;
+  padding: 5px;
+  width: 90%;
 }

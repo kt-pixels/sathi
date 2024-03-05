@@ -4,31 +4,48 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="HandheldFriendly" content="true">
+<link rel="stylesheet" href="Style/style.css">
 <style>
 * {
 -webkit-user-select: none;
 }
-body{
+/* body{
 background: #333;
 text-align: center;
-}
-button{
-background: #444;
-border: none;
-border-radius: 15px;
-color: white;
-margin: 3px;
-padding: 10px;
-width: 90%;
-}
-button:hover{
-background: #555;
+} */
+hr{
+    width: -webkit-fill-available;
+    height: 1px;
+    border: none;
+    background-color: #a3a3a36b;
+    margin: 0;
 }
 </style>
 </head>
 <body>
-<button onclick="location.href='go:bwd_gita';">Bhagwadgita</button>
-<button onclick="location.href='go:s_puran';">Shiv Puran</button>
-<button onclick="location.href='go:v_puran';">Vishnu Puran</button>
+    <div id="header">
+        <div id="header-title">
+          <!-- <img id="logo" src="file:///android_asset/img/Logo.png" alt="logo" /> -->
+          <img id="logo" src="images/logo.png" alt="logo" width="50px" />
+          <h1>Devotional</h1>
+        </div>
+      </div>
+<div class="devotional_container">
+    <!-- <div class="button" onclick="location.href='go:bwd_gita';"> -->
+    <div class="button" onclick="location.href='bhagwatgita.html';">
+        <img src="images/bhagwat.webp" alt="">
+        <p>Bhagwadgita</p>
+    </div><hr>
+    <!-- <div class="button" onclick="location.href='go:s_puran';"> -->
+    <div class="button" onclick="location.href='shiv_puran.html';">
+        <img src="images/shivpuran.webp" alt="">
+        <p>Shiv Puran</p>
+    </div><hr>
+    <!-- <div class="button" onclick="location.href='go:v_puran';"> -->
+    <div class="button" onclick="location.href='vishnupuran.html';">
+        <img src="images/vishnupuran.webp" alt="">
+        <p>Vishnu Puran</p>
+    </div>
+</div>
 </body>
 </html>
