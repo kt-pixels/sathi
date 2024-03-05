@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<head>
+<title>E-Papers</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="HandheldFriendly" content="true">
+<style>
+*{
+-webkit-user-select: none;
+border-color: black;
+}
+body{
+background: #333;
+text-align: center;
+color: white;
+}
+i{
+background: #444;
+border-radius: 20px;
+display: block;
+margin: 5px;
+padding: 8px 11%;
+}
+strong{
+background: #444;
+border-radius: 10px;
+display: inline-block;
+margin: 3px;
+padding: 10px;
+width: 25%;
+}
+h3,#title{
+margin: 5px;
+}
+a,#main{
+display: none;
+}
+</style>
+</head>
+<body>
+<div id="splash">
+<div id="title" role="heading" aria-level="4">English</div>
+<i fire="deccan-chronicle-epaper/">Deccan Chronicle</i>
+<i fire="financial-express-newspaper/">Financial Express</i>
+<i fire="economic-times-newspaper-today/">Economic Times</i>
+<i fire="statesman-newspaper-today/">Statesman</i>
+<i fire="the-asian-age-epaper/">The Asian Age</i>
+<i fire="telegraph-newspaper/">The Telegraph</i>
+<i fire="the-tribune-epaper/">The Tribune</i>
+<div id="title" role="heading" aria-level="4">हिंदी</div>
+<i fire="amar-ujala-news-paper-today/">अमर उजाला</i>
+<i fire="rashtriya-sahara-epaper/">राष्ट्रीय सहारा</i>
+<i fire="dainik-bhaskar-epaper/">दैनिक भास्कर</i>
+<i fire="dainik-navajyoti-epaper/">दैनिक नवज्योति</i>
+<i fire="prabhat-khabar-epaper/">प्रभात खबर</i>
+<i fire="rajasthan-patrika-epaper/">राजस्थान पत्रिका</i>
+<i fire="navbharat-times-epaper/">नवभारत टाइम्स</i>
+<i fire="pioneer-epaper/">पायनियर</i>
+</div>
+<div id="main">
+<h3></h3>
+<div id="data">
+</div>
+</div>
+<audio src="https://assets.mixkit.co/active_storage/sfx/1674/1674-preview.mp3"></audio>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+$("i").click(function(){
+var cool = $(this);
+$("h3").text($(this).text());
+$("#splash").hide();
+$("#main").show();
+var d = new Date();
+var m = ["Jan","Feb","Mar","Apr","May","Jun","July","Aug","Sep","Oct","Nov","Dec"
+];
+var day = m[d.getMonth()]+" "+d.getFullYear();
+$.get("https://ubsa.in/smartprogrammers/fire.php?url="+"https://dailyepaper.in/"+$(cool).attr("fire"),function(data){
+$("audio")[0].play();
+$.each($(data).find("p:contains('"+day+"')").nextAll("p").addBack().slice(0,33),function(){
+$("#data").append("<strong URL='"+$(this).find("a").attr("href")+"'>"+$(this).text().replace(/:.*/,"")+"</strong>");
+$("strong").each(function(){
+if($(this).text().length <= 1){
+$(this).remove() 
+}});});
+$(document).on("click","strong",function(){
+if($(this).attr("URL") != "undefined"){
+window.open($(this).attr("URL"));
+}else{
+alert("Kindly wait till 7:30 AM :-)");
+}});});});
+</script>
+</body>
+</html>

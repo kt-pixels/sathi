@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.9.0/dist/sweetalert2.min.js"></script>
+    <title>Online Radio</title>
+    <style>
+        * {
+           -webkit-user-select: none;
+           font-size: 20px;
+           outline: none;
+        }
+        body {
+            background-color: #333;
+            font-family: 'Arial', sans-serif;
+            color: white;
+        }
+        .csbtn {
+           background-color: #555;
+           color: white;
+           padding: 5px 10px;
+           border: none;
+           border-radius: 10px;
+           cursor: pointer;
+           margin: auto 5px;
+           width: 30%;
+          }
+    .audio-player {
+      background-color: #222;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      color: #fff;
+    }
+    .music-icon {
+      font-size: 48px;
+    }
+    .channel {
+      text-align: center;
+      font-size: 16px;
+      margin-top: -10px;
+    }
+    .controls {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+    .cbtn {
+      background-color: transparent;
+      border: none;
+      font-size: 24px;
+      color: #fff;
+      cursor: pointer;
+    }
+    .btn:hover {
+      transform: scale(1.2);
+    }
+    .volume-slider {
+      width: 150px;
+      appearance: none;
+      height: 5px;
+      background: #777;
+      outline: none;
+      opacity: 0.7;
+      -webkit-transition: .2s;
+      transition: opacity .2s;
+    }
+    .volume-slider::-webkit-slider-thumb {
+      appearance: none;
+      width: 15px;
+      height: 15px;
+      background: #fff;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+        .nav-link {
+            transition: color 0.3s;
+        }
+        .active{
+            color: #3490dc;
+        }
+        .content-section {
+            background-color: #444;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .scl {
+         height: 600px;
+         overflow-y: auto;
+        }
+        .ctr-list {
+         height: 450px;
+         overflow-y: auto;
+        }
+        .swal2-modal,.swal2-container.in {
+            background: #333;
+        }
+        .ctr-list input[type=text],
+        .ctr-list button {
+            -webkit-appearance: none;
+            background: #555;
+            border: 1px solid black;
+            border-radius: 20px;
+            color: white;
+            text-align: center;
+            padding: 8px 11%;
+        }
+        .radio-item {
+          height: 100px;
+          margin: 5px auto;
+          width: 100%;
+        }
+        #myInput {
+          border: 1px solid #000;
+          border-radius: 5px;
+          padding: 5px;
+        }
+        hr {
+        display: block;
+        margin: 10px auto;
+        width: 50%;
+        }
+        nav {
+            background: linear-gradient(to bottom, #333, #000000);
+        }
+        #header {
+            background: linear-gradient(to bottom, #000000, #333);
+            padding: 10px;
+            text-align: center;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 60px; 
+        }
+        #header-title {
+            display: flex;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="header">
+        <div id="header-title">
+            <h1>Online Radio</h1>
+        </div>
+    </div>
+<nav role="tabpanel" class="fixed bottom-0 w-full flex justify-around">
+    <a role="tab" href="#live" class="text-gray-500 nav-link active">
+        <div class="flex flex-col items-center">
+            <i aria-hidden="true" class="fas fa-play-circle text-xl"></i>
+            <p class="text-xs">Live</p>
+        </div>
+    </a>
+    <a role="tab" href="#liked" class="text-gray-500 nav-link">
+        <div class="flex flex-col items-center">
+            <i aria-hidden="true" class="fas fa-star text-xl"></i>
+            <p class="text-xs">Starred</p>
+        </div>
+    </a>
+</nav>
+
+    <main class="p-4">
+        <div id="content">
+<section id="live" class="content-section">
+                <p class="text-lg font-semibold">Live Stream</p>
+  <div class="audio-player">
+    <div aria-hidden="true" class="music-icon">
+      <i class="fas fa-music"></i>
+    </div>
+    <div class="channel">
+      TWF FM
+    </div>
+    <audio id="audioPlayer" src="https://a1.asurahosting.com:9210/radio.mp3"></audio>
+    <div class="controls">
+      <i title="play, button" class="fas fa-play cbtn btn-toggle"></i>
+      <i title="Enable sleep timer, button" class="fas fa-stopwatch cbtn btn-timer"></i>
+      <input title="volume" type="range" class="volume-slider" min="0" max="100" value="100">
+      <i title="Channels list, button" class="fas fa-list cbtn btn-list"></i>
+    </div>
+  </div>
+    </section>
+            
+            <section id="liked" class="content-section hidden">
+                <p class="text-lg font-semibold">Starred channels</p>
+<div class="ctr-list">
+<div class="fav-list"></div>
+</div>
+   </section>
+  </div>
+ </main>
+<script>
+var audioPaused = true;
+var audioElement = document.getElementById('audioPlayer');
+var timerTimeout;
+var cPage = 1;
+var swalPopup;
+$("nav a").on("click", function(e) {
+e.preventDefault();
+$(".active").removeAttr("title").removeClass("active");
+$(this).attr("title","selected").addClass("active");
+var target = $(this).attr("href");
+$(".content-section").addClass("hidden");
+$(target).removeClass("hidden");
+if(target == "#liked" && localStorage.getItem("favs") && localStorage.getItem("favs") != ""){
+$(".fav-list").html(localStorage.getItem("favs"));
+}else{
+$(".fav-list").html("<center><b>Nothing to show :(</b></center>");
+}
+$(target).find(".fa-play").click();
+});
+$('.btn-toggle').click(function(){
+if(audioPaused) {
+audioElement.play();
+}else{
+audioElement.pause();
+}
+audioPaused = !audioPaused;
+});
+$('.volume-slider').on('input', function() {
+audioElement.volume = $(this).val() / 100;
+});
+$('.btn-timer').click(function() {
+if(timerTimeout) {
+clearTimeout(timerTimeout);
+timerTimeout = null;
+$('.btn-timer').attr('title','Enable sleep timer, button');
+}else{
+Swal.fire({
+title: 'Select Timer',
+input: 'select',
+inputOptions: {
+'900': '15 minutes',
+'1800': '30 minutes',
+'2700': '45 minutes',
+'3600': '1 hour',
+'7200': '2 hours',
+'10800': '3 hours',
+},
+showCancelButton: true,
+confirmButtonText: 'Start',
+}).then((result) => {
+if (result.isConfirmed) {
+var timerSeconds = parseInt(result.value);
+$('.btn-timer').attr('title','Disable sleep timer, button');
+timerTimeout = setTimeout(() => {
+timerTimeout = null;
+audioElement.pause();
+location.href = "http://action_exit";
+}, timerSeconds * 1000);
+}
+});
+}
+});
+$('.btn-list').click(function(){
+if(cPage == 1){
+var radioList = '<button class="radio-item" data-url="https://a1.asurahosting.com:9210/radio.mp3">TWF - FM</button><button class="radio-item" data-url="https://stream.radioudaan.com/listen/radio_udaan/radio.mp3">Radio Udaan</button><button class="radio-item" data-url="https://radiofun.in/listen/radio_fun/radio.mp3">Radio Fun</button>';
+}else{
+var radioList = "";
+}
+if(cPage <= 18){
+$.getJSON("https://ubsa.in/smartprogrammers/osmsaathi/radioList.php?page="+cPage, function(data){
+$.each(data.objects, function(i, v) {
+try{
+if(v.streams[0].works){
+var name = v.name;
+var url = v.streams[0].url;
+if(url.indexOf("voscast") !== -1){
+url += ";";
+}
+if(url.indexOf("sgpc.net") !== -1){
+url += ";";
+}
+radioList += '<button class="radio-item" data-url="' + url + '">' + name + '</button>';
+}
+}catch(error){
+Swal.fire('An error occurred!','Where?\n'+i+' '+error, 'error');
+}});
+swalPopup = Swal.fire({
+title: 'Page: '+cPage+'/'+18,
+html: '<div class="ctr-list"><input type="text" id="myInput" placeholder="Search for channels..."/><br><div aria-live="polite" id="result"></div><hr>'+radioList+'</div>',
+showConfirmButton: false,
+showCancelButton: false,
+allowOutsideClick: false,
+footer: `<button class="csbtn btn-previous">Previous</button><button class="csbtn btn-next">Next</button><button class="csbtn btn-close">Close</button>`,
+});
+});
+}else{
+cPage = 1;
+Swal.fire('No more pages', '', 'error');
+}});
+$(document).on('click','.btn-close',function() {
+try{
+swalPopup.close();
+}catch(e){
+}});
+$(document).on('click','.radio-item',function() {
+try{
+swalPopup.close();
+}catch(e){
+}
+$(".nav-link:eq(0)").click();
+$('.channel').text($(this).text());
+audioElement.pause();
+audioElement.src = $(this).data('url');
+audioElement.play();
+});
+$(document).on('click','.btn-previous',function() {
+swalPopup.close();
+if (cPage > 1) {
+cPage -= 1;
+$('.btn-list').click();
+}else{
+Swal.fire('No previous page', '', 'error');
+}});
+$(document).on('click','.btn-next',function(){
+swalPopup.close();
+cPage += 1;
+$('.btn-list').click();
+});
+$(document).on('keyup','#myInput',function(){
+var filter = $(this).val(), count = 0;
+if(filter ==""){
+$("#result").hide()}
+else
+{$("#result").show()}
+$(".ctr-list .radio-item").each(function(){
+if ($(this).text().search(new RegExp(filter, "i")) < 0){
+$(this).hide();
+}else{
+$(this).show();
+count++;
+}});
+if(count =="0"){
+$("#result").text("No match found!");
+}else
+if(count =="1"){
+$("#result").text("Only 1 match.");
+}else{
+$("#result").text("We found "+count+" matches.");
+}});
+$(document).on('contextmenu','.ctr-list .radio-item',function(){
+var favs = localStorage.getItem("favs") || "";
+localStorage.setItem("favs",favs+$(this).prop("outerHTML"));
+Swal.fire('DONE!','You just starred '+$(this).text(),'success');
+});
+$(document).on('contextmenu','.fav-list .radio-item',function(){
+$(this).remove();
+localStorage.setItem("favs",$('.fav-list').html());
+Swal.fire('DONE!','You just unstarred '+$(this).text(),'success');
+});
+$(audioElement).on('play',function(){
+$('.btn-toggle').attr("title", "pause, button").removeClass("fa-play").addClass("fa-pause");
+});
+$(audioElement).on('pause',function(){
+$('.btn-toggle').attr("title", "play, button").removeClass("fa-pause").addClass("fa-play");
+});
+$(audioElement).on('error',function(){
+Swal.fire("Sorry :(","The channel you requested is unreachable as of now.","info");
+});
+</script>
+</body>
+</html>

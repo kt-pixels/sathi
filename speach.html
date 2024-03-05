@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.min.css">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.9.0/dist/sweetalert2.min.js"></script>
+<title>11 - Speech</title>
+<style>
+*{
+-webkit-user-select: none;
+outline: none;
+}
+body{
+font-family: Arial, sans-serif; text-align: center; margin: 20px; background-color: #333; color: #fff;
+}
+textarea{
+width: 80%; height: 500px; margin: 10px; padding: 10px; font-size: 16px; background-color: #444; color: #fff; border: none;
+}
+select{
+font-size: 0px;
+opacity: 0;
+width: 0px;
+}
+button{
+background-color: transparent;
+margin: 0px 5px;
+padding: 5px;
+color: #fff;
+border: none;
+font-size: 20px;
+}
+button:hover{ 
+color: #eee;
+}
+iframe{
+border: none;
+height: 0px;
+opacity: 0;
+width: 0px;
+}
+#stopButton{
+display: none;
+}
+.swal2-modal,.swal2-container.in{
+background: #333;
+}
+.fa-sr-only{
+font-size: 0px;
+opacity: 0;
+}
+#container{
+position: relative;
+}
+#ctrl{
+position: absolute;
+left: 25px;
+}
+#counter{
+position: absolute;
+right: 25px;
+}
+</style>
+</head>
+<body>
+<h1>11 - Speech</h1>
+<textarea id="textInput" placeholder="Enter your text here..."></textarea><br>
+<div id="container">
+<div id="ctrl">
+<select id="voiceSelection">
+<option value="21m00Tcm4TlvDq8ikWAM">Rachel (female)</option><option value="29vD33N1CtxCmqQRPOHJ">Drew (male)</option><option value="2EiwWnXFnvU5JabPnv8n">Clyde (male)</option><option value="5Q0t7uMcjvnagumLfvZi">Paul (male)</option><option value="AZnzlk1XvdvUeBnXmlld">Domi (female)</option><option value="CYw3kZ02Hs0563khs1Fj">Dave (male)</option><option value="D38z5RcWu1voky8WS1ja">Fin (male)</option><option value="EXAVITQu4vr4xnSDxMaL">Sarah (female)</option><option value="ErXwobaYiN019PkySvjV">Antoni (male)</option><option value="GBv7mTt0atIp3Br8iCZE">Thomas (male)</option><option value="IKne3meq5aSn9XLyUdCD">Charlie (male)</option><option value="JBFqnCBsd6RMkjVDRZzb">George (male)</option><option value="LcfcDJNUP1GQjkzn1xUU">Emily (female)</option><option value="MF3mGyEYCl7XYWbV9V6O">Elli (female)</option><option value="N2lVS1w4EtoT3dr4eOWO">Callum (male)</option><option value="ODq5zmih8GrVes37Dizd">Patrick (male)</option><option value="SOYHLrjzK2X1ezoPC6cr">Harry (male)</option><option value="TX3LPaxmHKxFdv7VOQHJ">Liam (male)</option><option value="ThT5KcBeYPX3keUQqHPh">Dorothy (female)</option><option value="TxGEqnHWrfWFTfGW9XjX">Josh (male)</option><option value="VR6AewLTigWG4xSOukaG">Arnold (male)</option><option value="XB0fDUnXU5powFXDhCwa">Charlotte (female)</option><option value="XrExE9yKIg1WjnnlVkGX">Matilda (female)</option><option value="Yko7PKHZNXotIFUBG7I9">Matthew (male)</option><option value="ZQe5CZNOzWyzPSCn5a3c">James (male)</option><option value="Zlb1dXrM653N07WRdFW3">Joseph (male)</option><option value="bVMeCyTHy58xNoL34h3p">Jeremy (male)</option><option value="flq6f7yk4E4fJM5XTYuZ">Michael (male)</option><option value="g5CIjZEefAph4nQFvHAz">Ethan (male)</option><option value="jBpfuIE2acCO8z3wKNLl">Gigi (female)</option><option value="jsCqWAovK2LkecY7zXl4">Freya (female)</option><option value="oWAxZDx7w5VEj9dCyTzz">Grace (female)</option><option value="onwK4e9ZLuTAKqWW03F9">Daniel (male)</option><option value="pFZP5JQG7iQjIQuC4Bku">Lily (female)</option><option value="pMsXgVXv3BLzUgSXRplE">Serena (female)</option><option value="pNInz6obpgDQGcFmaJgB">Adam (male)</option><option value="piTKgcLEGmPE4e6mEKli">Nicole (female)</option><option value="pqHfZKP75CvOlQylNhV4">Bill (male)</option><option value="t0jbNlBVZ17f02VDIeMI">Jessie (male)</option><option value="yoZ06aMxZJJ28mfd3POQ">Sam (male)</option><option value="z9fAnlkpzviPz146aGWa">Glinda (female)</option><option value="zcAOhNBS3c14rBihAFp1">Giovanni (male)</option><option value="zrHiDhphv9ZnVXBqCLjz">Mimi (female)</option>
+</select>
+<button id="voiceButton"><i class="fa fa-bullhorn" aria-hidden="true"></i><span class="fa-sr-only">Select Voice</span></button>
+<button id="convertButton"><i class="fa fa-play" aria-hidden="true"></i><span class="fa-sr-only">Play</span></button>
+<button id="stopButton"><i class="fa fa-pause" aria-hidden="true"></i><span class="fa-sr-only">Stop</span></button>
+<button id="downloadButton"><i class="fa fa-download" aria-hidden="true"></i><span class="fa-sr-only">Download</span></button>
+</div>
+<div id="counter">0/2500</div>
+</div>
+<audio id="audioPlayer"></audio>
+<iframe aria-hidden"true" id="frame"></iframe>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+let maxChar = 2500;
+let audioData;
+$("#convertButton").click(() => {
+const textInput = $("#textInput").val();
+const selectedVoice = $("#voiceSelection").val();
+const apiKey = "1eb125a0904bba3fd9eb7e8b78ef85bc";
+const url = `https://api.elevenlabs.io/v1/text-to-speech/${selectedVoice}`;
+const headers = {
+"Accept": "audio/mpeg",
+"Content-Type": "application/json",
+"xi-api-key": apiKey
+};
+const requestData = {
+"text": textInput,
+"model_id": "eleven_multilingual_v1",
+"voice_settings": {
+"stability": 0.5,
+"similarity_boost": 0.75,
+"style": 1.0,
+"use_speaker_boost": true
+}
+};
+if(textInput.length > maxChar){
+Swal.fire("Oops!", "Your text exceeds the maximum character limit which is "+maxChar, "error");
+} else if(textInput.length < 2){
+Swal.fire("Oops!", "Your text is too short!", "error");
+} else {
+$("#convertButton").html("<i class='fa fa-spinner fa-spin' aria-hidden='true'></i><span class='fa-sr-only'>Wait</span>").prop("disabled",true);;
+fetch(url, {
+method: 'POST',
+headers: headers,
+body: JSON.stringify(requestData)
+}).then(response => response.arrayBuffer()).then(data => {
+audioData = new Blob([data], { type: 'audio/mpeg' });
+$("#audioPlayer").attr("src", URL.createObjectURL(audioData));
+$("#convertButton").html("<i class='fa fa-play' aria-hidden='true'></i><span class='fa-sr-only'>Play</span>").prop("disabled",false);;
+$("audio")[0].play();
+}).catch(error => {
+Swal.fire("Oops!",""+error,"error");
+});
+}});
+$("#downloadButton").click(() => {
+if (audioData) {
+const reader = new FileReader();
+reader.onloadend = function(){
+$.post("https://ubsa.in/smartprogrammers/TTS/gen.php", { email: localStorage.userEmail, rawData: reader.result }, function(path){
+$("#frame").attr("src","https://ubsa.in/smartprogrammers/TTS/gen.php?get="+path).load();
+});
+};
+reader.readAsDataURL(audioData);
+} else {
+Swal.fire("Sorry :(","No audio available for download.","error");
+}
+});
+$("#stopButton").click(() => {
+$("audio")[0].pause();
+});
+$("audio").on("play",() => {
+$("select").focus();
+$("#convertButton").hide();
+$("#stopButton").show();
+});
+$("audio").on("ended error pause",() => {
+$("select").focus();
+$("#convertButton").show();
+$("#stopButton").hide();
+});
+$("#voiceButton").click(() => {
+var element = document.getElementById("voiceSelection");
+var event;
+event = document.createEvent('MouseEvents');
+event.initMouseEvent('mousedown', true, true, window);
+element.dispatchEvent(event);
+});
+$("#textInput").on("input",() => {
+$("#counter").text($("#textInput").val().length+"/"+maxChar);
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Saathi AI</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.0/themes/prism.min.css"
+    />
+    <style>
+      /* * {
+            -webkit-user-select: none;
+        } */
+      body {
+        font-family: "Roboto", sans-serif;
+        background-color: #f5f5f5;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+      }
+      #chatContainer {
+        background-color: #fff;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        width: 90%;
+        max-width: 400px;
+        height: 80vh;
+        display: flex;
+        flex-direction: column;
+      }
+      #messages {
+        flex: 1;
+        overflow-y: scroll;
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+      }
+      .user-message,
+      .assistant-message {
+        margin: 5px;
+        padding: 10px;
+        border-radius: 10px;
+        max-width: 70%;
+      }
+      .user-message {
+        background-color: #4caf50;
+        color: #fff;
+        align-self: flex-end;
+      }
+      .assistant-message {
+        background-color: #2196f3;
+        color: #fff;
+        align-self: flex-start;
+      }
+      .assistant-message pre {
+        background-color: #f5f5f5;
+        padding: 10px;
+        border-radius: 5px;
+        overflow-x: auto;
+        margin-top: 5px;
+      }
+      input {
+        width: calc(70% - 20px);
+        padding: 8px;
+        margin: 5px 10px;
+        border: none;
+        border-radius: 5px;
+        outline: none;
+      }
+      button {
+        width: calc(30% - 20px);
+        padding: 10px;
+        margin: 5px 10px;
+        border: none;
+        border-radius: 5px;
+        background-color: #2196f3;
+        color: #fff;
+        cursor: pointer;
+      }
+      #title {
+        height: 0px;
+        opacity: 0;
+        width: 0px;
+      }
+      #wave .dot {
+        display: inline-block;
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        margin-right: 0.5px;
+        background: white;
+        animation: wave 1s linear infinite;
+        animation-delay: -0.9s;
+      }
+      #speak {
+        display: none;
+        height: 0px;
+        opacity: 0;
+        width: 0px;
+      }
+      #wave .dot.two {
+        animation-delay: -0.7s;
+      }
+      #wave .dot:nth-child(3) {
+        animation-delay: -0.6s;
+      }
+      @keyframes wave {
+        0%,
+        60%,
+        100% {
+          transform: initial;
+        }
+        30% {
+          transform: translateY(-15px);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="chatContainer">
+      <div id="messages">
+        <div class="assistant-message" data-role="assistant">
+          Hey!<br />I am Saathi, your virtual assistant powered by TeAm SP. How
+          can I assist you today?
+        </div>
+      </div>
+      <div style="display: flex; align-items: center">
+        <input type="text" id="userInput" placeholder="Type your message..." />
+        <button onclick="sendMessage()">
+          <div id="title">Send</div>
+          <i class="fa fa-paper-plane"></i>
+        </button>
+      </div>
+    </div>
+    <div id="speak" aria-live="polite"></div>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/prism/9000.0.1/prism.min.js"
+      integrity="sha512-UOoJElONeUNzQbbKQbjldDf9MwOHqxNz49NNJJ1d90yp+X9edsHyJoAs6O4K19CZGaIdjI5ohK+O2y5lBTW6uQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/prism/9000.0.1/components/prism-c.min.js"
+      integrity="sha512-EWIJI7uQnA8ClViH2dvhYsNA7PHGSwSg03FAfulqpsFiTPHfhdQIvhkg/l3YpuXOXRF2Dk0NYKIl5zemrl1fmA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/prism/9000.0.1/components/prism-cpp.min.js"
+      integrity="sha512-/kakiUcgosfrW14dYIe0cMjXoK6PN67r96Dz2zft/Rlm6TcgdCJjb6ZD/jpobHzduAs8NdSeMQHda8iJGkjdow=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/prism/9000.0.1/components/prism-csharp.min.js"
+      integrity="sha512-lNcWxx1oz89gefDhnB9knOCI/GcjlFNZq7ik92IA9AdKVamhge7Z9Ne3MSAim/wPdTrthGF0iQMs19z1WS9gFw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/prism/9000.0.1/components/prism-css.min.js"
+      integrity="sha512-mHqYW9rlMztkE8WFB6wIPNWOVtQO50GYBsBRMyA1CMk34zLJ6BrvVy3RVHoIIofugmnoNLGxkuePQ9VT2a3u8w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/prism/9000.0.1/components/prism-java.min.js"
+      integrity="sha512-BEknrL2CnuVpqnSTwO4a9y9uW5bQ/nabkJeahZ5seRXvmzAMq59Ja9OxZe3lVGrnKEcVlamL4nUBl03wzPM/nA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/prism/9000.0.1/components/prism-javascript.min.js"
+      integrity="sha512-yvw5BDA/GQu8umskpIOBhX2pDLrdOiriaK4kVxtD28QEGLV5rscmCfDjkrx52tIgzLgwzs1FsALV6eYDpGnEkQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/prism/9000.0.1/components/prism-markdown.min.js"
+      integrity="sha512-4lQBgtc3AKPFSyFxc8Uaq6rz3VHwrSOdQxXtkJN9cS81ErTSoNSBxLDzWNYwwYryuvQpseKWiOmZdArMroqnLw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/prism/9000.0.1/components/prism-markup.min.js"
+      integrity="sha512-ebGmE5FR6s8b4k/BC8DDNt0Q+Ap+tiUDxnnYC7uUBnx5XLf+ztbK+Oed+Ajai2rymIbpY8jIouHSCQpSav53uA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/prism/9000.0.1/components/prism-php.min.js"
+      integrity="sha512-6UGCfZS8v5U+CkSBhDy+0cA3hHrcEIlIy2++BAjetYt+pnKGWGzcn+Pynk41SIiyV2Oj0IBOLqWCKS3Oa+v/Aw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/prism/9000.0.1/components/prism-python.min.js"
+      integrity="sha512-3qtI9+9JXi658yli19POddU1RouYtkTEhTHo6X5ilOvMiDfNvo6GIS6k2Ukrsx8MyaKSXeVrnIWeyH8G5EOyIQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/prism/9000.0.1/components/prism-rest.min.js"
+      integrity="sha512-wSfqtajaTkorwCMM9J6F1nOZJn1FUbSpwafCkWMY7tRyxTcMM7C4gx7GKcnivkIeQTgfg6lNrelRsql1EDy4tQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/prism/9000.0.1/components/prism-rust.min.js"
+      integrity="sha512-IEKBKuVt5ZJgNK9ExBPa4m5KkTKhOgxJ+22LHUEOkKO/i/A4GLgbUApFf3LdsjXEoSdwOZOiUdWBxp/zDt1+fg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/prism/9000.0.1/components/prism-sql.min.js"
+      integrity="sha512-fmx2W52F+6sZ8IYcsuKsFV0PjADeu32K3PdJGhxCKB+5VRVXpmuKgkfzTsW/B8cy/FPnEOlZX4fP/ZQk057tPQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/prism/9000.0.1/components/prism-swift.min.js"
+      integrity="sha512-NNsD4a5y6KvPGkJx8+s0sA30PZqcKf6AtxHi73GByPDi2hG7Isvjg3+i38dNAplcfBKXezDotoNXUCYmgr3UAA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/prism/9000.0.1/components/prism-typescript.min.js"
+      integrity="sha512-Hb168WC7SiCJ1GlGPHBb5ol0ResC6n5wu+5V8FTT5inC5ajLgBSm2hpQBvDq1YG2KqXr7UanlfQqRy6VEb1/kQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+
+    <script>
+      function sendMessage() {
+        var userMessage = $("#userInput").val().trim();
+        if (userMessage === "") return;
+
+        appendMessage("user", userMessage);
+
+        var messagesArray = $("#messages div")
+          .map(function () {
+            return { role: $(this).data("role"), content: $(this).html() };
+          })
+          .get();
+
+        $("#messages").append(
+          '<div id="wave" class="assistant-message"><span class="dot one"></span><span class="dot two"></span><span class="dot three"></span></div>'
+        );
+        speak("Saathi is typing");
+
+        $.post(
+          "https://ubsa.in/smartprogrammers/computer/gpt2.php",
+          { spReq: true, messages: messagesArray },
+          function (response) {
+            $("#wave").remove();
+            speak("Saathi replied you");
+
+            appendMessage(
+              "assistant",
+              JSON.parse(response).choices[0].message.content
+            );
+
+            $("#messages").scrollTop($("#messages")[0].scrollHeight);
+            Prism.highlightAll();
+          }
+        );
+
+        $("#userInput").val("");
+      }
+
+      function appendMessage(role, content) {
+        var messageDiv = $("<div>")
+          .addClass(role + "-message")
+          .data("role", role);
+        var codeMatches = content.match(/```(\w+)\s*([\s\S]+?)```/g);
+
+        if (codeMatches) {
+          codeMatches.forEach(function (codeMatch) {
+            var codeLanguage = codeMatch.match(/```(\w+)\s*([\s\S]+?)```/)[1];
+            var codeContent = codeMatch.match(/```(\w+)\s*([\s\S]+?)```/)[2];
+            content = content.replace(
+              codeMatch,
+              '<pre><code class="language-' +
+                codeLanguage +
+                '">' +
+                escapeHtml(codeContent) +
+                "</code></pre>"
+            );
+          });
+        }
+
+        messageDiv.html(content);
+        $("#messages").append(messageDiv);
+      }
+
+      function escapeHtml(text) {
+        return new XMLSerializer().serializeToString(
+          document.createTextNode(text)
+        );
+      }
+
+      function speak(sText) {
+        $("#speak").text(sText).show();
+        setTimeout(function () {
+          $("#speak").text("").hide();
+        }, 500);
+      }
+      $("#messages").on("contextmenu", "div", function () {
+        navigator.clipboard
+          .writeText($(this).text())
+          .then(function () {
+            speak("Text successfully copied to clipboard");
+          })
+          .catch(function (err) {
+            speak("Unable to copy text to clipboard " + err);
+          });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html class="dark">
+  <head>
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"
+    />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="HandheldFriendly" content="true" />
+    <link rel="stylesheet" href="https://learnxinyminutes.com/css/index.css" />
+    <title>Programming Hub</title>
+    <style>
+      * {
+        -webkit-user-select: none;
+      }
+      body {
+        background: #333 !important;
+      }
+      h5 {
+        color: white;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        text-align: center;
+        transform: translateX(-50%) translateY(-50%);
+      }
+      #bk {
+        border: none;
+        border-radius: 20px;
+        display: block;
+        margin: 10px auto;
+      }
+      #li {
+        border-radius: 30px;
+        display: block;
+        padding: 5px;
+        margin: 5px auto;
+        width: 90%;
+        text-align: center;
+      }
+      #bk,
+      #li {
+        background: #444 !important;
+        color: white !important;
+      }
+      #bk:hover,
+      #li:hover {
+        background: #555 !important;
+      }
+      #result-box {
+        display: none;
+        padding: 10px;
+      }
+      #main {
+        padding: 5px;
+      }
+      h1,
+      h2,
+      h3,
+      h4 {
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="result-box">
+      <button id="bk">Go Back</button>
+      <div id="result"></div>
+    </div>
+    <div id="main">
+      <h5>Please wait while I take you to the page:)</h5>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+      var proxy = "https://ubsa.in/smartprogrammers/fire.php?url=";
+      $("#bk").click(function () {
+        $("#result-box").hide();
+        $("#main").show();
+      });
+      $.get(
+        proxy + encodeURIComponent("https://learnxinyminutes.com"),
+        function (a) {
+          $("#main").empty();
+          $.each($(a).find(".name"), function () {
+            $("#main").append(
+              "<h2>" +
+                $(this).children("h2").html() +
+                "</h2>" +
+                "<p id='li' URL='https://learnxinyminutes.com" +
+                $(this).children("a").attr("href") +
+                "'>" +
+                $(this).children("a").html() +
+                "</p>"
+            );
+            $("h2:contains('undefined'),p:contains('undefined'),h5").remove();
+          });
+        }
+      );
+      $("#main").on("click", "p", function () {
+        $.get(proxy + $(this).attr("URL"), function (a) {
+          $("#main").hide();
+          $("#result-box").show();
+          $.each($(a).find("#doc"), function () {
+            $("#result").html($(this).addBack().html());
+            $("#result").find("hr").nextAll().remove();
+            window.scrollTo(0, 0);
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

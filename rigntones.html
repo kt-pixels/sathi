@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ringtones World</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<title>Ringtones World</title>
+<style>
+* {
+  -webkit-user-select: none;
+  outline: none;
+}
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #000000;
+  font-family: Arial, sans-serif;
+  color: #ffffff;
+}
+#app-container {
+  background-color: #000000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+#myInput {
+  background-color: #424242;
+  color: #ffffff;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  width: 70%;
+  margin-bottom: 10px;
+}
+
+#go {
+  background-color: #424242;
+  color: #ffffff;
+  border: none;
+  padding: 10px;
+  border-radius: 10px;
+  width: 30%;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+#go:hover {
+  background-color: #444444;
+}
+
+#ring {
+  width: 90%;
+  overflow-y: auto;
+  margin-top: 20px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  background-color: #333333;
+  color: #ffffff;
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+li:hover {
+  background-color: #444444;
+}
+
+.fa-angle-double-right,.fa-angle-double-left {
+  font-size: 30px;
+  right: 10px;
+  top: 10px;
+  position: absolute;
+  width: 7%;
+  display: none;
+}
+
+.fa-angle-double-left {
+  left: 10px;
+}
+
+.wait {
+  color: #ffff00;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+}
+</style>
+</head>
+<body>
+  <div id="app-container">
+<center>
+<b title="Previous Page, button" class="fa fa-angle-double-left"></b>
+<b title="Next Page, button" class="fa fa-angle-double-right"></b>
+</center>
+    <h1>Ringtones World</h1>
+    <input type="text" id="myInput" placeholder="Search for ringtones..." title="Enter a keyword"/>
+    <button id="go">Search</button>
+    <div id="ring">
+      <div class="wait">Please Wait...</div>
+    </div>
+  </div>
+<audio id="aud"></audio>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+var aud = $("#aud")[0];
+var pg = 1;
+$(".fa-angle-double-left").click(function(){
+if(pg <= 1){
+alert("No previous page :(");
+}else{
+pg -= 1;
+fire();
+}});
+$(".fa-angle-double-right").click(function(){
+pg += 1;
+fire();
+});
+$("#ring").on("contextmenu","li",function(){
+if($(this).attr("URL").indexOf("undefined")){
+location.href = $(this).attr("URL");
+}else{
+alert("File corrupted!");
+}});
+$("#ring").on("click","li",function(){
+if($(this).attr("URL").indexOf("undefined")){
+aud.src = $(this).attr("URL");
+aud.play();
+}else{
+alert("File corrupted!");
+}});
+$("#go").click(function(){
+pg = 1;
+fire();
+});
+function fire(){
+$(".fa").hide();
+$.getJSON("https://ubsa.in/smartprogrammers/zedge.php?q="+encodeURIComponent($('#myInput').val().toLowerCase())+"&p="+pg,function(data){
+$(".fa").show();
+if(JSON.stringify(data).length > 120){
+$("#ring").empty();
+$.each(data.data.searchAsUgc.items,function(i,k){
+$("#ring").append("<li URL='"+k.meta.previewUrl+"'>"+k.title+"</li>");
+});
+}else{
+alert("Nothing were found :-(\n\nTry making a new search instead!");
+$(".fa").hide();
+pg = 1;
+}});}
+fire();
+</script>
+</body>
+</html>

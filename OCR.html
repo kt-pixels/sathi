@@ -7,12 +7,12 @@
     <meta name="HandheldFriendly" content="true" />
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     />
     <link rel="stylesheet" href="Style/style.css" />
     <!-- <style>
       * {
-        /* -webkit-user-select: none; */
+        -webkit-user-select: none;
         font-size: 20px;
         outline: none;
       }
@@ -48,7 +48,7 @@
       #main select,
       #main input[type="text"],
       button {
-        /* -webkit-appearance: none; */
+        -webkit-appearance: none;
         background: #555;
         border: 1px solid black;
         color: white;
@@ -95,9 +95,9 @@
       }
     </style> -->
   </head>
-  <body class="app_store_container">
-    <!-- <center><button id="bk">Go Back</button></center> -->
-    <!-- <fieldset id="main">
+  <body>
+    <!-- <center><button id="bk">Go Back</button></center>
+    <fieldset id="main">
       <legend>App Store</legend>
       <b title="Previous Page, button" class="fa fa-angle-double-left"></b>
       <b title="Next Page, button" class="fa fa-angle-double-right"></b>
@@ -142,69 +142,56 @@
       <div id="result">
         <i aria-live="polite">Please wait...</i>
       </div>
-    </fieldset> -->
+    </fieldset>
+    <div id="dwn"></div> -->
 
-    <div class="app_store_box">
-      <button id="bk"><i class="fas fa-arrow-left"></i></button>
-      <h2>App Store</h2>
-      <img src="images/open.png" alt="" />
-    </div>
-    <div id="main">
-      <!-- <legend>App Store</legend> -->
-      <div class="prev_next-input">
-        <b title="Previous Page, button" class="fa fa-angle-double-left"></b>
-        <b title="Next Page, button" class="fa fa-angle-double-right"></b>
-        <input id="t" type="text" placeholder="Type or paste a query..." />
+    <center><button id="bk">Go Back</button></center>
+    <fieldset id="main">
+      <legend>App Store</legend>
+      <b title="Previous Page, button" class="fa fa-angle-double-left"></b>
+      <b title="Next Page, button" class="fa fa-angle-double-right"></b>
+      <input id="t" type="text" placeholder="Type or paste a query..." />
+      <hr />
+      <select id="a" title="Category">
+        <option value="All" selected="selected">- Any -</option>
+        <option value="517">Activators For Microsoft Products</option>
+        <option value="518">Backup And Restore</option>
+        <option value="181">Books & Reference</option>
+        <option value="516">CD/DVD Tools</option>
+        <option value="94">compression and archiving</option>
+        <option value="547">Educational</option>
+        <option value="55">File Sharing</option>
+        <option value="999">Financial</option>
+        <option value="128">ftp client</option>
+        <option value="4">Games</option>
+        <option value="18">Internet</option>
+        <option value="65">Lifestyle</option>
+        <option value="7">Miscellaneous</option>
+        <option value="6">Ms Office</option>
+        <option value="1">Multimedia</option>
+        <option value="137">News And Magazines</option>
+        <option value="3">Operating system</option>
+        <option value="57">Programming tools</option>
+        <option value="64">Social</option>
+        <option value="2">Software for visually impaired</option>
+        <option value="112">System Utilities</option>
+        <option value="127">text editors and converters</option>
+        <option value="5">Text to speech</option>
+        <option value="785">VPN and Proxy</option>
+      </select>
+      <select id="b" title="Operating System">
+        <option value="All" selected="selected">- Any -</option>
+        <option value="10">Apple iOS</option>
+        <option value="20">Apple Mac OS (OSX)</option>
+        <option value="9">Google Android</option>
+        <option value="19">Linux</option>
+        <option value="8">Microsoft Windows</option>
+      </select>
+      <button onclick="fire()">FIND</button>
+      <div id="result">
+        <i aria-live="polite">Please wait...</i>
       </div>
-
-      <div class="select_Yours">
-        <div class="my_options">
-          <select id="a" title="Category">
-            <option value="All" selected="selected">- Any -</option>
-            <option value="517">Activators For Microsoft Products</option>
-            <option value="518">Backup And Restore</option>
-            <option value="181">Books & Reference</option>
-            <option value="516">CD/DVD Tools</option>
-            <option value="94">compression and archiving</option>
-            <option value="547">Educational</option>
-            <option value="55">File Sharing</option>
-            <option value="999">Financial</option>
-            <option value="128">ftp client</option>
-            <option value="4">Games</option>
-            <option value="18">Internet</option>
-            <option value="65">Lifestyle</option>
-            <option value="7">Miscellaneous</option>
-            <option value="6">Ms Office</option>
-            <option value="1">Multimedia</option>
-            <option value="137">News And Magazines</option>
-            <option value="3">Operating system</option>
-            <option value="57">Programming tools</option>
-            <option value="64">Social</option>
-            <option value="2">Software for visually impaired</option>
-            <option value="112">System Utilities</option>
-            <option value="127">text editors and converters</option>
-            <option value="5">Text to speech</option>
-            <option value="785">VPN and Proxy</option>
-          </select>
-          <select id="b" title="Operating System">
-            <option value="All" selected="selected">- Any -</option>
-            <option value="10">Apple iOS</option>
-            <option value="20">Apple Mac OS (OSX)</option>
-            <option value="9">Google Android</option>
-            <option value="19">Linux</option>
-            <option value="8">Microsoft Windows</option>
-          </select>
-        </div>
-        <div class="find_selected">
-          <button onclick="fire()">FIND</button>
-        </div>
-        <div id="result">
-          <p>
-            <i aria-live="polite">Please wait...</i>
-          </p>
-        </div>
-      </div>
-    </div>
+    </fieldset>
     <div id="dwn"></div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script>

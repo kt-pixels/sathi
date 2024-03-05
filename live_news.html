@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Live News</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,minimal-ui">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="HandheldFriendly" content="true">
+<style>
+* {
+-webkit-user-select: none;
+}
+video::-webkit-media-controls{
+display: none !important;
+}
+video::-webkit-media-controls-fullscreen{
+display: none !important;
+}
+body{
+background: #333;
+color: white;
+}
+video{
+display: none;
+height: 30vh;
+width: 80%;
+}
+.act{
+background: #555 !important;
+}
+#main li{
+background: #444;
+border-radius: 15px;
+list-style: none;
+margin: 5px;
+padding: 10px;
+text-align: center;
+}
+</style>
+</head>
+<body>
+<center><video title="Click to view in Fullscreen" poster="https://fut7.pt/wp-content/plugins/appspinner/assets/images/gif-loader.gif"></video></center>
+<div id="main">
+<li class="wait">PLEASE WAIT...</li>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+$.getJSON("https://ubsa.in/smartprogrammers/osmsaathi/News/live.php?list",function(data){
+$(".wait").remove();
+$.each(data,function(i,v){
+$("#main").append("<li URL='"+v.link+"'>"+v.name+"</li>");
+});});
+$("#main").on("click","li",function(){
+$("video").show();
+$("li").removeClass("act").removeAttr("title");
+$(this).addClass("act").attr("title",$(this).text()+",selected");
+$("video").attr("src",$(this).attr("URL"))[0].play();
+});
+$("video").click(function(){
+var video = $(this)[0];
+if(video.requestFullscreen){
+video.requestFullscreen();
+}else if(video.mozRequestFullScreen){
+video.mozRequestFullScreen();
+}else if(video.webkitRequestFullscreen){
+video.webkitRequestFullscreen();
+}else if(video.msRequestFullscreen){
+video.msRequestFullscreen();
+}});
+</script>
+</body>
+</html>

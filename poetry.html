@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Hindi / Urdu Poetries</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="HandheldFriendly" content="true">
+<link rel="stylesheet" href="http://kavitakosh.org/kk/load.php?debug=false&lang=hi&modules=mediawiki.legacy.commonPrint%2Cshared%7Cmediawiki.skinning.content.externallinks%7Cmediawiki.skinning.interface%7Cmediawiki.ui.button%7Cskins.monobook.styles&only=styles&skin=monobook&" />
+<style>
+* {
+-webkit-user-select: none;
+}
+.h{
+position: absolute;
+top: 50%;
+left: 50%;
+text-align: center;
+transform: translateX(-50%) translateY(-50%);
+}
+#bk{
+margin: 5px;
+}
+#main,#li,#bk{
+display: none;
+text-align: center;
+}
+ul li{
+list-style: none;
+}
+a{
+background: #f1f1f1;
+border-radius: 30px;
+color: black;
+display: block;
+padding: 5px;
+width: 90%;
+}
+</style>
+</head>
+<body>
+<center><button id="bk">Go Back</button></center>
+<h4 class="h">Please wait while I take you to the page:)</h4>
+<div id="main">
+</div>
+<div id="li">
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+var proxy = "https://ubsa.in/smartprogrammers/fire.php?url=";
+$("#bk").click(function(){
+$("#main").show();
+$("#bk,#li").hide();
+window.scrollTo(0,0);
+});
+$.get(proxy+encodeURIComponent("http://kavitakosh.org/kk/%E0%A4%B0%E0%A4%9A%E0%A4%A8%E0%A4%BE%E0%A4%95%E0%A4%BE%E0%A4%B0%E0%A5%8B%E0%A4%82%20%E0%A4%95%E0%A5%80%20%E0%A4%B8%E0%A5%82%E0%A4%9A%E0%A5%80"),function(a){
+$("#bk,#li").hide();
+$.each($(a).find(".poet-list-section"),function(i,data){
+$("#main").append($(data).addBack().html());
+$(".h").remove();
+$("#main").show();
+d();
+});});
+$("#main").on("click","a",function(e){
+e.preventDefault();
+$.get(proxy+encodeURIComponent("http://kavitakosh.org"+$(this).attr("href")),function(li){
+$("#li").empty();
+$("#main").hide();
+$("#bk,#li").show();
+window.scrollTo(0,0);
+$.each($(li).find("#mw-content-text"),function(d,v){
+$("#li").append($(v).addBack().html());
+$("#li #kkparichay-box").prevAll().addBack().remove();
+d();
+});});});
+$("#li").on("click","a",function(e){
+e.preventDefault();
+$.get(proxy+encodeURIComponent("http://kavitakosh.org"+$(this).attr("href")),function(pm){
+if($(pm).find(".poem").text().length > 5){
+alert($(pm).find(".poem").text());
+}else{
+$.get(proxy+encodeURIComponent("http://kavitakosh.org"+$(pm).find("#mw-content-text a:last").attr("href")),function(pm1){
+alert($(pm1).find(".poem").text());
+});}});});
+function d(){
+$("li").each(function(){ 
+if($(this).children().length < 1) 
+$(this).remove() 
+});}
+</script>
+</body>
+</html>

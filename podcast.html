@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Podcasts</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="HandheldFriendly" content="true">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+*{
+-webkit-user-select: none;
+font-size: 20px;
+outline: none;
+}
+body{
+background: #333;
+color: white;
+}
+fieldset{
+background: #444;
+border: none;
+border-radius: 10px;
+padding: 10px;
+margin: 20px auto;
+text-align: center;
+width: 90%;
+}
+#main #i{
+background: #555;
+border-radius: 5px;
+height: 80px;
+padding: 5px;
+margin: 10px 0;
+max-width: 350px;
+overflow: hidden;
+}
+#main #i:hover{
+background: #666;
+}
+#Toast{
+background: black;
+bottom: 5px;
+display: none;
+position: fixed;
+text-align: center;
+width: 90%;
+}
+.fa-angle-double-right,.fa-angle-double-left{
+font-size: 30px;
+margin: auto 50px;
+width: 5%;
+}
+.ellipsis{
+white-space: nowrap;
+overflow: hidden;
+text-overflow: ellipsis;
+}
+</style>
+</head>
+<body>
+<fieldset id="main">
+<legend>Podcasts</legend>
+<b title="Previous Page, button" class="fa fa-angle-double-left"></b>
+<b title="Next Page, button" class="fa fa-angle-double-right"></b>
+<div id="result">
+<i aria-live="polite">Please wait...</i>
+</div>
+</fieldset>
+<div id="Toast" aria-live="polite">Just wait a while...</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+var pg = 1;
+var proxy = "https://ubsa.in/smartprogrammers/fire.php?url=";
+$(".fa-angle-double-left").click(function(){
+if(pg == 1){
+alert("No previous page :(");
+}else{
+pg -= 1;
+fire();
+}
+});
+$(".fa-angle-double-right").click(function(){
+if(pg == 4){
+alert("No next page :(");
+}else{
+pg += 1;
+fire();
+}
+});
+function SToast(){
+$('#Toast').show();
+setTimeout(function(){
+$('#Toast').hide();
+},1500);
+}
+function fire(){
+$(".fa").hide();
+$.get(proxy+encodeURIComponent("https://www.radioindia.in/podcasts?page=" + pg), function(data){
+$(".fa").show();                    $("#result").empty();
+$.each($(data).find(".mdc-list-item"), function(){
+$("#result").append("<div id='i' URL='https://www.radioindia.in" + $(this).attr("href") + "'><div class='ellipsis'><b>" + $(this).find(".podcasts-texts").text().replace($(this).find(".podcasts-texts-artist").text(),"") + "</b><br><br><i>" + $(this).find(".podcasts-texts-artist").text() + "</i></div></div>");
+});
+});}
+fire();
+$("#result").on("click","#i",function(){
+SToast();
+$.get(proxy+$(this).attr("URL"),function(data){
+var tmp = "";
+$.each($(data).find(".podcast-line-play"),function(){
+$(this).find(".secondary-span-color").remove();
+tmp += "<li URL='"+$(this).find("svg").data("url")+"'>"+$(this).text()+"</li>";
+});
+localStorage.setItem("mPlayer_data",tmp);
+window.open("go:m_player");
+});});
+</script>
+</body>
+</html>

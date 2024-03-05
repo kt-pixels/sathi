@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<head>
+<title>NCERT - Audiobooks</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="HandheldFriendly" content="true">
+<style>
+* {
+-webkit-user-select: none;
+}
+body{
+background: #333;
+color: white;
+text-align: center;
+}
+button{
+background: #444;
+border: none;
+border-radius: 15px;
+color: white;
+margin: 3px;
+padding: 10px;
+width: 90%;
+}
+button:hover{
+background: #555;
+}
+p{
+text-align: left;
+}
+#bk{
+width: 20%;
+margin: 10px;
+}
+</style>
+</head>
+<body>
+    <div class="container">
+        <button url="https://ciet.nic.in/pages.php?id=audiobookgrade_i&ln=en" class="btn btn-primary">Grade I</button>
+        <button url="https://ciet.nic.in/pages.php?id=audiobookgrade_ii&ln=en" class="btn btn-primary">Grade II</button>
+        <button url="https://ciet.nic.in/pages.php?id=audiobookgrade_iii&ln=en" class="btn btn-primary">Grade III</button>
+        <button url="https://ciet.nic.in/pages.php?id=audiobookgrade_iv&ln=en" class="btn btn-primary">Grade IV</button>
+        <button url="https://ciet.nic.in/pages.php?id=audiobookgrade_v&ln=en" class="btn btn-primary">Grade V</button>
+        <button url="https://ciet.nic.in/pages.php?id=audiobookgradevi&ln=en" class="btn btn-primary">Grade VI</button>
+        <button url="https://ciet.nic.in/pages.php?id=audiobookgradevii&ln=en" class="btn btn-primary">Grade VII</button>
+        <button url="https://ciet.nic.in/pages.php?id=audiobookgradeviii&ln=en" class="btn btn-primary">Grade VIII</button>
+        <button url="https://ciet.nic.in/pages.php?id=audiobookgradeix&ln=en" class="btn btn-primary">Grade IX</button>
+        <button url="https://ciet.nic.in/pages.php?id=audiobookgradex&ln=en" class="btn btn-primary">Grade X</button>
+        <button url="https://ciet.nic.in/pages.php?id=audiobookgradexi&ln=en" class="btn btn-primary">Grade XI</button>
+        <button url="https://ciet.nic.in/pages.php?id=audiobookgradexii&ln=en" class="btn btn-primary">Grade XII</button>
+</div>
+<div id="tmp"></div>
+<div id="aud"></div>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+$(".container").on("click","button",function(){
+$.get("https://ubsa.in/smartprogrammers/ao.php?url="+encodeURIComponent($(this).attr("url")),function(data){
+$(".container").hide();
+$("#tmp").html("<button id='bk'>Go Back</button>");
+$.each($(data).find(".col-sm-3"),function(){
+$("#tmp").append("<button url='"+$(this).find("a").attr("href")+"'>"+$(this).find("h4").text()+"</button>");
+});});});
+$(document).on("click","#tmp #bk",function(){
+$(".container").show();
+$("#tmp").empty();
+});
+$(document).on("click","#tmp button",function(){
+$.get("https://ubsa.in/smartprogrammers/ao.php?url="+encodeURIComponent($(this).attr("url")),function(data){
+$("#tmp").hide();
+$("#aud").html("<button id='bk'>Go Back</button>"+$(data).find(".about_main").html());
+$("audio").attr("controlsList","nodownload");
+});});
+$(document).on("click","#aud #bk",function(){
+$("#tmp").show();
+$("#aud").empty();
+});
+</script>
+</body>
+</html>

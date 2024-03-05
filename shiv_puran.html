@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<head>
+<title>Media Player</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="HandheldFriendly" content="true">
+<link href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' rel='stylesheet' type='text/css'>
+<style>
+* {
+-webkit-user-select: none;
+}
+select{
+-webkit-appearance: none;
+}
+body{
+background: #333;
+color: white;
+}
+#MyTitle{
+font-weight: bold;
+overflow: hidden;
+text-align: center;
+width: 100%;
+}
+.marquee{
+white-space: nowrap;
+text-align: center;
+width: 100%;
+transform:translateX(100%);
+animation: scroll-left 10s linear infinite;
+}
+@keyframes scroll-left{0%{ 
+transform: translateX(100%); 		
+}100%{ 
+transform: translateX(-100%); 
+}}
+#btns button{
+background: #555;
+border: none;
+border-radius: 50%;
+color: white;
+text-align: center;
+height: 35px;
+width: 35px;
+}
+#btns #prev, #btns #next{
+height: 45px;
+width: 45px;
+}
+#btns #play, #btns #pause{
+font-size: 22px;
+font-weight: bold;
+height: 55px;
+width: 55px;
+}
+#btns #play{
+color: #00FF00;
+}
+#btns #pause{
+color: #FF0000;
+}
+i{
+font-size: 0px;
+}
+#pbRate{
+background: black;
+border: solid 1px white;
+color: white;
+text-align-last: center;
+width: 55px;
+}
+#progress-bar {
+display: block;
+height: 5px;
+margin-left: 28%;
+margin-top: 10px;
+position: absolute;
+width: 40%;
+background: url(https://i.ibb.co/n108ZL0/progress-bg.png) no-repeat;
+}
+#progress{
+float: left;
+background: url(https://i.ibb.co/nC43tVd/progress.png) no-repeat;
+display: inline-block;
+height: 5px;
+}
+.PBP{
+margin-top: 35px;
+width: 98%;
+}
+#current{
+display: block;
+float: left;
+position: absolute;
+font-weight: bold;
+}
+#duration{
+float: right;
+font-weight: bold;
+}
+#playlist{
+display: block;
+margin: auto;
+background: #555;
+padding: 10px;
+border-radius: 10px;
+}
+#playlist li{
+list-style: none;
+background: #444;
+border: 1px solid #555;
+color: white;
+padding: 10px;
+border-radius: 10px;
+margin: 5px 0;
+cursor: pointer;
+}
+#playlist li.active{
+background: #555;
+color: white;
+font-weight: bold;
+}
+.active::before{
+content: "Selected:";
+font-size: 0px;
+}
+#Toast{
+background: black;
+bottom: 5px;
+display: none;
+position: fixed;
+text-align: center;
+width: 100%;
+}
+</style>
+</head>
+<body>
+<div id="MyTitle"><div id="Title"></div></div>
+<audio id="MyPlayer"></audio>
+<div class="PBP"><span id="current"><i>Current Duration</i>0<i>Minutes &</i>:00<i>Seconds</i></span>
+<div id="progress-bar"><span id="progress"></span></div>
+<span id="duration"><i>Total Duration</i>0<i>Minutes &</i>:00<i>Seconds</i></span></div>
+<br/><br/>
+<center><div id="btns">
+<div id="Toast" aria-live="polite"></div>
+<button class="fa fa-backward" id="rewind"><i>Rewind</i></button>
+<button class="fa fa-step-backward" id="prev"><i>Previous</i></button>
+<button class="fa fa-play" id="play"><i>Play</i></button>
+<button class="fa fa-pause" id="pause"><i>Pause</i></button>
+<button class="fa fa-step-forward" id="next"><i>Next</i></button>
+<button class="fa fa-forward" id="forward"><i>Forward</i></button>
+</div>
+</center>
+<br/>
+<div id="playlist">
+</div>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+<script>
+var Player = document.querySelector('#MyPlayer');
+var mediaIndex = 0;
+var playlistSize = 0;
+var data = [{"bid":"1","title":"Bhag 1 Adhyay 1","fname":"bhag1adhyay1.mp3","postdt":"2017-03-08 04:47:50","cat_id":"1"},{"bid":"2","title":"Bhag 1 Adhyay 2","fname":"bhag1adhyay2.mp3","postdt":"2017-03-08 05:09:52","cat_id":"1"},{"bid":"3","title":"Bhag 1 Adhyay 3","fname":"bhag1adhyay3.mp3","postdt":"2017-03-08 06:28:42","cat_id":"1"},{"bid":"4","title":"Bhag 1 Adhyay 4","fname":"bhag1adhyay4.mp3","postdt":"2017-03-08 06:49:20","cat_id":"1"},{"bid":"5","title":"Bhag 1 Adhyay 5","fname":"bhag1adhyay5.mp3","postdt":"2017-03-08 06:49:33","cat_id":"1"},{"bid":"6","title":"Bhag 1 Adhyay 6","fname":"bhag1adhyay6.mp3","postdt":"2017-03-08 06:49:43","cat_id":"1"},{"bid":"7","title":"Bhag 1 Adhyay 7","fname":"bhag1adhyay7.mp3","postdt":"2017-03-08 06:49:50","cat_id":"1"},{"bid":"8","title":"Bhag 1 Adhyay 8","fname":"bhag1adhyay8.mp3","postdt":"2017-03-08 06:49:57","cat_id":"1"},{"bid":"9","title":"Bhag 1 Adhyay 9","fname":"bhag1adhyay9.mp3","postdt":"2017-03-08 06:50:05","cat_id":"1"},{"bid":"10","title":"Bhag 1 Adhyay 10","fname":"bhag1adhyay10.mp3","postdt":"2017-03-08 06:50:15","cat_id":"1"},{"bid":"12","title":"Bhag 2 Adhyay 1","fname":"bhag2adhyay1.mp3","postdt":"2017-05-19 07:10:24","cat_id":"2"},{"bid":"13","title":"Bhag 2 Adhyay 2","fname":"bhag2adhyay2.mp3","postdt":"2017-05-19 07:10:57","cat_id":"2"},{"bid":"14","title":"Bhag 2 Adhyay 3","fname":"bhag2adhyay3.mp3","postdt":"2017-05-19 07:11:35","cat_id":"2"},{"bid":"15","title":"Bhag 2 Adhyay 4","fname":"bhag2adhyay4.mp3","postdt":"2017-05-19 07:11:51","cat_id":"2"},{"bid":"16","title":"Bhag 2 Adhyay 5","fname":"bhag2adhyay5.mp3","postdt":"2017-05-19 07:12:54","cat_id":"2"},{"bid":"17","title":"Bhag 2 Adhyay 6","fname":"bhag2adhyay6.mp3","postdt":"2017-05-19 07:14:15","cat_id":"2"},{"bid":"18","title":"Bhag 2 Adhyay 7","fname":"bhag2adhyay7.mp3","postdt":"2017-05-19 07:15:01","cat_id":"2"},{"bid":"19","title":"Bhag 2 Adhyay 8","fname":"bhag2adhyay8.mp3","postdt":"2017-05-19 07:16:03","cat_id":"2"},{"bid":"20","title":"Bhag 2 Adhyay 9","fname":"bhag2adhyay9.mp3","postdt":"2017-05-19 07:16:29","cat_id":"2"},{"bid":"21","title":"Bhag 2 Adhyay 10","fname":"bhag2adhyay10.mp3","postdt":"2017-05-19 07:16:55","cat_id":"2"},{"bid":"22","title":"Bhag 3 Adhyay 1","fname":"bhag3adhyay1.mp3","postdt":"2017-06-01 06:34:24","cat_id":"3"},{"bid":"23","title":"Bhag 3 Adhyay 2","fname":"bhag3adhyay2.mp3","postdt":"2017-06-01 06:34:40","cat_id":"3"},{"bid":"24","title":"Bhag 3 Adhyay 3","fname":"bhag3adhyay3.mp3","postdt":"2017-06-01 06:34:57","cat_id":"3"},{"bid":"25","title":"Bhag 3 Adhyay 4","fname":"bhag3adhyay4.mp3","postdt":"2017-06-01 06:35:10","cat_id":"3"},{"bid":"26","title":"Bhag 3 Adhyay 5","fname":"bhag3adhyay5.mp3","postdt":"2017-06-01 06:35:23","cat_id":"3"},{"bid":"27","title":"Bhag 3 Adhyay 6","fname":"bhag3adhyay6.mp3","postdt":"2017-06-01 06:35:36","cat_id":"3"},{"bid":"28","title":"Bhag 3 Adhyay 7","fname":"bhag3adhyay7.mp3","postdt":"2017-06-01 06:35:49","cat_id":"3"},{"bid":"29","title":"Bhag 3 Adhyay 8","fname":"bhag3adhyay8.mp3","postdt":"2017-06-01 06:36:25","cat_id":"3"},{"bid":"30","title":"Bhag 3 Adhyay 9","fname":"bhag3adhyay9.mp3","postdt":"2017-06-01 06:36:37","cat_id":"3"},{"bid":"31","title":"Bhag 3 Adhyay 10","fname":"bhag3adhyay10.mp3","postdt":"2017-06-01 06:36:50","cat_id":"3"},{"bid":"32","title":"Bhag 4 Adhyay 1","fname":"bhag4adhyay1.mp3","postdt":"2017-07-01 06:47:50","cat_id":"4"},{"bid":"33","title":"Bhag 4 Adhyay 2","fname":"bhag4adhyay2.mp3","postdt":"2017-07-01 06:48:09","cat_id":"4"},{"bid":"34","title":"Bhag 4 Adhyay 3","fname":"bhag4adhyay3.mp3","postdt":"2017-07-01 06:48:28","cat_id":"4"},{"bid":"35","title":"Bhag 4 Adhyay 4","fname":"bhag4adhyay4.mp3","postdt":"2017-07-01 06:48:47","cat_id":"4"},{"bid":"36","title":"Bhag 4 Adhyay 5","fname":"bhag4adhyay5.mp3","postdt":"2017-07-01 06:49:09","cat_id":"4"},{"bid":"37","title":"Bhag 4 Adhyay 6","fname":"bhag4adhyay6.mp3","postdt":"2017-07-01 06:49:30","cat_id":"4"},{"bid":"38","title":"Bhag 4 Adhyay 7","fname":"bhag4adhyay7.mp3","postdt":"2017-07-01 06:49:46","cat_id":"4"},{"bid":"39","title":"Bhag 4 Adhyay 8","fname":"bhag4adhyay8.mp3","postdt":"2017-07-01 06:50:08","cat_id":"4"},{"bid":"40","title":"Bhag 4 Adhyay 9","fname":"bhag4adhyay9.mp3","postdt":"2017-07-01 06:50:25","cat_id":"4"},{"bid":"41","title":"Bhag 4 Adhyay 10","fname":"bhag4adhyay10.mp3","postdt":"2017-07-01 06:51:12","cat_id":"4"}];
+$(document).ready(function () {
+    $('#pause').hide();
+    $.each(data, function (index, value) {
+        $('#playlist').append($("<li URL='" + value.fname + "'>" + value.title + "</li>"));
+    });
+    playlistSize = $('#playlist li').length;
+
+    try {
+        mediaIndex = parseInt(localStorage.getItem('Shiv_Puran')) || 0;
+    Player.currentTime = parseFloat(localStorage.getItem('Shiv_Puran_crr')) || 0;
+    } catch (err) {
+        mediaIndex = 0;
+    }
+    var mediaToShow = $('#playlist li').eq(mediaIndex);
+    Activate(mediaToShow);
+    CtrlMarquee();
+});
+
+function Activate(elem) {
+    var Movie = elem.attr('URL');
+    $('#Title').text(elem.text());
+    $(Player).attr('src', 'http://ws.wizitechnologies.com/shivpuran/audio/' + Movie);
+    $('#playlist li').removeClass('active');
+    elem.addClass('active');
+}
+
+$('#play').click(function () {
+    playMedia();
+});
+
+$('#pause').click(function () {
+    Player.pause();
+    $('#play').show();
+    $('#pause').hide();
+    $('#Toast').text('Story paused!');
+    SToast();
+});
+
+$('#next').click(function () {
+    Player.pause();
+    var next = $('#playlist li.active').next();
+    if (next.length == 0) {
+        next = $('#playlist li:first-child');
+    }
+    Activate(next);
+    setMediaIndex(1);
+    playMedia();
+});
+
+$('#prev').click(function () {
+    Player.pause();
+    var prev = $('#playlist li.active').prev();
+    if (prev.length == 0) {
+        prev = $('#playlist li:last-child');
+    }
+    Activate(prev);
+    setMediaIndex(-1);
+    playMedia();
+});
+
+$('#rewind').click(function () {
+    Player.currentTime -= 10.0;
+    Player.play();
+    $('#play').hide();
+    $('#pause').show();
+    $('#Toast').text('Rewinded: 10-S');
+    SToast();
+    showCurrent();
+});
+
+$('#forward').click(function () {
+    Player.currentTime += 10.0;
+    Player.play();
+    $('#play').hide();
+    $('#pause').show();
+    $('#Toast').text('Forwarded: 10-S');
+    SToast();
+    showCurrent();
+});
+
+$('#playlist').on('click', 'li', function () {
+    Activate($(this));
+    mediaIndex = $(this).index();
+    playMedia();
+});
+
+function playMedia() {
+    localStorage.setItem('Shiv_Puran', mediaIndex);
+    Player.play();
+    $('#play').hide();
+    $('#pause').show();
+    $('#Toast').text('Now Playing: ' + $('#Title').text());
+    SToast();
+    showCurrent();
+    CtrlMarquee();
+}
+
+function CtrlMarquee() {
+    if ($('#Title').text().length > 25) {
+        $('#Title').addClass('marquee');
+    } else {
+        $('#Title').removeClass('marquee');
+    }
+}
+
+function setMediaIndex(val) {
+    var temp = val < 0 ? mediaIndex - 1 : mediaIndex + 1;
+    if (temp < 0) mediaIndex = playlistSize - 1;
+    else if (temp >= playlistSize) mediaIndex = 0;
+    else mediaIndex = temp;
+}
+
+function showCurrent() {
+    $(Player).bind('timeupdate', function () {
+localStorage.setItem('Shiv_Puran_crr',Player.currentTime);
+        var s = parseInt(Player.currentTime % 60);
+        var m = parseInt(Player.currentTime / 60) % 60;
+        if (s < 10) {
+            s = '0' + s;
+        }
+        $('#current').html("<i>Current Duration</i>" + m + "<i>Minutes &</i>" + ":" + s + "<i>Seconds</i>");
+        var value = 0;
+        if (Player.currentTime > 0) {
+            value = Math.floor((100 / Player.duration) * Player.currentTime);
+        }
+        var minutes = parseInt(Player.duration / 60, 10);
+        var seconds = parseInt(Player.duration % 60);
+        $('#duration').html("<i>Total Duration</i>" + minutes + "<i>Minutes &</i>" + ":" + seconds + "<i>Seconds</i>");
+        $('#progress').css('width', value + '%');
+    });
+}
+
+function SToast() {
+    $('#Toast').show();
+    setTimeout(function () {
+        $('#Toast').hide();
+    }, 1500);
+}
+$(Player).bind('ended', function(){
+$('#next').click();
+});
+</script>
+</body>
+</html>
