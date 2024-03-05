@@ -614,3 +614,36 @@ EDUCATION PAGE STYLE CODE
   padding-block-start: 10px;
   font-size: 12px;
 }
+
+/* 
+NEWS PAGE STYLE CODE
+*/
+
+.all_news{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.all_news > .button{
+  background-color: rgba(255, 255, 255, 0.216);
+  text-align: center;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 1px 1px rgba(0,0,0,0.12), 0 2px 2px rgba(0,0,0,0.12);
+}
+
+.all_news > .button > img{
+  width: 50%;
+  padding-block-end: 20px;
+}
+
+.all_news > .button > p{
+  margin: 0;
+  padding-block-start: 10px;
+  font-size: 16px;
+  color: white;
+  font-weight: 400;
+  letter-spacing: 2px;
+  border-top: 1px solid #c9c9c92d;
+}
