@@ -445,7 +445,7 @@ APP STORE PAGE CODING STARTED FROM HERE
   letter-spacing: 1px;
 }
 
-blockquote{
+blockquote {
   margin: 0;
 }
 
@@ -537,7 +537,7 @@ EDUCATION PAGE STYLE CODE
   margin-block: 20px;
   align-items: center;
   justify-content: center;
-  background-color: #8f8f8f6b;
+  background-color: rgba(255, 255, 255, 0.31);
   padding: 20px;
   border-radius: 16px;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.12), 0 2px 2px rgba(0, 0, 0, 0.12);
@@ -569,7 +569,7 @@ EDUCATION PAGE STYLE CODE
   width: 100%;
 }
 
-.edu_btn {
+/* .edu_btn {
   flex: 1;
   padding: 15px;
   border-radius: 10px;
@@ -578,8 +578,18 @@ EDUCATION PAGE STYLE CODE
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  /* width: 80%;
-  height: 80%; */
+} */
+
+.edu_btn {
+  width: 100px;
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.216);
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.439);
 }
 
 .edu_btn > img {
@@ -592,5 +602,5 @@ EDUCATION PAGE STYLE CODE
   font-weight: 400;
   margin: 0;
   padding-block-start: 10px;
-  font-size: 14px;
+  font-size: 12px;
 }
