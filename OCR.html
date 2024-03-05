@@ -1,276 +1,175 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>App Store</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <meta name="HandheldFriendly" content="true" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-    />
-    <link rel="stylesheet" href="Style/style.css" />
-    <!-- <style>
-      * {
-        -webkit-user-select: none;
-        font-size: 20px;
-        outline: none;
-      }
-
-      body {
-        background: #333;
-        color: white;
-      }
-
-      fieldset {
-        background: #444;
-        text-align: center;
-        border: 1px solid #555;
-        border-radius: 10px;
-        padding: 10px;
-        margin: 20px auto;
-        width: 90%;
-      }
-
-      #main p {
-        background: #555;
-        border: 1px solid black;
-        border-radius: 20px;
-        display: flex;
-        flex-direction: column;
-        height: 90px;
-        justify-content: center;
-        overflow: hidden;
-        padding: 5px;
-        margin: 10px 0;
-      }
-
-      #main select,
-      #main input[type="text"],
-      button {
-        -webkit-appearance: none;
-        background: #555;
-        border: 1px solid black;
-        color: white;
-        text-align: center;
-        height: 40px;
-        width: 32%;
-        padding: 5px;
-      }
-
-      #main input[type="text"] {
-        width: 80%;
-      }
-
-      #i {
-        font-size: 75%;
-      }
-
-      .fa-angle-double-right,
-      .fa-angle-double-left {
-        font-size: 30px;
-        text-align: left;
-        position: absolute;
-        right: 25px;
-        width: 5%;
-      }
-
-      .fa-angle-double-left {
-        left: 25px;
-      }
-
-      #bk {
-        border-radius: 30px;
-        display: none;
-        width: 30%;
-        background: #555;
-        border: 1px solid #444;
-        color: white;
-        text-align: center;
-        padding: 10px;
-        margin: 20px auto;
-      }
-      hr {
-        border-color: black;
-      }
-    </style> -->
-  </head>
-  <body>
-    <!-- <center><button id="bk">Go Back</button></center>
-    <fieldset id="main">
-      <legend>App Store</legend>
-      <b title="Previous Page, button" class="fa fa-angle-double-left"></b>
-      <b title="Next Page, button" class="fa fa-angle-double-right"></b>
-      <input id="t" type="text" placeholder="Type or paste a query..." />
-      <hr />
-      <select id="a" title="Category">
-        <option value="All" selected="selected">- Any -</option>
-        <option value="517">Activators For Microsoft Products</option>
-        <option value="518">Backup And Restore</option>
-        <option value="181">Books & Reference</option>
-        <option value="516">CD/DVD Tools</option>
-        <option value="94">compression and archiving</option>
-        <option value="547">Educational</option>
-        <option value="55">File Sharing</option>
-        <option value="999">Financial</option>
-        <option value="128">ftp client</option>
-        <option value="4">Games</option>
-        <option value="18">Internet</option>
-        <option value="65">Lifestyle</option>
-        <option value="7">Miscellaneous</option>
-        <option value="6">Ms Office</option>
-        <option value="1">Multimedia</option>
-        <option value="137">News And Magazines</option>
-        <option value="3">Operating system</option>
-        <option value="57">Programming tools</option>
-        <option value="64">Social</option>
-        <option value="2">Software for visually impaired</option>
-        <option value="112">System Utilities</option>
-        <option value="127">text editors and converters</option>
-        <option value="5">Text to speech</option>
-        <option value="785">VPN and Proxy</option>
-      </select>
-      <select id="b" title="Operating System">
-        <option value="All" selected="selected">- Any -</option>
-        <option value="10">Apple iOS</option>
-        <option value="20">Apple Mac OS (OSX)</option>
-        <option value="9">Google Android</option>
-        <option value="19">Linux</option>
-        <option value="8">Microsoft Windows</option>
-      </select>
-      <button onclick="fire()">FIND</button>
-      <div id="result">
-        <i aria-live="polite">Please wait...</i>
-      </div>
-    </fieldset>
-    <div id="dwn"></div> -->
-
-    <center><button id="bk">Go Back</button></center>
-    <fieldset id="main">
-      <legend>App Store</legend>
-      <b title="Previous Page, button" class="fa fa-angle-double-left"></b>
-      <b title="Next Page, button" class="fa fa-angle-double-right"></b>
-      <input id="t" type="text" placeholder="Type or paste a query..." />
-      <hr />
-      <select id="a" title="Category">
-        <option value="All" selected="selected">- Any -</option>
-        <option value="517">Activators For Microsoft Products</option>
-        <option value="518">Backup And Restore</option>
-        <option value="181">Books & Reference</option>
-        <option value="516">CD/DVD Tools</option>
-        <option value="94">compression and archiving</option>
-        <option value="547">Educational</option>
-        <option value="55">File Sharing</option>
-        <option value="999">Financial</option>
-        <option value="128">ftp client</option>
-        <option value="4">Games</option>
-        <option value="18">Internet</option>
-        <option value="65">Lifestyle</option>
-        <option value="7">Miscellaneous</option>
-        <option value="6">Ms Office</option>
-        <option value="1">Multimedia</option>
-        <option value="137">News And Magazines</option>
-        <option value="3">Operating system</option>
-        <option value="57">Programming tools</option>
-        <option value="64">Social</option>
-        <option value="2">Software for visually impaired</option>
-        <option value="112">System Utilities</option>
-        <option value="127">text editors and converters</option>
-        <option value="5">Text to speech</option>
-        <option value="785">VPN and Proxy</option>
-      </select>
-      <select id="b" title="Operating System">
-        <option value="All" selected="selected">- Any -</option>
-        <option value="10">Apple iOS</option>
-        <option value="20">Apple Mac OS (OSX)</option>
-        <option value="9">Google Android</option>
-        <option value="19">Linux</option>
-        <option value="8">Microsoft Windows</option>
-      </select>
-      <button onclick="fire()">FIND</button>
-      <div id="result">
-        <i aria-live="polite">Please wait...</i>
-      </div>
-    </fieldset>
-    <div id="dwn"></div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script>
-      var pg = 0;
-      $(".fa-angle-double-left").click(function () {
-        if (pg == 0) {
-          alert("No previous page :(");
-        } else {
-          pg -= 1;
-          fire();
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Education World</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.9.0/dist/sweetalert2.min.js"></script>
+    <style>
+* {
+-webkit-user-select: none;
+}
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #333;
+            margin: 0;
+            padding: 0;
+            color: white;
         }
-      });
-      $(".fa-angle-double-right").click(function () {
-        pg += 1;
-        fire();
-      });
-      function fire() {
-        $(".fa").hide();
-        $.get(
-          "https://ubsa.in/smartprogrammers/fire.php?url=" +
-            encodeURIComponent(
-              "https://blindhelp.net/software?sp=req-now&title=" +
-                $("#t").val().replace(/ /g, "+") +
-                "&field_category_tid=" +
-                $("#a").val() +
-                "&os=" +
-                $("#b").val() +
-                "&page=" +
-                pg
-            ),
-          function (data) {
-            $(".fa").show();
-            if ($(data).find(".field-name-title").find("a").attr("href")) {
-              $("#result").empty();
-              $.each($(data).find(".field-name-title"), function () {
-                $("#result").append(
-                  "<p><i id='i' URL='https://blindhelp.net" +
-                    $(this).find("a").attr("href") +
-                    "?sp=req-now'>" +
-                    $(this).find("a").text() +
-                    "</i></p>"
-                );
-              });
-            } else {
-              alert(
-                "Nothing was found :-(\n\nTry making a new search instead!"
-              );
-              $(".fa").hide();
-              pg = 0;
-            }
-          }
-        );
-      }
-      fire();
-      $("#result").on("click", "#i", function () {
-        $.get(
-          "https://ubsa.in/smartprogrammers/fire.php?url=" +
-            encodeURIComponent($(this).attr("URL")),
-          function (data) {
-            $("#main").hide();
-            $("#dwn").empty().show();
-            $("#bk").show();
-            window.scrollTo(0, 0);
-            $("#dwn").append(
-              "<i>" +
-                $(data).find("div[property='content:encoded']").html() +
-                "</i><br><br>"
-            );
-            $.each($(data).find(".label-above").nextUntil("br"), function () {
-              $("#dwn").append($(this).html() + "<br><br>");
-            });
-          }
-        );
-      });
-      $("#bk").click(function () {
-        $("#bk,#dwn").hide();
-        $("#main").show();
-        window.scrollTo(0, 0);
-      });
-    </script>
-  </body>
+
+        #header {
+            background: linear-gradient(to bottom, #000000, #333);
+            padding: 10px;
+            text-align: center;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 60px; 
+        }
+
+        #header-title {
+            display: flex;
+            align-items: center;
+        }
+
+        #header-icons {
+            display: flex;
+        }
+
+        #header-icons i {
+            font-size: 25px; 
+            margin: 0 10px; 
+        }
+
+        #main {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .button {
+            background-color: #444;
+            border: none;
+            border-radius: 15px;
+            color: white;
+            padding: 0;
+            text-align: center;
+            text-decoration: none;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-width: 150px;
+            height: 150px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .button:hover {
+            background: linear-gradient(to bottom, #000000, #333);
+        }
+
+        .swal2-modal,.swal2-container.in {
+            background: #333;
+        }
+
+        .hidden,#result {
+            display: none;
+        }
+
+        #myInput {
+            background: transparent;
+            border: none;
+            color: white;
+            outline: none;
+        }
+
+        #result {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="header">
+        <div id="header-title">
+<h1>Education World</h1>
+<input class="hidden" type="text" id="myInput" placeholder="Search for topics..."/>
+        </div>
+        <div id="header-icons">
+          <i title="Toggle search, Button" class="fa fa-search"></i>
+          <i title="Help, Button" class="fa fa-question-circle"></i>
+        </div>
+    </div>
+<div id="result" aria-live="polite"></div>
+<div id="main">
+<button class="button"  onclick="window.location.href='https://2020sp.github.io/spApp/Anatomy%20And%20Physiology/'">Anatomy & Physiology</button>
+<button class="button"  onclick="window.location.href='go:ncert'">Audiobooks (NCERT)</button>
+<button class="button"  onclick="window.location.href='go:bgf'">Biography</button>
+<button class="button"  onclick="window.location.href='https://2020sp.github.io/spApp/Botany/'">Botany</button>
+<button class="button"  onclick="window.location.href='https://2020sp.github.io/spApp/Cell%20Biology/'">Cell Biology</button>
+<button class="button"  onclick="window.location.href='https://2020sp.github.io/spApp/Chemistry/'">Chemistry</button>
+<button class="button"  onclick="window.location.href='https://2020sp.github.io/spApp/Climatology/'">Climatology</button>
+<button class="button"  onclick="window.location.href='go:computer'">Computer Science</button>
+<button class="button"  onclick="window.location.href='https://2020sp.github.io/spApp/Ecology/'">Ecology</button>
+<button class="button"  onclick="window.location.href='go:esc'">English Speaking Course</button>
+<button class="button"  onclick="window.location.href='https://2020sp.github.io/spApp/Electricity%20Physics/'">Electricity Physics</button>
+<button class="button"  onclick="window.location.href='go:gk'">General Knowledge</button>
+<button class="button"  onclick="window.location.href='https://2020sp.github.io/spApp/Geology/'">Geology</button>
+<button class="button"  onclick="window.location.href='https://2020sp.github.io/spApp/Hindi%20Grammer'">Hindi Grammer</button>
+<button class="button"  onclick="window.location.href='https://2020sp.github.io/spApp/Home%20Science'">Home Science</button>
+<button class="button"  onclick="window.location.href='https://2020sp.github.io/spApp/Human%20Nutrition/'">Human Nutrition</button>
+<button class="button"  onclick="window.location.href='https://2020sp.github.io/spApp/Human%20Physiology/'">Human Physiology</button>
+<button class="button"  onclick="window.location.href='https://2020sp.github.io/spApp/Mechanical%20Science/'">Mechanical Science</button>
+<button class="button"  onclick="window.location.href='https://2020sp.github.io/spApp/Meteorology/'">Meteorology</button>
+<button class="button"  onclick="window.location.href='https://2020sp.github.io/spApp/Mythology/'">Mythology</button>
+<button class="button" onclick="window.location.href='https://2020sp.github.io/spApp/Physical%20Education/'">Physical Education</button>
+<button class="button" onclick="window.location.href='https://2020sp.github.io/spApp/Physics/'">Physics</button>
+<button class="button"  onclick="window.location.href='https://2020sp.github.io/spApp/Political%20Science/'">Political Science</button>
+<button class="button"  onclick="window.location.href='https://2020sp.github.io/spApp/%E0%A4%B0%E0%A4%BE%E0%A4%9C%E0%A4%B8%E0%A5%8D%E0%A4%A5%E0%A4%BE%E0%A4%A8%20%E0%A4%95%E0%A5%80%20%E0%A4%95%E0%A4%B2%E0%A4%BE%20%E0%A4%94%E0%A4%B0%20%E0%A4%B8%E0%A4%82%E0%A4%B8%E0%A5%8D%E0%A4%95%E0%A5%83%E0%A4%A4%E0%A4%BF/'">Rajasthan's Art & Culture</button>
+<button class="button"  onclick="window.location.href='https://2020sp.github.io/spApp/Space%20Science/'">Space Science</button>
+</div>
+<script>
+$(".fa-question-circle").click(function(){
+Swal.fire({
+title: "Need Help?",
+html: "Your feedback is invaluable. If there's anything we've missed or if you have additional questions, don't hesitate to reach out.<br/><br/>Click *Yes* to connect with us and enhance your experience.",
+icon: "question",
+allowOutsideClick: false,
+showCancelButton: true,
+cancelButtonText: "No",
+confirmButtonText: "Yes",
+focusConfirm: true,
+reverseButtons: true
+}).then((result) => {
+if(result.isConfirmed){
+window.open("http://wa.me/919582674239?text=Request - "+encodeURIComponent($("title").text()));
+}})});
+$("#myInput").keyup(function(){
+var filter = $(this).val(), count = 0;
+if(filter == ""){
+$("#result").hide()
+}else{
+$("#result").show()
+}
+$("#main button").each(function(){
+if($(this).text().search(new RegExp(filter, "i")) < 0){
+$(this).hide();
+}else{
+$(this).show();
+count++;
+}});
+if(count == "0"){
+$("#result").text("No match found!");
+}else if(count == "1"){
+$("#result").text("Only 1 match.");
+}else{
+$("#result").text("We found " + count + " matches.");
+}});
+$(".fa-search").click(function(){
+$("h1,#myInput").toggleClass("hidden").focus();
+});
+</script>
+</body>
 </html>

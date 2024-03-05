@@ -1,13 +1,20 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>News & Podcasts</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.min.css"
+    />
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.9.0/dist/sweetalert2.min.js"></script>
-    <style>
+    <link rel="stylesheet" href="Style/style.css" />
+    <!-- <style>
 * {
 -webkit-user-select: none;
 }
@@ -74,40 +81,54 @@
         .swal2-modal,.swal2-container.in {
             background: #333;
         }
-    </style>
-</head>
-<body>
+    </style> -->
+  </head>
+  <body>
     <div id="header">
-        <div id="header-title">
-<h1>News & Podcasts</h1>
-        </div>
-        <div id="header-icons">
-          <i title="Help, Button" class="fa fa-question-circle"></i>
-        </div>
+      <div id="header-title">
+        <img id="logo" src="images/logo.png" alt="logo" width="50px" />
+        <h1>News & Podcasts</h1>
+      </div>
+      <div id="header-icons">
+        <i title="Help, Button" class="fa fa-question-circle"></i>
+      </div>
     </div>
 
     <div id="main">
-<button class="button" onclick="location.href='go:epapers';">E-Papers</button>
-<button class="button" onclick="location.href='go:live_news';">Live News</button>
-<button class="button" onclick="location.href='go:n_on_air';">News On AIR</button>
-<button class="button" onclick="location.href='go:podcasts';">Podcasts</button>
+      <button class="button" onclick="location.href='go:epapers';">
+        E-Papers
+      </button>
+      <button class="button" onclick="location.href='go:live_news';">
+        Live News
+      </button>
+      <button class="button" onclick="location.href='go:n_on_air';">
+        News On AIR
+      </button>
+      <button class="button" onclick="location.href='go:podcasts';">
+        Podcasts
+      </button>
     </div>
-<script>
-$(".fa-question-circle").click(function(){
-Swal.fire({
-title: "Need Help?",
-html: "Your feedback is invaluable. If there's anything we've missed or if you have additional questions, don't hesitate to reach out.<br/><br/>Click *Yes* to connect with us and enhance your experience.",
-icon: "question",
-allowOutsideClick: false,
-showCancelButton: true,
-cancelButtonText: "No",
-confirmButtonText: "Yes",
-focusConfirm: true,
-reverseButtons: true
-}).then((result) => {
-if(result.isConfirmed){
-window.open("http://wa.me/919582674239?text=Request - "+encodeURIComponent($("title").text()));
-}})});
-</script>
-</body>
+    <script>
+      $(".fa-question-circle").click(function () {
+        Swal.fire({
+          title: "Need Help?",
+          html: "Your feedback is invaluable. If there's anything we've missed or if you have additional questions, don't hesitate to reach out.<br/><br/>Click *Yes* to connect with us and enhance your experience.",
+          icon: "question",
+          allowOutsideClick: false,
+          showCancelButton: true,
+          cancelButtonText: "No",
+          confirmButtonText: "Yes",
+          focusConfirm: true,
+          reverseButtons: true,
+        }).then((result) => {
+          if (result.isConfirmed) {
+            window.open(
+              "http://wa.me/919582674239?text=Request - " +
+                encodeURIComponent($("title").text())
+            );
+          }
+        });
+      });
+    </script>
+  </body>
 </html>

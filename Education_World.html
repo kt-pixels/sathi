@@ -117,11 +117,12 @@
         <i title="Help, Button" class="fa fa-question-circle"></i>
       </div>
     </div>
-    <div id="result" aria-live="polite"></div>
+    <div id="result" class="found_results" aria-live="polite"></div>
     <div id="main">
       <div class="education_background">
         <img src="images/edu.webp" alt="" />
       </div>
+      <!--  -->
       <div class="edu_buttons">
         <div class="">
           <div
@@ -333,7 +334,7 @@
         } else {
           $("#result").show();
         }
-        $("#main button").each(function () {
+        $("#main .edu_btn").each(function () {
           if ($(this).text().search(new RegExp(filter, "i")) < 0) {
             $(this).hide();
           } else {
