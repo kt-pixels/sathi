@@ -11,12 +11,10 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.min.css"
     />
+    <link rel="stylesheet" href="Style/style.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.9.0/dist/sweetalert2.min.js"></script>
-    <style>
-      /* * {
-        -webkit-user-select: none;
-      } */
+    <!-- <style>
       body {
         font-family: Arial, sans-serif;
         background-color: #333;
@@ -81,11 +79,12 @@
       .swal2-container.in {
         background: #333;
       }
-    </style>
+    </style> -->
   </head>
   <body>
     <div id="header">
       <div id="header-title">
+        <img id="logo" src="images/logo.png" alt="logo" width="50px" />
         <h1>Fun Zone</h1>
       </div>
       <div id="header-icons">
@@ -94,8 +93,35 @@
     </div>
 
     <div id="main">
-      <!-- <button class="button" onclick="location.href='go:devotional';"> -->
-        <button class="button" onclick="location.href='devotional.html';">
+        <div class="fun_zone_side">
+          <div class="boxes">
+            <div class="box" onclick="location.href='devotional.html';">
+              <img src="images/devotional.webp" alt="">
+              <p>Devotional</p>
+            </div>
+            <div class="box" onclick="location.href='audio_movie.html';">
+              <img src="images/movie.webp" alt="">
+              <p>Movies</p>
+            </div>
+          </div>
+          <div class="boxes">
+            <div class="box" onclick="location.href='devotional.html';">
+              <img src="images/music.webp" alt="">
+              <p>Music</p>
+            </div>
+            <div class="box" onclick="location.href='devotional.html';">
+              <img src="images/poetry.webp" alt="">
+              <p>Poetries</p>
+            </div>
+          </div>
+          <div class="boxes">
+            <div class="box" onclick="location.href='devotional.html';">
+              <img src="images/ringtone.webp" alt="">
+              <p>Ringtones</p>
+            </div>
+          </div>
+        </div>
+        <!-- <button class="button" onclick="location.href='go:devotional';">
         Devotional
       </button>
       <button class="button" onclick="location.href='go:aud_movies';">
@@ -109,7 +135,7 @@
       </button>
       <button class="button" onclick="location.href='go:ringtones';">
         Ringtones
-      </button>
+      </button> -->
     </div>
     <script>
       $(".fa-question-circle").click(function () {
