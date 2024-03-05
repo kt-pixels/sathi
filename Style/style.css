@@ -445,6 +445,21 @@ APP STORE PAGE CODING STARTED FROM HERE
   letter-spacing: 1px;
 }
 
+blockquote{
+  margin: 0;
+}
+
+blockquote > ol {
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  list-style: auto;
+  font-size: 12px;
+  padding-left: 20px;
+  letter-spacing: 1px;
+}
+
 #dwn > i > ul > li > ul {
   padding: 0;
   list-style: disc;
