@@ -6,16 +6,21 @@
     <title>Saathi AI</title>
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
     />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.0/themes/prism.min.css"
     />
-    <style>
-      /* * {
+    <link rel="stylesheet" href="Style/style.css">
+    <!-- <style>
+      * {
             -webkit-user-select: none;
-        } */
+        }
       body {
         font-family: "Roboto", sans-serif;
         background-color: #f5f5f5;
@@ -124,9 +129,163 @@
           transform: translateY(-15px);
         }
       }
-    </style>
+    </style> -->
+
+<style>
+  /* * {
+        -webkit-user-select: none;
+    } */
+  body {
+    font-family: "Roboto", sans-serif;
+    /* background-color: #f5f5f5; */
+    margin: 0;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 100vh;
+    gap: 20px;
+  }
+  #chatContainer {
+    background-color: #c9c9c947;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+  }
+  #messages {
+    flex: 1;
+    overflow-y: scroll;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+  }
+  .user-message,
+  .assistant-message {
+    margin: 5px;
+    padding: 10px;
+    border-radius: 10px;
+    max-width: 70%;
+  }
+  .user-message {
+    background-color: #587cff;
+    color: #fff;
+    align-self: flex-end;
+    box-shadow: 4px 4px 8px #0000005c;
+  }
+  .assistant-message {
+    background-color: #ffffff59;
+    color: #fff;
+    align-self: flex-start;
+    font-size: 14px;
+    box-shadow: 0px 25px 20px -20px rgba(0, 0, 0, 0.45);
+  }
+  .assistant-message pre {
+    background-color: #f5f5f5;
+    padding: 10px;
+    border-radius: 5px;
+    overflow-x: auto;
+    margin-top: 5px;
+  }
+  input {
+    width: calc(70% - 20px);
+    padding: 8px;
+    margin: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+  }
+  button {
+    width: calc(30% - 20px);
+    padding: 8px;
+    margin: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #587cff;
+    color: #fff;
+    cursor: pointer;
+  }
+  #title {
+    height: 0px;
+    opacity: 0;
+    width: 0px;
+  }
+  #wave .dot {
+    display: inline-block;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    margin-right: 0.5px;
+    background: white;
+    animation: wave 1s linear infinite;
+    animation-delay: -0.9s;
+  }
+  #speak {
+    display: none;
+    height: 0px;
+    opacity: 0;
+    width: 0px;
+  }
+  #wave .dot.two {
+    animation-delay: -0.7s;
+  }
+  #wave .dot:nth-child(3) {
+    animation-delay: -0.6s;
+  }
+  @keyframes wave {
+    0%,
+    60%,
+    100% {
+      transform: initial;
+    }
+    30% {
+      transform: translateY(-15px);
+    }
+  }
+
+  #header {
+    width: 100%;
+  }
+
+  .ai_image{
+    width: 50px;
+  }
+
+  .ai_image > img{
+    width: 80%;
+  }
+</style>
   </head>
   <body>
+    <div id="header">
+      <div id="header-title">
+        <!-- <img id="logo" src="file:///android_asset/img/Logo.png" alt="logo" /> -->
+        <img id="logo" src="images/logo.png" alt="logo" width="50px" />
+        <h1>Saathi AI</h1>
+      </div>
+      <div id="header-icons">
+        <i
+          title="Share this App, button"
+          class="fas fa-share"
+          onclick="location.href='http://action_share';"
+        ></i>
+        <i
+          title="Notifications, button"
+          class="fas fa-bell"
+          onclick="location.href='http://action_notifications';"
+        ></i>
+        <i
+          title="Help, button"
+          class="fas fa-hands-helping"
+          onclick="location.href='go:help';"
+        ></i>
+      </div>
+    </div>
     <div id="chatContainer">
       <div id="messages">
         <div class="assistant-message" data-role="assistant">
@@ -134,11 +293,11 @@
           can I assist you today?
         </div>
       </div>
-      <div style="display: flex; align-items: center">
+      <div style="display: flex; align-items: center; background-color: #bfbfbf4d;">
         <input type="text" id="userInput" placeholder="Type your message..." />
         <button onclick="sendMessage()">
           <div id="title">Send</div>
-          <i class="fa fa-paper-plane"></i>
+          <i class="fas fa-paper-plane" style="font-size: 16px;"></i>
         </button>
       </div>
     </div>
