@@ -11,9 +11,11 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.min.css"
     />
+    <link rel="stylesheet" href="Style/style.css" />
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.9.0/dist/sweetalert2.min.js"></script>
-    <style>
+
+    <!-- <style>
       /* * {
         -webkit-user-select: none;
       } */
@@ -81,11 +83,65 @@
       .swal2-container.in {
         background: #333;
       }
+    </style> -->
+
+    <style>
+      .jobs_container {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .boxx {
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+      }
+
+      .boxx > .button {
+        background-color: rgba(255, 255, 255, 0.277);
+        border: none;
+        border-radius: 10px;
+        padding: 10px;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.485);
+        flex-direction: column;
+      }
+
+      .boxx > .button > img {
+        width: 100%;
+      }
+
+      .boxx > .button > p {
+        margin: 0;
+        text-align: center;
+        font-weight: 400;
+        width: 100%;
+        font-size: 12px;
+        padding-block-start: 12px;
+      }
+
+      h2 {
+        margin: 0;
+        padding-block-end: 10px;
+        font-size: 20px;
+      }
+
+      hr {
+        width: 100%;
+        border: none;
+        background-color: rgba(128, 128, 128, 0.379);
+        height: 1px;
+      }
     </style>
   </head>
   <body>
     <div id="header">
       <div id="header-title">
+        <img id="logo" src="images/logo.png" alt="logo" width="50px" />
         <h1>Jobs Villa</h1>
       </div>
       <div id="header-icons">
@@ -94,27 +150,54 @@
     </div>
 
     <div id="main">
-      <button class="button" onclick="location.href='go:admit_card';">
-        Admit Card
-      </button>
-      <button class="button" onclick="location.href='go:answer_key';">
-        Answer Key
-      </button>
-      <button class="button" onclick="location.href='go:exm_result';">
-        Exam Result
-      </button>
-      <button class="button" onclick="location.href='go:job_notify';">
-        Job Notifications
-      </button>
-      <button class="button" onclick="location.href='go:job_status';">
-        Job Status
-      </button>
-      <button class="button" onclick="location.href='go:state_jobs';">
-        State Govt Jobs
-      </button>
-      <button class="button" onclick="location.href='go:syllabus';">
-        Syllabus
-      </button>
+      <div class="jobs_container">
+        <h2>Exam Related</h2>
+        <div class="boxx">
+          <!-- <button class="button" onclick="location.href='go:admit_card';"> -->
+          <div class="button" onclick="location.href='';">
+            <img src="images/admit_card.webp" alt="" />
+            <p>Admit Card</p>
+          </div>
+          <!-- <button class="button" onclick="location.href='go:answer_key';"> -->
+          <div class="button" onclick="location.href='answer_key.html';">
+            <img src="images/answer_key.webp" alt="" />
+            <p>Answer Key</p>
+          </div>
+          <!-- <button class="button" onclick="location.href='go:exm_result';"> -->
+          <div class="button" onclick="location.href='exam_result.html';">
+            <img src="images/result.webp" alt="" />
+            <p>Exam Result</p>
+          </div>
+        </div>
+        <hr />
+        <h2>Job Related</h2>
+        <div class="boxx">
+          <!-- <button class="button" onclick="location.href='go:job_notify';"> -->
+          <div class="button" onclick="location.href='jobs.html';">
+            <img src="images/Job_Notification.webp" alt="" />
+            <p>Job Notifications</p>
+          </div>
+          <!-- <button class="button" onclick="location.href='go:job_status';"> -->
+          <div class="button" onclick="location.href='job_status.html';">
+            <img src="images/Job_status.webp" alt="" style="filter: invert()" />
+            <p>Job Status</p>
+          </div>
+          <!-- <button class="button" onclick="location.href='go:state_jobs';"> -->
+          <div class="button" onclick="location.href='govt_job.html';">
+            <img src="images/state_govt.webp" alt="" />
+            <p>State Govt Jobs</p>
+          </div>
+        </div>
+        <hr />
+        <h2>Syllabus</h2>
+        <div class="boxx">
+          <!-- <button class="button" onclick="location.href='go:syllabus';"> -->
+          <div class="button" onclick="location.href='syllabus.html';">
+            <img src="images/syllabus.webp" alt="" style="width: 45%" />
+            <p>Syllabus</p>
+          </div>
+        </div>
+      </div>
     </div>
     <script>
       $(".fa-question-circle").click(function () {
