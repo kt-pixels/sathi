@@ -5,7 +5,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="HandheldFriendly" content="true">
 <link href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' rel='stylesheet' type='text/css'>
-<style>
+<link rel="stylesheet" href="Style/style.css">
+<!-- <style>
 * {
 -webkit-user-select: none;
 outline: none;
@@ -150,9 +151,34 @@ font-size: 18px;
 #searchResult{
 text-align: center;
 }
+</style> -->
+
+<style>
+    #myInput {
+        width: 94%;
+    background: #ffffff2b;
+    border-radius: 10px;
+    margin-block-end: 15px;
+    box-shadow: 1px 2px 2px #00000059, 1px 2px 2px #00000014;
+    }
+    #searchResult{
+        text-align: center;
+    padding: 10px;
+    font-weight: 400;
+    }
+
+    #tmp {
+        display: none;
+    }
 </style>
 </head>
 <body>
+    <div id="header">
+        <div id="header-title">
+          <img id="logo" src="images/logo.png" alt="logo" width="50px" />
+          <h1>Regional News</h1>
+        </div>
+      </div>
 <div id="main">
 <div id="MyTitle"><div id="Title"></div></div>
 <audio id="MyPlayer"></audio>

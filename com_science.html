@@ -4,31 +4,74 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="HandheldFriendly" content="true">
+<link rel="stylesheet" href="Style/style.css">
 <style>
-* {
+/* * {
 -webkit-user-select: none;
-}
+} */
 body{
-background: #333;
-text-align: center;
+/* background: #333; */
+/* text-align: center; */
 }
-button{
-background: #444;
-border: none;
-border-radius: 15px;
-color: white;
-margin: 3px;
-padding: 10px;
-width: 90%;
+.com_science_container{
+    margin-block-start: 20px;
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
 }
-button:hover{
-background: #555;
+
+.com_science_container > .course{
+    flex: 1;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: rgba(215, 214, 214, 0.315);
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.299), 0 2px 4px rgba(0, 0, 0, 0.265);
+}
+
+.com_science_container > .course > img{
+    width: 80%;
+}
+
+.com_science_container > .course > p{
+    color: white;
+    font-size: 14px;
+    font-weight: 400;
+    margin: 0;
+    padding-block-start: 10px;
+    text-align: center;
 }
 </style>
 </head>
 <body>
-<button onclick="location.href='https://ubsa.in/smartprogrammers/computer/';">Learn Computer</button>
+<!-- <button onclick="location.href='https://ubsa.in/smartprogrammers/computer/';">Learn Computer</button>
 <button onclick="location.href='https://2020sp.github.io/spApp/Learn%20HTML/';">Learn HTML</button>
-<button onclick="location.href='go:prgm_hub';">Programming Hub</button>
+<button onclick="location.href='go:prgm_hub';">Programming Hub</button> -->
+
+<div id="header">
+    <div id="header-title">
+      <img id="logo" src="images/logo.png" alt="logo" width="50px" />
+      <h1>Computer Science</h1>
+    </div>
+  </div>
+
+<div class="com_science_container">
+    <div class="course" onclick="location.href='https://ubsa.in/smartprogrammers/computer/';">
+        <img src="images/learn_Comp.webp" alt="">
+        <p>Learn Computer</p>
+    </div>
+    <div class="course" onclick="location.href='https://2020sp.github.io/spApp/Learn%20HTML/';">
+        <img src="images/learn_Html.webp" alt="">
+        <p>Learn HTML</p>
+    </div>
+    <div class="course" onclick="location.href='progrraming-hub.html';">
+        <img src="images/proggramng.webp" alt="">
+        <p>Programming Hub</p>
+    </div>
+</div>
 </body>
 </html>

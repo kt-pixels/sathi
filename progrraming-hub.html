@@ -8,13 +8,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="HandheldFriendly" content="true" />
     <link rel="stylesheet" href="https://learnxinyminutes.com/css/index.css" />
+    <link rel="stylesheet" href="Style/style.css" />
     <title>Programming Hub</title>
     <style>
-      * {
+      /* * {
         -webkit-user-select: none;
-      }
+      } */
       body {
-        background: #333 !important;
+        background: #450283 !important;
+        padding: 10px !important;
       }
       h5 {
         color: white;
@@ -40,12 +42,13 @@
       }
       #bk,
       #li {
-        background: #444 !important;
+        background: #ffffff2e !important;
         color: white !important;
+        font-weight: 400;
       }
       #bk:hover,
       #li:hover {
-        background: #555 !important;
+        background: #ffffff5c !important;
       }
       #result-box {
         display: none;
@@ -59,10 +62,50 @@
       h3,
       h4 {
         text-align: center;
+        margin: 0;
+        font-size: 22px;
+        /* padding-block-end: 10px; */
+        /* border-bottom: 1px solid gray; */
+      }
+
+      #result {
+        display: block;
+        padding: 10px;
+        border-radius: 10px;
+        background-color: #dddddd24;
+        border: 1px groove;
+      }
+
+      #result > p {
+        font-weight: 300;
+        padding-block-end: 20px;
+        border-bottom: 1px solid gray;
+      }
+
+      #bk {
+        padding: 10px;
+      }
+
+      a {
+        color: #0095ff !important;
+        font-weight: 500;
+      }
+
+      html.dark .highlight {
+        border-radius: 15px;
+      }
+      html.dark .c {
+        color: #ffffff;
       }
     </style>
   </head>
   <body>
+    <div id="header">
+      <div id="header-title">
+        <img id="logo" src="images/logo.png" alt="logo" width="50px" />
+        <h1>Programming Hub</h1>
+      </div>
+    </div>
     <div id="result-box">
       <button id="bk">Go Back</button>
       <div id="result"></div>

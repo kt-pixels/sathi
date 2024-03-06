@@ -4,14 +4,15 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="HandheldFriendly" content="true">
+<link rel="stylesheet" href="Style/style.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <style>
-* {
+/* * {
 -webkit-user-select: none;
-}
+} */
 body{
-background: #333;
-color: white;
+/* background: #333;
+color: white; */
 text-align: center;
 }
 h5{
@@ -26,7 +27,7 @@ list-style: none;
 padding: 0;
 }
 li{
-background: #444;
+background: #e7e7e752;
 border-radius: 15px;
 display: block;
 margin: 3px auto;
@@ -34,7 +35,7 @@ padding: 10px;
 width: 90%;
 }
 li:hover{
-background: #555;
+background: #87878752;
 }
 #main,#Toast{
 display: none;
@@ -51,6 +52,12 @@ width: 100%;
 </style>
 </head>
 <body>
+    <div id="header">
+        <div id="header-title">
+          <img id="logo" src="images/logo.png" alt="logo" width="50px" />
+          <h1>Current Affairs</h1>
+        </div>
+      </div>
 <div id="Toast" aria-live="polite"></div>
 <h5>Please wait while I take you to the page:)</h5>
 <div id="main">

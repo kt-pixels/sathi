@@ -4,17 +4,16 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="HandheldFriendly" content="true">
+<link rel="stylesheet" href="Style/style.css">
 <style>
-* {
+/* * {
 -webkit-user-select: none;
-}
+} */
 body{
-background: #333;
-color: white;
 text-align: center;
 }
 button{
-background: #444;
+background: #c3c3c375;
 border: none;
 border-radius: 15px;
 color: white;
@@ -23,18 +22,39 @@ padding: 10px;
 width: 90%;
 }
 button:hover{
-background: #555;
+background: #e1e1e19a;
 }
 p{
 text-align: left;
 }
 #bk{
-width: 20%;
+width: 26%;
 margin: 10px;
+}
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-block-start: 20px;
+    align-items: center;
+    padding: 10px;
+    background-color: rgb(213 211 211 / 17%);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.394);
+}
+
+#aud{
+    font-weight: 400;
 }
 </style>
 </head>
 <body>
+    <div id="header">
+        <div id="header-title">
+          <img id="logo" src="images/logo.png" alt="logo" width="50px" />
+          <h1>NCERT - Audiobooks</h1>
+        </div>
+      </div>
     <div class="container">
         <button url="https://ciet.nic.in/pages.php?id=audiobookgrade_i&ln=en" class="btn btn-primary">Grade I</button>
         <button url="https://ciet.nic.in/pages.php?id=audiobookgrade_ii&ln=en" class="btn btn-primary">Grade II</button>

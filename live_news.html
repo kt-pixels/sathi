@@ -5,39 +5,47 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,minimal-ui">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="HandheldFriendly" content="true">
+<link rel="stylesheet" href="Style/style.css">
 <style>
-* {
+/* * {
 -webkit-user-select: none;
-}
+} */
 video::-webkit-media-controls{
 display: none !important;
 }
 video::-webkit-media-controls-fullscreen{
 display: none !important;
 }
-body{
+/* body{
 background: #333;
 color: white;
-}
+} */
 video{
 display: none;
 height: 30vh;
 width: 80%;
 }
 .act{
-background: #555 !important;
+background: #f3f3f355 !important;
 }
 #main li{
-background: #444;
+background: rgba(194, 194, 194, 0.354);
 border-radius: 15px;
 list-style: none;
 margin: 5px;
 padding: 10px;
 text-align: center;
+font-weight: 400;
 }
 </style>
 </head>
 <body>
+    <div id="header">
+        <div id="header-title">
+          <img id="logo" src="images/logo.png" alt="logo" width="50px" />
+          <h1>Live News</h1>
+        </div>
+      </div>
 <center><video title="Click to view in Fullscreen" poster="https://fut7.pt/wp-content/plugins/appspinner/assets/images/gif-loader.gif"></video></center>
 <div id="main">
 <li class="wait">PLEASE WAIT...</li>

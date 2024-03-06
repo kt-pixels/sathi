@@ -6,7 +6,50 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="HandheldFriendly" content="true">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="Style/style.css">
+
 <style>
+    #result{
+        background-color: #ffffff3b;
+    padding: 10px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    }
+
+    #result > #i{
+        background-color: #ffffff54;
+    width: 90%;
+    padding: 10px;
+    border-radius: 10px;
+    }
+
+    #main > b{
+        position: absolute;
+        top: 90px;
+        font-size: 25px;
+    }
+
+    #main > b:nth-child(2){
+        left: 12px;
+    }
+
+    #main > b:nth-child(3){
+        right: 12px;
+    }
+
+    #main > h2{
+        text-align: center;
+    }
+
+    br{
+        display: none;
+    }
+</style>
+
+<!-- <style>
 *{
 -webkit-user-select: none;
 font-size: 20px;
@@ -55,17 +98,27 @@ white-space: nowrap;
 overflow: hidden;
 text-overflow: ellipsis;
 }
-</style>
+
+#result{
+    display: block;
+}
+</style> -->
 </head>
 <body>
-<fieldset id="main">
-<legend>Podcasts</legend>
+    <div id="header">
+        <div id="header-title">
+          <img id="logo" src="images/logo.png" alt="logo" width="50px" />
+          <h1>Podcasts</h1>
+        </div>
+      </div>
+<div id="main">
+<h2>Podcasts</h2>
 <b title="Previous Page, button" class="fa fa-angle-double-left"></b>
 <b title="Next Page, button" class="fa fa-angle-double-right"></b>
 <div id="result">
 <i aria-live="polite">Please wait...</i>
 </div>
-</fieldset>
+</div>
 <div id="Toast" aria-live="polite">Just wait a while...</div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script>
