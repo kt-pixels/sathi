@@ -208,7 +208,7 @@ a {
   font-size: 12px;
   margin: 0;
   margin-block-start: 10px;
-  /* text-decoration: none; */
+  text-align: center;
 }
 
 .info-category > .button > a {
