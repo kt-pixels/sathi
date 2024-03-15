@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<head>
+<title>Travel Mode</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="HandheldFriendly" content="true">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<style>
+*{
+border: none;
+color: white;
+font-size: 20px;
+}
+a[href*=webhost]{
+display: none !important;
+}
+body{
+background: #333;
+}
+fieldset{
+background: #444;
+text-align: center;
+}
+div{
+background: #555;
+height: 200px;
+display: flex;
+flex-direction: column;
+justify-content: center;
+}
+select,button{
+-webkit-appearance: none;
+background: #555;
+text-align-last: center;
+height: 40px;
+width: 35%;
+}
+</style>
+</head>
+<body>
+<fieldset>
+<legend>Travel Mode:</legend>
+<label>Interval:</label>
+<select id="tm">
+<optgroup label="Kindly Chhose Interval">
+<option value="30000">30 Seconds</option>
+<option value="60000" selected>1 Minute</option>
+<option value="300000">5 Minutes</option>
+<option value="600000">10 Minutes</option>
+</optgroup>
+</select>
+<p><div id="result" aria-live="polite"></div></p>
+<button onclick="start()">START!</button>
+</fieldset>
+<script>
+function start(){
+setInterval(function(){
+fire();
+},$("#tm").val());
+}
+function fire(){
+navigator.geolocation.getCurrentPosition(function(a){
+$.getJSON("https://ubsa.in/smartprogrammers/computer/gMaps.php?coordinates="+a.coords.latitude+","+a.coords.longitude,function(data){
+$("#result").html("");
+$("#result").html(data.results[0].formatted_address).attr("ltd",a.coords.latitude+","+a.coords.longitude);
+});
+$(document).on("click","#result",function(){
+window.open("https://www.google.com/maps/search/?api=1&query="+$(this).attr("ltd"));
+});});}
+fire();
+</script>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<head>
+<title>Around Me</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="HandheldFriendly" content="true">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maps.google.com/maps/api/js?sensor=false&v=3&libraries=geometry"></script>
+<style>
+*{
+border: none;
+color: white;
+font-size: 20px;
+}
+a[href*=webhost]{
+display: none !important;
+}
+body{
+background: #333;
+}
+fieldset{
+background: #444;
+text-align: center;
+}
+p{
+background: #555;
+height: 200px;
+display: flex;
+flex-direction: column;
+justify-content: center;
+padding: 3px;
+}
+select,button{
+-webkit-appearance: none;
+background: #555;
+text-align-last: center;
+height: 40px;
+width: 30%;
+}
+</style>
+</head>
+<body class="dark">
+<fieldset id="main">
+<legend>Around Me</legend>
+<select id="a" title="Select Place">
+<option value="atm">ATM</option>
+<option value="bus-stations">BUS STATIONS</option>
+<option value="bank">BANK</option>
+<option value="cinema">CINEMA</option>
+<option value="food">FOOD</option>
+<option value="hospital">HOSPITAL</option>
+<option value="hotels">HOTELS</option>
+<option value="petrol-stations">PETROL STATIONS</option>
+<option value="restrooms">RESTROOMS</option>
+<option value="religious-places">RELIGIOUS PLACES</option>
+</select>
+<select id="b" title="Select Radius">
+<option value="300">300 m</option>
+<option value="500">500 m</option>
+<option value="1000">1 km</option>
+<option value="1500">1.5 km</option>
+<option value="2000">2 km</option>
+<option value="2500" selected>2.5 km</option>
+<option value="3000">3 km</option>
+<option value="3500">3.5 km</option>
+<option value="4000">4 km</option>
+<option value="4500">4.5 km</option>
+<option value="5000">5 km</option>
+</select>
+<button onclick="fire()">FIND!</button>
+</fieldset>
+<script>
+function fire(){
+var lat,lng;
+navigator.geolocation.getCurrentPosition(function(a){
+lat = a.coords.latitude;
+lng = a.coords.longitude;
+$.getJSON("https://ubsa.in/smartprogrammers/computer/gMaps.php?coordinates="+lat+","+lng+"&radius="+$("#b").val()+"&keyword="+$("#a").val(),function(data){
+if(data.status == "ZERO_RESULTS"){
+alert("Sorry :-(\nNothing were found!");
+}else{
+$("#main button").nextAll().remove();;
+$.each(data.results,function(i,v){
+$("#main").append("<p><i id='i' ltd='"+v.geometry.location.lat+","+v.geometry.location.lng+"'>"+v.name+" "+v.vicinity+"<br>("+cal(new google.maps.LatLng(lat,lng),new google.maps.LatLng(v.geometry.location.lat,v.geometry.location.lng))+")"+"</i></p>");
+});}});});}
+$(document).on("click","#i",function(){
+window.open("https://www.google.com/maps/search/?api=1&query="+$(this).attr("ltd"));
+});
+function cal(p1,p2){
+return (google.maps.geometry.spherical.computeDistanceBetween(p1, p2)).toFixed(2) >= 1000 ? (google.maps.geometry.spherical.computeDistanceBetween(p1, p2) / 1000).toFixed(2)+" km" : (google.maps.geometry.spherical.computeDistanceBetween(p1, p2)).toFixed(2)+" m";
+}
+</script>
+</body>
+</html>

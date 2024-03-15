@@ -11,8 +11,19 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
     />
+    <!-- Add Swiper CSS -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper/swiper-bundle.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
+
     <link rel="stylesheet" href="Style/style.css" />
     <!-- <style>
+
 * {
 -webkit-user-select: none;
 }
@@ -82,6 +93,37 @@
             background: linear-gradient(to bottom, #000000, #333);
         }
     </style> -->
+
+    <style>
+      .swiper-container {
+        width: 100%;
+        /* padding: 20px 0; */
+        overflow: hidden;
+      }
+      .swiper-slide {
+        width: 25%;
+        /* padding: 0 10px; */
+        box-sizing: border-box;
+      }
+      .button {
+        text-align: center;
+      }
+      .button img {
+        max-width: 100%;
+      }
+      .button p {
+        margin-top: 10px;
+      }
+      .swiper-wrapper {
+        justify-content: space-between;
+      }
+      hr {
+        margin-block-start: 0;
+        border: 0;
+        background: #ffffff57;
+        height: 1px;
+      }
+    </style>
   </head>
   <body>
     <div id="header">
@@ -124,73 +166,162 @@
             <img src="/images/leaf.webp" alt="" />
           </div>
         </div>
-        <h2>Information & Learning</h2>
-        <div class="info-category">
-          <!-- <div class="button" onclick="location.href='go:edu_world';"> -->
-          <div class="button" onclick="location.href='app_store.html';" title="App Store">
-            <img src="images/appstore.webp" alt="App Store, Image" />
-              <p>App Store</p>
-          </div>
-          <!-- <div class="button" onclick="location.href='go:pd_news';"> -->
-          <div class="button" onclick="location.href='Education_World.html';" title="Education">
-            <img src="images/books.webp" alt="Education Page, Image" />
-              <p>Education</p>
-          </div>
-          <!-- <div class="button" onclick="location.href='go:pd_news';"> -->
-          <div class="button" onclick="location.href='News & Podcasts.html';" title="News">
-            <img src="images/newnews.webp" alt="News Page, Image" />
-              <p>News & Podcasts</p>
-          </div>
-        </div>
-        <h2>Entertainment</h2>
-        <div class="entr-category">
-          <div class="">
-            <div class="button" onclick="location.href='go:radio_list';" title="Online Radio">
-              <img src="images/on_radio.png" alt="Online Radio, Image" />
-              <p>Online Radio</p>
-            </div>
-            <div class="button" onclick="location.href='go:T2Audio';" title="T2Audio">
-              <img src="images/audio.webp" alt="Audio , Image" />
-              <p>T2Audio</p>
-            </div>
-            <!-- <div class="button fun" onclick="location.href='go:fun_zone';"> -->
-              <div class="button fun" onclick="location.href='Fun_Zone.html';" title="Fun Zone">
-              <img src="images/glass.webp" alt="Fun zone, image" />
-              <img src="images/fun.webp" alt="3d glasses, image" />
-              <p>Fun Zone</p>
-            </div>
-          </div>
-          <!-- <div class="button" onclick="location.href='go:fun_zone';">
-            <img src="images/fun.webp" alt="">
-            <img src="images/glass.webp" alt="">
-            <p>Fun Zone</p>
-          </div> -->
-        </div>
-        <h2>Utility Tools</h2>
+        <h2 style="margin-block-start: 30px">Utility Tools</h2>
         <div class="category">
-          <div class="cat-button" onclick="location.href='saathi_appmanager';" title="App Manager">
-            <p>App Manager</p>
-          </div>
-          <div class="cat-button" onclick="location.href='saathi_ocr';" title="OCR">
-            <p>OCR</p>
-          </div>
-          <div class="cat-button" onclick="location.href='saathi_pdfreader';" title="PDF Reader">
-            <p>PDF Reader</p>
-          </div>
           <!-- <div class="cat-button" onclick="location.href='go:saathi_ai';"> -->
-            <div class="cat-button" onclick="location.href='Saathi AI.html';" title="Saathi AI">
-            <p>Saathi AI</p>
+          <div
+            class="cat-button"
+            onclick="location.href='Saathi AI.html';"
+            title="Saathi AI"
+          >
+            <p><i class="material-symbols-outlined"> robot_2 </i>Saathi AI</p>
+          </div>
+          <div
+            class="cat-button"
+            onclick="location.href='saathi_appmanager';"
+            title="App Manager"
+          >
+            <p>
+              <i class="material-symbols-outlined">folder_managed</i>
+              App Manager
+            </p>
+          </div>
+          <div
+            class="cat-button"
+            onclick="location.href='saathi_pdfreader';"
+            title="PDF Reader"
+          >
+            <p>
+              <i class="material-symbols-outlined">picture_as_pdf</i> PDF Reader
+            </p>
+          </div>
+          <div
+            class="cat-button"
+            onclick="location.href='saathi_ocr';"
+            title="OCR"
+          >
+            <p>
+              <i class="material-symbols-outlined"> plagiarism </i>
+              OCR
+            </p>
           </div>
         </div>
+        <hr />
+        <h2>Information & Entertainment Hub</h2>
+        <div class="swiper-container">
+          <div class="swiper-wrapper info-category">
+            <div class="swiper-slide">
+              <div
+                class="button"
+                onclick="location.href='app_store.html';"
+                title="App Store"
+              >
+                <img src="images/appstore.webp" alt="App Store, Image" />
+                <p>App Store</p>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div
+                class="button"
+                onclick="location.href='Education_World.html';"
+                title="Education"
+              >
+                <img src="images/books.webp" alt="Education Page, Image" />
+                <p>Education</p>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div
+                class="button"
+                onclick="location.href='News & Podcasts.html';"
+                title="News"
+              >
+                <img src="images/newnews.webp" alt="News Page, Image" />
+                <p>News & Podcasts</p>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div
+                class="button"
+                onclick="location.href='go:radio_list';"
+                title="Online Radio"
+              >
+                <img
+                  src="images/on_radio.png"
+                  alt="Online Radio, Image"
+                  style="width: 68px"
+                />
+                <p>Online Radio</p>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div
+                class="button"
+                onclick="location.href='go:T2Audio';"
+                title="T2Audio"
+              >
+                <img src="images/audio.webp" alt="Audio , Image" />
+                <p>T2Audio</p>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div
+                class="button fun"
+                onclick="location.href='Fun_Zone.html';"
+                title="Fun Zone"
+              >
+                <img
+                  src="images/glass.webp"
+                  alt="Fun zone, image"
+                  style="
+                    width: 63px;
+                    transform: rotate(32deg) translateX(23px) translateY(4px);
+                    position: relative;
+                    z-index: 1;
+                  "
+                />
+                <img
+                  src="images/fun.webp"
+                  alt="3d glasses, image"
+                  style="width: 70px; transform: translateY(-5px)"
+                />
+                <p>Fun Zone</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr />
         <h2>Career & Opportunities</h2>
         <div class="job-category">
           <!-- <div class="button" onclick="location.href='go:jobs_villa';"> -->
-            <div class="button" onclick="location.href='Jobs_Villa.html';" title="Jobs Villa">
+          <div
+            class="button"
+            onclick="location.href='Jobs_Villa.html';"
+            title="Jobs Villa"
+          >
             <!-- Jobs Villa -->
             <img src="images/job.webp" alt="Jobs Page , image" />
           </div>
         </div>
       </div>
     </div>
+    <!-- Add Swiper JS -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+    <script>
+      var swiper = new Swiper(".swiper-container", {
+        slidesPerView: 3,
+        spaceBetween: 10,
+        loop: true,
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        },
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+      });
+    </script>
   </body>
 </html>
