@@ -53,11 +53,11 @@ a {
   font-size: 14px;
 }
 
-#icon{
+#icon {
   font-size: 18px;
 }
 
-#result > p > #p_wait{
+#result > p > #p_wait {
   font-size: 14px;
   text-align: center;
 }
@@ -142,8 +142,8 @@ a {
 }
 
 .categories > .main-box > .images > img:nth-child(2) {
-  width: 32%;
-  transform: translateY(49px) translateX(35px);
+  width: 30%;
+  transform: translateY(56px) translateX(32px);
 }
 
 .category {
@@ -249,7 +249,7 @@ a {
   display: flex;
   justify-content: center;
   /* flex-direction: column; */
-  /* padding: 15px 0;
+/* padding: 15px 0;
   border-radius: 10px;
   background-color: rgba(255, 255, 255, 0.216);
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.439);
@@ -293,7 +293,8 @@ a {
   margin: 0;
   margin-block-start: 5px;
   text-align: center;
-} */
+}
+*/
 
 /* Job section */
 
@@ -855,38 +856,38 @@ i {
 DEVOTIONAL CONTAINER
 */
 
-.devotional_container{
+.devotional_container {
   margin-block-start: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 20px;
-    padding: 10px;
-}
-
-.devotional_container > .button{
   display: flex;
-    flex-direction: column;
-    width: 100%;
-    padding: 10px;
-    background-color: #a1a1a163;
-    border-radius: 20px;
-    align-items: center;
-    box-shadow: 0 3px 5px rgb(0 0 0 / 19%), 0 2px 2px rgb(0 0 0 / 27%);
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 20px;
+  padding: 10px;
 }
 
-.devotional_container > .button:nth-child(1) > img{
+.devotional_container > .button {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 10px;
+  background-color: #a1a1a163;
+  border-radius: 20px;
+  align-items: center;
+  box-shadow: 0 3px 5px rgb(0 0 0 / 19%), 0 2px 2px rgb(0 0 0 / 27%);
+}
+
+.devotional_container > .button:nth-child(1) > img {
   width: 150px;
   filter: invert(100%) drop-shadow(1px 1px 4px black);
 }
 
-.devotional_container > .button > img{
+.devotional_container > .button > img {
   width: 150px;
   filter: drop-shadow(1px 1px 4px black);
 }
 
-.devotional_container > .button > p{
+.devotional_container > .button > p {
   font-size: 16px;
   font-weight: 500;
 }
@@ -895,7 +896,7 @@ DEVOTIONAL CONTAINER
 E PAPER STYLE
 */
 
-#splash{
+#splash {
   display: flex;
   flex-direction: column;
   gap: 18px;
@@ -905,7 +906,7 @@ E PAPER STYLE
   text-align: center;
 }
 
-#splash > #title{
+#splash > #title {
   font-size: 20px;
   font-weight: 300;
   margin-block-start: 10px;
@@ -914,10 +915,10 @@ E PAPER STYLE
   width: 100%;
   padding: 10px;
   text-align: center;
-  box-shadow: 0 1px 1px rgba(0,0,0,0.12), 0 2px 2px rgba(0,0,0,0.12);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.12), 0 2px 2px rgba(0, 0, 0, 0.12);
 }
 
-#splash > i{
+#splash > i {
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
@@ -932,20 +933,20 @@ E PAPER STYLE
 FUN ZONE SIDE STYLING CODE
 */
 
-.fun_zone_side{
+.fun_zone_side {
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
 
-.fun_zone_side > .boxes{
+.fun_zone_side > .boxes {
   display: flex;
   align-items: center;
   gap: 10px;
   height: 150px;
 }
 
-.fun_zone_side > .boxes > .box{
+.fun_zone_side > .boxes > .box {
   background-color: #99999961;
   padding: 10px;
   width: 50%;
@@ -958,29 +959,27 @@ FUN ZONE SIDE STYLING CODE
   justify-content: space-between;
 }
 
-.fun_zone_side > .boxes > .box > img{
+.fun_zone_side > .boxes > .box > img {
   width: 100%;
 }
 
-.fun_zone_side > .boxes:last-child > .box{
+.fun_zone_side > .boxes:last-child > .box {
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.fun_zone_side > .boxes:last-child > .box > img{
+.fun_zone_side > .boxes:last-child > .box > img {
   width: 60%;
 }
 
-.fun_zone_side > .boxes > .box > p{
+.fun_zone_side > .boxes > .box > p {
   margin: 0;
   font-size: 16px;
   font-weight: 400;
-
 }
 
 /* 
 POETRY SECTION STYLE IS HERE
 */
-
