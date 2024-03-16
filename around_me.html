@@ -4,9 +4,89 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="HandheldFriendly" content="true">
+<link rel="stylesheet" href="Style/style.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maps.google.com/maps/api/js?sensor=false&v=3&libraries=geometry"></script>
 <style>
+    /* *{
+    border: none;
+    color: white;
+    font-size: 20px;
+    } */
+    a[href*=webhost]{
+    display: none !important;
+    }
+    /* body{
+    background: #333;
+    } */
+    fieldset{
+    background: #a7a7a738;
+    text-align: center;
+    border: none;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.12), 0 2px 2px rgba(0,0,0,0.12);
+    }
+    label{
+        font-size: 20px;
+        font-weight: 500;
+    }
+    /* div{
+    background: #555;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    } */
+    select,button{
+        -webkit-appearance: none;
+    background: #ffffffcf;
+    text-align-last: center;
+    height: 40px;
+    width: 46%;
+    font-size: 14px;
+    font-weight: 200;
+    border-radius: 5px;
+    }
+    
+    #result{
+        display: flex;
+        font-weight: 400;
+        letter-spacing: 1px;
+        margin-block: 30px;
+    }
+    
+    #header{
+        margin-block-end: 30px;
+    }
+    .select_time {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        justify-content: center;
+        padding: 12px;
+        margin: -12px;
+        width: 100%;
+        background: #ffffff4d;
+        margin-block-end: 20px;
+        padding-block-end: 7px;
+    }
+    button{
+        margin-block-start: 10px;
+    }
+    #i {
+    font-size: 14px;
+    font-weight: 400;
+    font-style: normal;
+    padding: 10px;
+}
+p{
+    padding: 10px;
+    background: #ffffff26;
+    border-radius: 10px;
+}
+    </style>
+<!-- <style>
 *{
 border: none;
 color: white;
@@ -37,11 +117,18 @@ text-align-last: center;
 height: 40px;
 width: 30%;
 }
-</style>
+</style> -->
 </head>
 <body class="dark">
+    <div id="header">
+        <div id="header-title">
+          <!-- <img id="logo" src="file:///android_asset/img/Logo.png" alt="logo" /> -->
+          <img id="logo" src="images/logo.png" alt="logo" width="50px" />
+          <h1>Around Me</h1>
+        </div>
+      </div>
 <fieldset id="main">
-<legend>Around Me</legend>
+<!-- <legend>Around Me</legend> -->
 <select id="a" title="Select Place">
 <option value="atm">ATM</option>
 <option value="bus-stations">BUS STATIONS</option>

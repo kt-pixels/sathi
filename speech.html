@@ -5,18 +5,33 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.min.css">
+<link rel="stylesheet" href="Style/style.css">
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.9.0/dist/sweetalert2.min.js"></script>
 <title>11 - Speech</title>
 <style>
-*{
+/* *{
 -webkit-user-select: none;
 outline: none;
-}
-body{
+} */
+/* body{
 font-family: Arial, sans-serif; text-align: center; margin: 20px; background-color: #333; color: #fff;
-}
+} */
 textarea{
-width: 80%; height: 500px; margin: 10px; padding: 10px; font-size: 16px; background-color: #444; color: #fff; border: none;
+width: 89%; 
+height: 500px; 
+margin: 10px; 
+padding: 10px; 
+font-size: 16px; 
+background-color: #ffffff40; 
+color: white; 
+border: none;
+outline: none;
+border-radius: 10px;
+box-shadow: 0 1px 1px rgba(0,0,0,0.12), 0 2px 2px rgba(0,0,0,0.12);
+}
+
+textarea::placeholder{
+    color: rgba(255, 255, 255, 0.788);
 }
 select{
 font-size: 0px;
@@ -54,17 +69,36 @@ opacity: 0;
 position: relative;
 }
 #ctrl{
-position: absolute;
-left: 25px;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    top: -10px;
 }
 #counter{
 position: absolute;
 right: 25px;
+font-weight: 400;
+}
+
+.swal2-title{
+    color: white;
+}
+.swal2-html-container{
+    color: white;
 }
 </style>
 </head>
 <body>
-<h1>11 - Speech</h1>
+    <div id="header">
+        <div id="header-title">
+          <!-- <img id="logo" src="file:///android_asset/img/Logo.png" alt="logo" /> -->
+          <img id="logo" src="images/logo.png" alt="logo" width="50px" />
+          <h1>11 - Speech</h1>
+        </div>
+      </div>
+
 <textarea id="textInput" placeholder="Enter your text here..."></textarea><br>
 <div id="container">
 <div id="ctrl">

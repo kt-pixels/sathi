@@ -8,20 +8,21 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.min.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.9.0/dist/sweetalert2.min.js"></script>
+    <link rel="stylesheet" href="Style/style.css">
     <title>Online Radio</title>
     <style>
-        * {
+        /* * {
            -webkit-user-select: none;
            font-size: 20px;
            outline: none;
-        }
-        body {
+        } */
+        /* body {
             background-color: #333;
             font-family: 'Arial', sans-serif;
             color: white;
-        }
+        } */
         .csbtn {
-           background-color: #555;
+           background-color: #00000061;
            color: white;
            padding: 5px 10px;
            border: none;
@@ -31,10 +32,11 @@
            width: 30%;
           }
     .audio-player {
-      background-color: #222;
-      border-radius: 8px;
-      padding: 20px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      background-color: transparent;
+    border-radius: 8px;
+    padding: 20px;
+    padding-block-start: 0;
+      /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -48,10 +50,11 @@
       text-align: center;
       font-size: 16px;
       margin-top: -10px;
+      font-weight: 600;
     }
     .controls {
       display: flex;
-      gap: 20px;
+      gap: 16px;
       align-items: center;
     }
     .cbtn {
@@ -68,7 +71,7 @@
       width: 150px;
       appearance: none;
       height: 5px;
-      background: #777;
+      background: white;
       outline: none;
       opacity: 0.7;
       -webkit-transition: .2s;
@@ -89,10 +92,11 @@
             color: #3490dc;
         }
         .content-section {
-            background-color: #444;
+            background-color: #a5a5a552;
             border-radius: 10px;
             padding: 20px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            height: 60vh;
         }
         .scl {
          height: 600px;
@@ -103,68 +107,84 @@
          overflow-y: auto;
         }
         .swal2-modal,.swal2-container.in {
-            background: #333;
+          background: #ffffff5c;
+    backdrop-filter: blur(16px);
+    border-radius: 10px;
         }
         .ctr-list input[type=text],
         .ctr-list button {
-            -webkit-appearance: none;
-            background: #555;
-            border: 1px solid black;
-            border-radius: 20px;
-            color: white;
-            text-align: center;
-            padding: 8px 11%;
+          -webkit-appearance: none;
+    background: #fff0;
+    border: 1px solid white;
+    border-radius: 10px;
+    color: white;
+    text-align: center;
         }
         .radio-item {
-          height: 100px;
+          height: 50px;
           margin: 5px auto;
           width: 100%;
         }
         #myInput {
-          border: 1px solid #000;
+          background-color: #ffffff45;
           border-radius: 5px;
           padding: 5px;
         }
         hr {
-        display: block;
-        margin: 10px auto;
-        width: 50%;
+          display: block;
+    margin: 10px auto;
+    width: 90%;
+    border: none;
+    height: 1px;
+    background: #ffffff63;
         }
         nav {
-            background: linear-gradient(to bottom, #333, #000000);
+            /* background: linear-gradient(to bottom, #333, #000000); */
+            background-color: #ffffff36;
+            padding: 10px;
         }
         #header {
-            background: linear-gradient(to bottom, #000000, #333);
-            padding: 10px;
-            text-align: center;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            height: 60px; 
+            margin: 10px;
         }
-        #header-title {
-            display: flex;
-            align-items: center;
+        #header-title > h1 {
+            font-weight: 500;
+        }
+        .swal2-select {
+          display: flex;
+    color: black;
+    font-weight: 600;
+    outline: none;
+        }
+        .swal2-title{
+          color: white;
+        }
+        .swal2-styled.swal2-confirm {
+          background-color: #4331ff;
+        }
+        .swal2-styled.swal2-cancel {
+          background-color: #c34343;
         }
     </style>
 </head>
 <body>
-    <div id="header">
-        <div id="header-title">
-            <h1>Online Radio</h1>
-        </div>
+  <div id="header">
+    <div id="header-title">
+      <!-- <img id="logo" src="file:///android_asset/img/Logo.png" alt="logo" /> -->
+      <img id="logo" src="images/logo.png" alt="logo" width="50px" />
+      <h1>Online Radio</h1>
     </div>
+  </div>
 <nav role="tabpanel" class="fixed bottom-0 w-full flex justify-around">
-    <a role="tab" href="#live" class="text-gray-500 nav-link active">
+    <a role="tab" href="#live" class="text-gray-500 nav-link active" style="display: flex;">
         <div class="flex flex-col items-center">
             <i aria-hidden="true" class="fas fa-play-circle text-xl"></i>
-            <p class="text-xs">Live</p>
+            <p class="text-xs" style="font-weight: 700;">Live</p>
         </div>
     </a>
-    <a role="tab" href="#liked" class="text-gray-500 nav-link">
+    <a role="tab" href="#liked" class="text-gray-500 nav-link" style="display: flex;">
         <div class="flex flex-col items-center">
             <i aria-hidden="true" class="fas fa-star text-xl"></i>
-            <p class="text-xs">Starred</p>
+            <p class="text-xs" style="font-weight: 700;">Starred</p>
         </div>
     </a>
 </nav>
@@ -172,7 +192,7 @@
     <main class="p-4">
         <div id="content">
 <section id="live" class="content-section">
-                <p class="text-lg font-semibold">Live Stream</p>
+                <p class="text-lg font-semibold" style="text-align: center;">Live Stream</p>
   <div class="audio-player">
     <div aria-hidden="true" class="music-icon">
       <i class="fas fa-music"></i>

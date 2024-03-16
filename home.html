@@ -123,6 +123,26 @@
         background: #ffffff57;
         height: 1px;
       }
+      .n_cat {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px;
+        margin-block-end: 18px;
+      }
+      .n_cat > .button {
+        width: 60px;
+        padding: 10px;
+        border-radius: 10px;
+        background-color: #ffffff33;
+        height: 45px;
+        display: flex;
+        align-items: center;
+        box-shadow: 0 1px 1px rgba(0,0,0,0.12), 0 2px 2px rgba(0,0,0,0.12);
+      }
+      .n_cat > .button > img {
+        width: 100%;
+      }
     </style>
   </head>
   <body>
@@ -166,7 +186,39 @@
             <img src="/images/leaf.webp" alt="" />
           </div>
         </div>
-        <h2 style="margin-block-start: 30px">Utility Tools</h2>
+        <h2 style="margin-block-start: 20px;">News & Podcasts</h2>
+        <div class="n_cat">
+          <div class="button" onclick="location.href='e-paper.html'">
+            <img
+              src="images/E-Papers.png"
+              alt="E-Paper, image"
+              title="E-Paper , button"
+            />
+          </div>
+          <div class="button" onclick="location.href='live_news.html'">
+            <img
+              src="images/Live_news.webp"
+              alt="Live News, image"
+              title="live news, button"
+            />
+          </div>
+          <div class="button" onclick="location.href='new_on_air.html'">
+            <img
+              src="images/News On AIR.webp"
+              alt="news on air, image"
+              title="news on air, button"
+            />
+          </div>
+          <div class="button" onclick="location.href='podcast.html'">
+            <img
+              src="images/Podcasts.webp"
+              alt="Podcasts, image"
+              title="Podcasts, buton"
+            />
+          </div>
+        </div>
+        <hr>
+        <h2>Utility Tools</h2>
         <div class="category">
           <!-- <div class="cat-button" onclick="location.href='go:saathi_ai';"> -->
           <div
@@ -174,7 +226,7 @@
             onclick="location.href='Saathi AI.html';"
             title="Saathi AI"
           >
-            <p><i class="material-symbols-outlined"> robot_2 </i>Saathi AI</p>
+            <p><i class="material-symbols-outlined" aria-hidden="true"> robot_2 </i>Saathi AI</p>
           </div>
           <div
             class="cat-button"
@@ -182,7 +234,7 @@
             title="App Manager"
           >
             <p>
-              <i class="material-symbols-outlined">folder_managed</i>
+              <i class="material-symbols-outlined" aria-hidden="true">folder_managed</i>
               App Manager
             </p>
           </div>
@@ -192,7 +244,7 @@
             title="PDF Reader"
           >
             <p>
-              <i class="material-symbols-outlined">picture_as_pdf</i> PDF Reader
+              <i class="material-symbols-outlined" aria-hidden="true">picture_as_pdf</i> PDF Reader
             </p>
           </div>
           <div
@@ -201,8 +253,28 @@
             title="OCR"
           >
             <p>
-              <i class="material-symbols-outlined"> plagiarism </i>
+              <i class="material-symbols-outlined" aria-hidden="true"> plagiarism </i>
               OCR
+            </p>
+          </div>
+          <div
+            class="cat-button"
+            onclick="location.href='around_me.html';"
+            title="Around Me, Button"
+          >
+            <p>
+              <i class="material-symbols-outlined" aria-hidden="true"> metabolism </i>
+              Around Me
+            </p>
+          </div>
+          <div
+            class="cat-button"
+            onclick="location.href='travelMode.html';"
+            title="Travel Mode , Button"
+          >
+            <p>
+              <i class="material-symbols-outlined"  aria-hidden="true"> hiking </i>
+              Travel Mode
             </p>
           </div>
         </div>
@@ -216,7 +288,7 @@
                 onclick="location.href='app_store.html';"
                 title="App Store"
               >
-                <img src="images/appstore.webp" alt="App Store, Image" />
+                <img src="images/appstore.webp" alt="App Store, Image" aria-hidden="true" />
                 <p>App Store</p>
               </div>
             </div>
@@ -226,30 +298,31 @@
                 onclick="location.href='Education_World.html';"
                 title="Education"
               >
-                <img src="images/books.webp" alt="Education Page, Image" />
+                <img src="images/books.webp" alt="Education Page, Image" aria-hidden="true" />
                 <p>Education</p>
               </div>
             </div>
-            <div class="swiper-slide">
+            <!-- <div class="swiper-slide">
               <div
                 class="button"
                 onclick="location.href='News & Podcasts.html';"
                 title="News"
               >
-                <img src="images/newnews.webp" alt="News Page, Image" />
+                <img src="images/newnews.webp" alt="News Page, Image" aria-hidden="true" />
                 <p>News & Podcasts</p>
               </div>
-            </div>
+            </div> -->
             <div class="swiper-slide">
               <div
                 class="button"
-                onclick="location.href='go:radio_list';"
+                onclick="location.href='Online Radio.html';"
                 title="Online Radio"
               >
                 <img
                   src="images/on_radio.png"
                   alt="Online Radio, Image"
                   style="width: 68px"
+                  aria-hidden="true"
                 />
                 <p>Online Radio</p>
               </div>
@@ -257,10 +330,10 @@
             <div class="swiper-slide">
               <div
                 class="button"
-                onclick="location.href='go:T2Audio';"
+                onclick="location.href='T2Audio.html';"
                 title="T2Audio"
               >
-                <img src="images/audio.webp" alt="Audio , Image" />
+                <img src="images/audio.webp" alt="Audio , Image" aria-hidden="true" />
                 <p>T2Audio</p>
               </div>
             </div>
@@ -279,11 +352,13 @@
                     position: relative;
                     z-index: 1;
                   "
+                   aria-hidden="true"
                 />
                 <img
                   src="images/fun.webp"
                   alt="3d glasses, image"
                   style="width: 70px; transform: translateY(-5px)"
+                  aria-hidden="true"
                 />
                 <p>Fun Zone</p>
               </div>
@@ -292,17 +367,19 @@
         </div>
         <hr />
         <h2>Career & Opportunities</h2>
-        <div class="job-category">
+        <div class="job-category" style="padding-block-end: 20px">
           <!-- <div class="button" onclick="location.href='go:jobs_villa';"> -->
           <div
             class="button"
             onclick="location.href='Jobs_Villa.html';"
-            title="Jobs Villa"
+            title="Jobs Villa, Button"
           >
             <!-- Jobs Villa -->
-            <img src="images/job.webp" alt="Jobs Page , image" />
+            <img src="images/job.webp" alt="Jobs Page , image" title="Jobs Villa, Image" />
           </div>
         </div>
+        <!-- <hr /> -->
+        
       </div>
     </div>
     <!-- Add Swiper JS -->
