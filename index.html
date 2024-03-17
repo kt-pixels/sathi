@@ -103,9 +103,9 @@
       }
       .swiper-slide {
         /* width: 25%; */
-        width: 110px !important;
+        /* width: 110px !important; */
         /* padding: 0 10px; */
-        box-sizing: border-box;
+        /* box-sizing: border-box; */
       }
       .button {
         text-align: center;
@@ -154,7 +154,7 @@
     <div id="header">
       <div id="header-title">
         <!-- <img id="logo" src="file:///android_asset/img/Logo.png" alt="logo" /> -->
-        <img id="logo" src="images/logo.png" alt="logo" width="50px" />
+        <img id="logo" src="images/logo.png" alt="logo" width="50px" title="Sathi Logo" />
         <h1>Saathi</h1>
       </div>
       <div id="header-icons">
@@ -187,8 +187,8 @@
             </p>
           </div>
           <div class="images">
-            <img src="/images/roboto.webp" alt="" />
-            <img src="/images/leaf.webp" alt="" />
+            <img src="/images/roboto.webp" alt="robot, ai, image" aria-hidden="true" />
+            <img src="/images/leaf.webp" alt="grass Image" aria-hidden="true" />
           </div>
         </div>
         <h2>Utility Tools</h2>
@@ -249,7 +249,7 @@
             title="navigation"
           >
             <p>
-                <i class="material-symbols-outlined">
+                <i class="material-symbols-outlined" aria-hidden="true">
                     pin_drop
                 </i>Navigation
             </p>
@@ -283,7 +283,7 @@
             <img
               src="images/Podcasts.webp"
               alt="Podcasts, image"
-              title="Podcasts, buton"
+              title="Podcast, button"
             />
           </div>
         </div>
@@ -317,6 +317,32 @@
                   aria-hidden="true"
                 />
                 <p>Education</p>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div
+                class="button fun"
+                onclick="location.href='Fun_Zone.html';"
+                title="Fun Zone"
+              >
+                <img
+                  src="images/glass.webp"
+                  alt="Fun zone, image"
+                  style="
+                    width: 63px;
+                    transform: rotate(32deg) translateX(23px) translateY(4px);
+                    position: relative;
+                    z-index: 1000;
+                  "
+                  aria-hidden="true"
+                />
+                <img
+                  src="images/fun.webp"
+                  alt="3d glasses, image"
+                  style="width: 70px; transform: translateY(-5px)"
+                  aria-hidden="true"
+                />
+                <p>Fun Zone</p>
               </div>
             </div>
             <!-- <div class="swiper-slide">
@@ -358,32 +384,7 @@
                 <p>T2Audio</p>
               </div>
             </div>
-            <div class="swiper-slide">
-              <div
-                class="button fun"
-                onclick="location.href='Fun_Zone.html';"
-                title="Fun Zone"
-              >
-                <img
-                  src="images/glass.webp"
-                  alt="Fun zone, image"
-                  style="
-                    width: 63px;
-                    transform: rotate(32deg) translateX(23px) translateY(4px);
-                    position: relative;
-                    z-index: 1000;
-                  "
-                  aria-hidden="true"
-                />
-                <img
-                  src="images/fun.webp"
-                  alt="3d glasses, image"
-                  style="width: 70px; transform: translateY(-5px)"
-                  aria-hidden="true"
-                />
-                <p>Fun Zone</p>
-              </div>
-            </div>
+            
           </div>
         </div>
         <hr />

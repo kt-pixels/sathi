@@ -1106,7 +1106,7 @@ DEVOTIONAL CONTAINER
 .devotional_container > .button {
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: 94%;
   padding: 10px;
   background-color: #a1a1a163;
   border-radius: 20px;

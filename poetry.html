@@ -13,6 +13,8 @@
       href="http://kavitakosh.org/kk/load.php?debug=false&lang=hi&modules=mediawiki.legacy.commonPrint%2Cshared%7Cmediawiki.skinning.content.externallinks%7Cmediawiki.skinning.interface%7Cmediawiki.ui.button%7Cskins.monobook.styles&only=styles&skin=monobook&"
     />
     <link rel="stylesheet" href="Style/style1.css" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="dist/clipboard.min.js"></script>
     <style>
       /* * {
         -webkit-user-select: none;
@@ -204,10 +206,51 @@
         $.get(
           proxy +
             encodeURIComponent("http://kavitakosh.org" + $(this).attr("href")),
+          // function (pm) {
+          //   if ($(pm).find(".poem").text().length > 5) {
+          //     alert($(pm).find(".poem").text());
+          //   } else {
+          //     $.get(
+          //       proxy +
+          //         encodeURIComponent(
+          //           "http://kavitakosh.org" +
+          //             $(pm).find("#mw-content-text a:last").attr("href")
+          //         ),
+          //       function (pm1) {
+          //         alert($(pm1).find(".poem").text());
+          //       }
+          //     );
+          //   }
           function (pm) {
             if ($(pm).find(".poem").text().length > 5) {
-              alert($(pm).find(".poem").text());
-            } else {
+              Swal.fire({
+            title: 'Poem',
+            text: $(pm).find(".poem").text(),
+            showCloseButton: true,
+            showCancelButton: false,
+            showConfirmButton: true,
+            confirmButtonText: 'Copy',
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Copy the poem to clipboard
+                const poemText = $(pm).find(".poem").text();
+                navigator.clipboard.writeText(poemText)
+                    .then(() => {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Copied!',
+                            text: 'The poem has been copied to your clipboard.'
+                        });
+                    }).catch((error) => {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: 'Failed to copy the poem. Please try again.'
+                        });
+                    });
+            }
+        });
+            }else {
               $.get(
                 proxy +
                   encodeURIComponent(
@@ -215,7 +258,7 @@
                       $(pm).find("#mw-content-text a:last").attr("href")
                   ),
                 function (pm1) {
-                  alert($(pm1).find(".poem").text());
+                  Swal.fire($(pm1).find(".poem").text());
                 }
               );
             }
