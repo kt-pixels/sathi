@@ -3,7 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="Style/style.css" />
+    <!-- <link rel="stylesheet" href="Style/style.css" /> -->
+    <link rel="stylesheet" href="Style/style1.css" />
     <title>TERMS OF USE</title>
     <style>
       /* * {
@@ -14,11 +15,29 @@
         color: white;
       } */
       p{
-        font-weight: 200;
+        font-weight: 300;
+    border-bottom: 1px solid #8080806b;
+    padding-block-end: 20px;
+      }
+
+      p:last-child{
+        border: none;
+        padding-block-end: 0;
+        margin: 0;
+      }
+
+      h2{
+        margin: 10px;
+        margin-block-end: -15px;
+      }
+
+      .terms_container{
+        margin: 10px;
+        padding: 10px;
       }
     </style>
   </head>
-  <body>
+  <body class="main">
     <div id="header">
       <div id="header-title">
         <!-- <img id="logo" src="file:///android_asset/img/Logo.png" alt="logo" /> -->
@@ -28,26 +47,28 @@
     </div>
     <h2>TERMS OF USE:</h2>
 
-    <p>
-      <strong>1. Ownership and Use:</strong> The contents of this app have been
-      meticulously curated by
-      <u
-        ><i><b>TeAm SP.</b></i></u
-      >. Unauthorized use or abuse of the content without explicit permission
-      from the owner is strictly prohibited.
-    </p>
-
-    <p>
-      <strong>2. Content Sources:</strong> The contents within this app have
-      been responsibly sourced from various platforms. The owner extends
-      gratitude to all contributors who have played a role in the success of
-      this app.
-    </p>
-
-    <p>
-      <strong>3. Copyright Information:</strong> This app is protected by
-      copyright owned by TeAm SP. Any form of unauthorized cloning or piracy is
-      expressly forbidden by the owner.
-    </p>
+    <div class="terms_container">
+      <p>
+        <strong>1. Ownership and Use:</strong> The contents of this app have been
+        meticulously curated by
+        <u
+          ><i><b>TeAm SP.</b></i></u
+        >. Unauthorized use or abuse of the content without explicit permission
+        from the owner is strictly prohibited.
+      </p>
+  
+      <p>
+        <strong>2. Content Sources:</strong> The contents within this app have
+        been responsibly sourced from various platforms. The owner extends
+        gratitude to all contributors who have played a role in the success of
+        this app.
+      </p>
+  
+      <p>
+        <strong>3. Copyright Information:</strong> This app is protected by
+        copyright owned by TeAm SP. Any form of unauthorized cloning or piracy is
+        expressly forbidden by the owner.
+      </p>
+    </div>
   </body>
 </html>

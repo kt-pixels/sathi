@@ -3,7 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="Style/style.css">
+    <!-- <link rel="stylesheet" href="Style/style.css"> -->
+    <link rel="stylesheet" href="Style/style1.css">
     <title>Privacy Policy</title>
     <style>
       /* * {
@@ -14,14 +15,22 @@
         color: white;
       } */
       p{
-        font-weight: 200;
+        font-weight: 300;
+        border-bottom: 1px solid #80808069;
+        padding-block-end: 20px;
+      }
+      p:last-child{
+        border-bottom: none;
       }
       a{
         font-weight: 400;
       }
+      .p_p_container{
+        margin: 10px;
+      }
     </style>
   </head>
-  <body>
+  <body class="main">
     <div id="header">
       <div id="header-title">
         <!-- <img id="logo" src="file:///android_asset/img/Logo.png" alt="logo" /> -->
@@ -29,15 +38,14 @@
         <h1>PRIVACY POLICY</h1>
       </div>
     </div>
-    <h2>PRIVACY POLICY:</h2>
+    <div class="p_p_container">
+      <h2>PRIVACY POLICY:</h2>
 
     <p>
       This page is meant to inform visitors about our policies concerning the
       collection, use, and disclosure of Personal Information for users of our
       Service.
-    </p>
-
-    <p>
+    <br><br>
       By opting to use our Service, you agree to the collection and utilization
       of information as outlined in this policy. We commit to not using or
       sharing your information with anyone except as described in this Privacy
@@ -51,13 +59,11 @@
       personally identifiable information, such as Internet Access. The
       information collected is retained on your device and is not gathered by us
       in any manner.
-    </p>
-
-    <p>
+    <br><br>
       The app may utilize third-party services that collect information for
       identification purposes. Please refer to the privacy policies of these
       third-party providers:
-    </p>
+      </p>
 
     <ul>
       <li>
@@ -152,5 +158,6 @@
       Policy, please don't hesitate to
       <a href="mailto:smartprogrammers.sp@gmail.com">contact us</a>.
     </p>
+    </div>
   </body>
 </html>

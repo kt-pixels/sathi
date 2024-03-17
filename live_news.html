@@ -5,7 +5,8 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,minimal-ui">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="HandheldFriendly" content="true">
-<link rel="stylesheet" href="Style/style.css">
+<!-- <link rel="stylesheet" href="Style/style.css"> -->
+<link rel="stylesheet" href="Style/style1.css">
 <style>
 /* * {
 -webkit-user-select: none;
@@ -36,6 +37,40 @@ margin: 5px;
 padding: 10px;
 text-align: center;
 font-weight: 400;
+}
+
+center{
+  margin: 10px;
+    padding: 10px;
+    background: #ffffff24;
+    border: 1px groove;
+    overflow: hidden;
+    position: relative;
+}
+
+center::before{
+  content: "";
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 25px;
+  top: 0;
+  filter: blur(20px);
+  right: 0;
+
+}
+center::after{
+  content: "";
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 35px;
+  left: 0;
+  filter: blur(30px);
+  bottom: 0;
+
 }
 </style>
 </head>
