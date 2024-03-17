@@ -11,7 +11,8 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.min.css"
     />
-    <link rel="stylesheet" href="Style/style.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="Style/style1.css" />
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.9.0/dist/sweetalert2.min.js"></script>
     <!-- <style>
@@ -86,6 +87,10 @@
         margin: 0;
         padding-block-end: 10px;
         font-size: 20px;
+        text-align: center;
+      }
+      .box > img{
+        display: none;
       }
     </style>
   </head>
@@ -106,14 +111,23 @@
         <div class="boxes">
           <div class="box" onclick="location.href='audio_movie.html';">
             <img src="images/movie.webp" alt="Movies" aria-hidden="true" />
+            <span class="material-symbols-outlined" aria-hidden="true">
+              movie
+              </span>
             <p>Movies</p>
           </div>
           <div class="box" onclick="location.href='music_store.html';">
             <img src="images/music.webp" alt="Music" aria-hidden="true" />
+            <span class="material-symbols-outlined" aria-hidden="true">
+              music_note
+              </span>
             <p>Music</p>
           </div>
           <div class="box" onclick="location.href='ringtones.html';">
             <img src="images/ringtone.webp" alt="Ringtones" aria-hidden="true" />
+            <span class="material-symbols-outlined" aria-hidden="true">
+              library_music
+              </span>
             <p>Ringtones</p>
           </div>
         </div>
@@ -129,10 +143,16 @@
         <div class="boxes">
           <div class="box" onclick="location.href='poetry.html';">
             <img src="images/poetry.webp" alt="Poetries" aria-hidden="true" />
+            <span class="material-symbols-outlined" aria-hidden="true">
+              draw
+              </span>
             <p>Poetries</p>
           </div>
           <div class="box" onclick="location.href='devotional.html';">
             <img src="images/devotional.webp" alt="Devotional" aria-hidden="true" />
+            <span class="material-symbols-outlined" aria-hidden="true">
+              candle
+              </span>
             <p>Devotional</p>
           </div>
         </div>

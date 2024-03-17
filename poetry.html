@@ -12,15 +12,14 @@
       rel="stylesheet"
       href="http://kavitakosh.org/kk/load.php?debug=false&lang=hi&modules=mediawiki.legacy.commonPrint%2Cshared%7Cmediawiki.skinning.content.externallinks%7Cmediawiki.skinning.interface%7Cmediawiki.ui.button%7Cskins.monobook.styles&only=styles&skin=monobook&"
     />
-    <link rel="stylesheet" href="Style/style.css" />
+    <link rel="stylesheet" href="Style/style1.css" />
     <style>
-      * {
+      /* * {
         -webkit-user-select: none;
-      }
+      } */
 
       body {
-        background-color: #450283 !important;
-        padding: 10px;
+        background-color: rgb(21 0 72) !important;
       }
 
       #header-title > h1 {
@@ -36,7 +35,7 @@
         transform: translateX(-50%) translateY(-50%);
         color: white;
         letter-spacing: 2px;
-        font-size: 17px;
+        font-size: 16px;
       }
       #bk {
         margin: 5px;
@@ -58,7 +57,7 @@
       }
       a {
         background: #f1f1f12e;
-        border-radius: 30px;
+        border-radius: 5px;
         color: #fffdfd;
         display: block;
         padding: 5px;
@@ -80,18 +79,20 @@
         font-weight: bold;
         box-shadow: 3px 3px 10px #00000080;
         margin-block: 15px;
-      }
+        margin-inline: 10px;
+}
 
       #main > ul {
         display: flex;
         margin: 0;
         flex-direction: column;
         align-items: center;
-        width: 100%;
         gap: 10px;
         background-color: #ffffff1f;
         padding: 20px 0;
         border-radius: 10px;
+        margin-inline: 10px;
+        margin-block-end: 20px;
       }
 
       #main > ul > li {
@@ -121,11 +122,13 @@
         margin: 0;
         flex-direction: column;
         align-items: center;
-        width: 100%;
+        /* width: 100%; */
         gap: 10px;
         background-color: #ffffff1f;
         padding: 20px 0;
         border-radius: 10px;
+        margin-inline: 10px;
+        margin-block-end: 20px;
       }
 
       #li > ul > li {
@@ -154,7 +157,7 @@
     <center><button id="bk">Go Back</button></center>
     <h4 class="h">Please wait while I take you to the page:)</h4>
     <div id="main"></div>
-    <div id="li"></div>
+    <div id="li" class="main"></div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script>
       var proxy = "https://ubsa.in/smartprogrammers/fire.php?url=";

@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.min.css">
-<link rel="stylesheet" href="Style/style.css">
+<link rel="stylesheet" href="Style/style1.css">
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.9.0/dist/sweetalert2.min.js"></script>
 <title>MS - Speech</title>
 <style>
@@ -27,19 +27,21 @@ border: none;
 outline: none;
 border-radius: 10px;
 box-shadow: 0 1px 1px rgba(0,0,0,0.12), 0 2px 2px rgba(0,0,0,0.12);
+backdrop-filter: blur(50px);
 }
 
 textarea::placeholder{
     color: rgba(255, 255, 255, 0.788);
 }
 select, button{
-margin: 5px;
-padding: 5px;
-font-size: 14px;
-background-color: #555;
-color: #fff;
-border: none;
-width: 25%;
+    margin: 5px;
+    padding: 7px;
+    font-size: 14px;
+    background-color: #ffffff;
+    border: none;
+    width: 30%;
+    color: black;
+    border-radius: 5px;
 }
 button:hover{ background-color: #444; }
 iframe{
@@ -59,7 +61,7 @@ background: #333;
     justify-content: space-between;
     padding: 10px;
     border-radius: 10px;
-    background-color: rgba(255, 255, 255, 0.405);
+    margin-block-end: -33px;
 }
 
 .swal2-title{
@@ -70,7 +72,7 @@ background: #333;
 }
 </style>
 </head>
-<body>
+<body class="main">
     <div id="header">
         <div id="header-title">
           <!-- <img id="logo" src="file:///android_asset/img/Logo.png" alt="logo" /> -->
