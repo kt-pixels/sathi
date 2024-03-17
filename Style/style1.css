@@ -74,7 +74,8 @@ a {
 }
 #header-title > h1 {
   color: white;
-  font-size: 16px;
+  font-size: 20px;
+  margin: 0;
 }
 #header-icons {
   color: white;
@@ -90,6 +91,33 @@ a {
 
 #main {
   margin-block-start: 15px;
+  position: relative;
+}
+
+#main::before{
+  content: "";
+  position: fixed;
+  width: 200px;
+  height: 200px;
+  background-color: #0024f3e4;
+  top: 0;
+  left: 0;
+  border-radius: 100px;
+  filter: blur(70px);
+  z-index: -99;
+}
+
+#main::after{
+  content: "";
+  position: fixed;
+  width: 200px;
+  height: 200px;
+  background-color: #0024f3e4;
+  right: 0;
+  bottom: 0;
+  border-radius: 100px;
+  filter: blur(100px);
+  z-index: -99;
 }
 
 .categories > h2 {
@@ -149,7 +177,7 @@ a {
   gap: 10px;
   /* padding-block-end: 20px; */
   padding: 10px;
-  border-bottom: 1px solid #80808052;
+  /* border-bottom: 1px solid #80808052; */
 }
 
 .cat-button {
@@ -164,28 +192,28 @@ a {
 }
 
 .category > .cat-button:nth-child(1) p {
-  padding: 10px;
+  padding: 5px;
   /* background-color: #0044ff; */
   background-image: linear-gradient(45deg, #0040f3, #dd5f5fb0);
   position: relative;
   overflow: hidden;
 }
 .category > .cat-button:nth-child(2) p {
-  padding: 10px;
+  padding: 5px;
   /* background-color: #0044ff; */
   background-image: linear-gradient(45deg, #f37b00d1, #c72929);
   position: relative;
   overflow: hidden;
 }
 .category > .cat-button:nth-child(3) p {
-  padding: 10px;
+  padding: 5px;
   /* background-color: #0044ff; */
   background-image: linear-gradient(45deg, #f30087, #ff8c8c);
   position: relative;
   overflow: hidden;
 }
 .category > .cat-button:nth-child(4) p {
-  padding: 10px;
+  padding: 5px;
   /* background-color: #0044ff; */
   background-image: linear-gradient(45deg, #0027b5, #5fa9dd);
   position: relative;
@@ -229,8 +257,8 @@ a {
 }
 
 .navigation_category > .cat-button p {
-  padding: 10px;
-  background-image: linear-gradient(45deg, #0040f3, #dd5f5fb0);
+  padding: 5px;
+  background-image: linear-gradient(45deg, #cc00ffba, #004effbf);
   position: relative;
   overflow: hidden;
   margin: 10px;
@@ -239,17 +267,18 @@ a {
   align-items: center;
   justify-content: center;
   font-weight: 600;
+  margin-block-start: 0;
 }
 
 .navigation_category > .cat-button p::after{
   content: "";
   position: absolute;
-  width: 60px;
-  height: 60px;
+  width: 50px;
+  height: 50px;
   border-radius: 30px;
   background-image: linear-gradient(45deg, #008af3, #f75858b0);
-  top: 0;
-  left: 0;
+  left: -5px;
+  bottom: -23px;
 }
 
 /* Informaton Section style */
