@@ -1,55 +1,60 @@
 <!DOCTYPE html>
 <html>
-<head>
-<title>Podcasts</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-<meta name="HandheldFriendly" content="true">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="Style/style.css">
+  <head>
+    <title>Podcasts</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="HandheldFriendly" content="true" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <!-- <link rel="stylesheet" href="Style/style.css"> -->
+    <link rel="stylesheet" href="Style/style1.css" />
 
-<style>
-    #result{
+    <style>
+      #result {
         background-color: #ffffff3b;
-    padding: 10px;
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-    }
+        padding: 10px;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        margin: 10px;
+      }
 
-    #result > #i{
+      #result > #i {
         background-color: #ffffff54;
-    width: 90%;
-    padding: 10px;
-    border-radius: 10px;
-    }
+        width: 90%;
+        padding: 10px;
+        border-radius: 10px;
+      }
 
-    #main > b{
+      #main > b {
         position: absolute;
-        top: 90px;
+        top: 3px;
         font-size: 25px;
-    }
+      }
 
-    #main > b:nth-child(2){
+      #main > b:nth-child(2) {
         left: 12px;
-    }
+      }
 
-    #main > b:nth-child(3){
+      #main > b:nth-child(3) {
         right: 12px;
-    }
+      }
 
-    #main > h2{
+      #main > h2 {
         text-align: center;
-    }
+      }
 
-    br{
+      br {
         display: none;
-    }
-</style>
+      }
+    </style>
 
-<!-- <style>
+    <!-- <style>
 *{
 -webkit-user-select: none;
 font-size: 20px;
@@ -103,69 +108,95 @@ text-overflow: ellipsis;
     display: block;
 }
 </style> -->
-</head>
-<body>
+  </head>
+  <body>
     <div id="header">
-        <div id="header-title">
-          <img id="logo" src="images/logo.png" alt="logo" width="50px" />
-          <h1>Podcasts</h1>
-        </div>
+      <div id="header-title">
+        <img id="logo" src="images/logo.png" alt="logo" width="50px" />
+        <h1>Podcasts</h1>
       </div>
-<div id="main">
-<h2>Podcasts</h2>
-<b title="Previous Page, button" class="fa fa-angle-double-left"></b>
-<b title="Next Page, button" class="fa fa-angle-double-right"></b>
-<div id="result">
-<i aria-live="polite">Please wait...</i>
-</div>
-</div>
-<div id="Toast" aria-live="polite">Just wait a while...</div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script>
-var pg = 1;
-var proxy = "https://ubsa.in/smartprogrammers/fire.php?url=";
-$(".fa-angle-double-left").click(function(){
-if(pg == 1){
-alert("No previous page :(");
-}else{
-pg -= 1;
-fire();
-}
-});
-$(".fa-angle-double-right").click(function(){
-if(pg == 4){
-alert("No next page :(");
-}else{
-pg += 1;
-fire();
-}
-});
-function SToast(){
-$('#Toast').show();
-setTimeout(function(){
-$('#Toast').hide();
-},1500);
-}
-function fire(){
-$(".fa").hide();
-$.get(proxy+encodeURIComponent("https://www.radioindia.in/podcasts?page=" + pg), function(data){
-$(".fa").show();                    $("#result").empty();
-$.each($(data).find(".mdc-list-item"), function(){
-$("#result").append("<div id='i' URL='https://www.radioindia.in" + $(this).attr("href") + "'><div class='ellipsis'><b>" + $(this).find(".podcasts-texts").text().replace($(this).find(".podcasts-texts-artist").text(),"") + "</b><br><br><i>" + $(this).find(".podcasts-texts-artist").text() + "</i></div></div>");
-});
-});}
-fire();
-$("#result").on("click","#i",function(){
-SToast();
-$.get(proxy+$(this).attr("URL"),function(data){
-var tmp = "";
-$.each($(data).find(".podcast-line-play"),function(){
-$(this).find(".secondary-span-color").remove();
-tmp += "<li URL='"+$(this).find("svg").data("url")+"'>"+$(this).text()+"</li>";
-});
-localStorage.setItem("mPlayer_data",tmp);
-window.open("go:m_player");
-});});
-</script>
-</body>
+    </div>
+    <div id="main">
+      <h2>Podcasts</h2>
+      <b title="Previous Page, button" class="fa fa-angle-double-left"></b>
+      <b title="Next Page, button" class="fa fa-angle-double-right"></b>
+      <div id="result">
+        <i aria-live="polite">Please wait...</i>
+      </div>
+    </div>
+    <div id="Toast" aria-live="polite">Just wait a while...</div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+      var pg = 1;
+      var proxy = "https://ubsa.in/smartprogrammers/fire.php?url=";
+      $(".fa-angle-double-left").click(function () {
+        if (pg == 1) {
+          alert("No previous page :(");
+        } else {
+          pg -= 1;
+          fire();
+        }
+      });
+      $(".fa-angle-double-right").click(function () {
+        if (pg == 4) {
+          alert("No next page :(");
+        } else {
+          pg += 1;
+          fire();
+        }
+      });
+      function SToast() {
+        $("#Toast").show();
+        setTimeout(function () {
+          $("#Toast").hide();
+        }, 1500);
+      }
+      function fire() {
+        $(".fa").hide();
+        $.get(
+          proxy +
+            encodeURIComponent("https://www.radioindia.in/podcasts?page=" + pg),
+          function (data) {
+            $(".fa").show();
+            $("#result").empty();
+            $.each($(data).find(".mdc-list-item"), function () {
+              $("#result").append(
+                "<div id='i' URL='https://www.radioindia.in" +
+                  $(this).attr("href") +
+                  "'><div class='ellipsis'><b>" +
+                  $(this)
+                    .find(".podcasts-texts")
+                    .text()
+                    .replace(
+                      $(this).find(".podcasts-texts-artist").text(),
+                      ""
+                    ) +
+                  "</b><br><br><i>" +
+                  $(this).find(".podcasts-texts-artist").text() +
+                  "</i></div></div>"
+              );
+            });
+          }
+        );
+      }
+      fire();
+      $("#result").on("click", "#i", function () {
+        SToast();
+        $.get(proxy + $(this).attr("URL"), function (data) {
+          var tmp = "";
+          $.each($(data).find(".podcast-line-play"), function () {
+            $(this).find(".secondary-span-color").remove();
+            tmp +=
+              "<li URL='" +
+              $(this).find("svg").data("url") +
+              "'>" +
+              $(this).text() +
+              "</li>";
+          });
+          localStorage.setItem("mPlayer_data", tmp);
+          window.open("go:m_player");
+        });
+      });
+    </script>
+  </body>
 </html>
