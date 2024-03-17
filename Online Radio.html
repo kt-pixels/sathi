@@ -6,9 +6,10 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.9.0/dist/sweetalert2.min.js"></script>
-    <link rel="stylesheet" href="Style/style.css">
+    <link rel="stylesheet" href="Style/style1.css">
     <title>Online Radio</title>
     <style>
         /* * {
@@ -42,6 +43,7 @@
       align-items: center;
       gap: 10px;
       color: #fff;
+      transform: translateY(-66px);
     }
     .music-icon {
       font-size: 48px;
@@ -96,7 +98,7 @@
             border-radius: 10px;
             padding: 20px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            height: 60vh;
+            height: 70vh;
         }
         .scl {
          height: 600px;
@@ -143,9 +145,6 @@
             background-color: #ffffff36;
             padding: 10px;
         }
-        #header {
-            margin: 10px;
-        }
         #header-title > h1 {
             font-weight: 500;
         }
@@ -166,7 +165,7 @@
         }
     </style>
 </head>
-<body>
+<body class="main">
   <div id="header">
     <div id="header-title">
       <!-- <img id="logo" src="file:///android_asset/img/Logo.png" alt="logo" /> -->
@@ -192,7 +191,9 @@
     <main class="p-4">
         <div id="content">
 <section id="live" class="content-section">
-                <p class="text-lg font-semibold" style="text-align: center;">Live Stream</p>
+                <p class="text-lg font-semibold" style="text-align: center; display: none;">Live Stream</p>
+                <img src="images/radio2.webp" alt="radio image" aria-hidden="true" style="width: 100%;
+                filter: invert(1);">
   <div class="audio-player">
     <div aria-hidden="true" class="music-icon">
       <i class="fas fa-music"></i>
@@ -211,7 +212,7 @@
     </section>
             
             <section id="liked" class="content-section hidden">
-                <p class="text-lg font-semibold">Starred channels</p>
+                <p class="text-lg font-semibold" style="text-align: center; padding-block-end: 10px;">Starred channels</p>
 <div class="ctr-list">
 <div class="fav-list"></div>
 </div>
