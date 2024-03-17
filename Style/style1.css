@@ -94,7 +94,7 @@ a {
   position: relative;
 }
 
-#main::before{
+#main::before {
   content: "";
   position: fixed;
   width: 200px;
@@ -107,7 +107,7 @@ a {
   z-index: -99;
 }
 
-#main::after{
+#main::after {
   content: "";
   position: fixed;
   width: 200px;
@@ -128,11 +128,11 @@ a {
 
 .categories > .main-box {
   border-radius: 8px;
-    background-image: linear-gradient(45deg, #8483ed, #65008f4f);
-    padding: 10px;
-    display: flex;
-    margin: 10px;
-    margin-block-end: 25px;
+  background-image: linear-gradient(45deg, #8483ed, #65008f4f);
+  padding: 10px;
+  display: flex;
+  margin: 10px;
+  margin-block-end: 25px;
 }
 
 .categories > .main-box > .text {
@@ -160,15 +160,15 @@ a {
 }
 
 .categories > .main-box > .images > img:nth-child(1) {
-  transform: translateX(42px) translateY(-3px);
+  transform: translateX(28px) translateY(-3px);
   width: 22%;
   filter: drop-shadow(-2px 8px 6px rgba(0, 0, 0, 0.347));
 }
 
 .categories > .main-box > .images > img:nth-child(2) {
   width: 30%;
-  transform: translateY(56px) translateX(32px);
-  display: none;
+  transform: translateY(46px) translateX(35px);
+  /* display: none; */
 }
 
 .category {
@@ -185,37 +185,33 @@ a {
 }
 
 .category > .cat-button {
+  border: 1px solid rgba(255, 255, 255, 0.254);
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 2px 2px rgba(0, 0, 0, 0.12);
   border-radius: 10px;
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.254);
 }
 
 .category > .cat-button:nth-child(1) p {
   padding: 5px;
-  /* background-color: #0044ff; */
-  background-image: linear-gradient(45deg, #0040f3, #dd5f5fb0);
+  background-image: linear-gradient(45deg, #8483ed61, #65008f87);
   position: relative;
   overflow: hidden;
 }
 .category > .cat-button:nth-child(2) p {
   padding: 5px;
-  /* background-color: #0044ff; */
-  background-image: linear-gradient(45deg, #f37b00d1, #c72929);
+  background-image: linear-gradient(45deg, #8483ed61, #65008f87);
   position: relative;
   overflow: hidden;
 }
 .category > .cat-button:nth-child(3) p {
   padding: 5px;
-  /* background-color: #0044ff; */
-  background-image: linear-gradient(45deg, #f30087, #ff8c8c);
+  background-image: linear-gradient(45deg, #8483ed61, #65008f87);
   position: relative;
   overflow: hidden;
 }
 .category > .cat-button:nth-child(4) p {
   padding: 5px;
-  /* background-color: #0044ff; */
-  background-image: linear-gradient(45deg, #0027b5, #5fa9dd);
+  background-image: linear-gradient(45deg, #8483ed61, #65008f87);
   position: relative;
   overflow: hidden;
 }
@@ -223,13 +219,14 @@ a {
 .category > .cat-button p::before {
   content: "";
   position: absolute;
-  width: 30px;
-  height: 30px;
+  width: 20px;
+  height: 20px;
   border-radius: 20px;
   /* background-color: blue; */
   border: 2px solid rgba(255, 255, 255, 0.42);
   right: -5px;
   top: -5px;
+  display: none;
 }
 
 .category > .cat-button p::after {
@@ -238,9 +235,10 @@ a {
   width: 50px;
   height: 50px;
   border-radius: 25px;
-  background-color: rgba(255, 255, 255, 0.42);
+  background-color: rgba(255, 255, 255, 0.237);
   left: -5px;
   bottom: -10px;
+  display: none;
 }
 
 .category > .cat-button > p {
@@ -258,7 +256,8 @@ a {
 
 .navigation_category > .cat-button p {
   padding: 5px;
-  background-image: linear-gradient(45deg, #cc00ffba, #004effbf);
+  /* background-image: linear-gradient(45deg, #8483ed61, #65008f87); */
+  background-color: #ffffff33;
   position: relative;
   overflow: hidden;
   margin: 10px;
@@ -268,17 +267,21 @@ a {
   justify-content: center;
   font-weight: 600;
   margin-block-start: 0;
+  border: 1px solid rgba(255, 255, 255, 0.254);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 2px 2px rgba(0, 0, 0, 0.12);
 }
 
-.navigation_category > .cat-button p::after{
+.navigation_category > .cat-button p::after {
   content: "";
   position: absolute;
   width: 50px;
   height: 50px;
   border-radius: 30px;
-  background-image: linear-gradient(45deg, #008af3, #f75858b0);
+  /* background-image: linear-gradient(45deg, #008af3, #f75858b0); */
+  background-color: rgba(255, 255, 255, 0.237);
   left: -5px;
   bottom: -23px;
+  display: none;
 }
 
 /* Informaton Section style */
@@ -446,7 +449,7 @@ a {
   overflow: hidden;
 }
 
-.job-category > .button::before{
+.job-category > .button::before {
   content: "";
   position: absolute;
   width: 60px;
@@ -456,9 +459,10 @@ a {
   border-radius: 30px;
   right: 0;
   bottom: 0;
+  display: none;
 }
 
-.job-category > .button::after{
+.job-category > .button::after {
   content: "";
   position: absolute;
   width: 80px;
@@ -468,6 +472,7 @@ a {
   border-radius: 40px;
   left: -10px;
   top: -10px;
+  display: none;
 }
 
 .job-category > .button > img {
