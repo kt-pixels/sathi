@@ -15,6 +15,8 @@
     <style>
       .icon {
         font-size: 18px;
+        display: flex;
+        align-items: center;
       }
       #dwn {
         display: none;
@@ -40,7 +42,7 @@
       .swal2-success-fix {
         display: none;
       }
-      fieldset{
+      fieldset {
         border: none;
         padding: 0;
       }
@@ -132,9 +134,14 @@
   </head>
   <body class="app_store_container">
     <div class="app_store_box">
-      <button id="bk" style="display: none">
-        <i class="fas fa-arrow-left icon" title="Go Back, Button"></i>
-      </button>
+      <!-- <button id="bk" style="display: none"> -->
+      <i
+        class="fas fa-arrow-left icon"
+        title="Back, Button"
+        id="bk"
+        style="display: none"
+      ></i>
+      <!-- </button> -->
       <h2>App Store</h2>
       <img src="images/open.png" alt="" aria-hidden="true" />
     </div>
