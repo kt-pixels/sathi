@@ -425,12 +425,7 @@
     ></script>
 
     <script>
-      window.onload = function () {
-        Swal.fire({
-          title: "Important",
-          text: "You can copy messages by long-pressing on them.",
-        });
-      };
+      //
 
       function sendMessage() {
         var userMessage = $("#userInput").val().trim();
@@ -514,7 +509,7 @@
             Swal.fire({
               icon: "success",
               title: "Copied!",
-              text: "Text successfully copied to clipboard",
+              text: "Text successfully copied",
             });
           })
           .catch(function (err) {

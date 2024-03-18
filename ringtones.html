@@ -9,32 +9,15 @@
     />
     <!-- <title>Ringtones World</title> -->
     <link rel="stylesheet" href="Style/style1.css" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <style>
-      /* * {
-  -webkit-user-select: none;
-  outline: none;
-}
-body {
-  margin: 0;
-  padding: 0;
-  background-color: #000000;
-  font-family: Arial, sans-serif;
-  color: #ffffff;
-} */
       #app-container {
-        /* background-color: #000000; */
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
         height: 100vh;
       }
-
-      /* h1 {
-  font-size: 24px;
-  margin-bottom: 20px;
-} */
-
       #myInput {
         background-color: #95959547;
         color: #ffffff;
@@ -111,13 +94,40 @@ body {
         font-weight: bold;
         text-align: center;
       }
+      .swal2-modal,
+      .swal2-container.in {
+        background: #ffffff4f;
+        backdrop-filter: blur(26px);
+      }
+      .swal2-title {
+        color: white;
+      }
+      .swal2-html-container {
+        color: white !important;
+        letter-spacing: 1px;
+      }
+      .swal2-success-circular-line-left {
+        display: none;
+      }
+      .swal2-success-circular-line-right {
+        display: none;
+      }
+      .swal2-success-fix {
+        display: none;
+      }
     </style>
   </head>
   <body class="main">
     <div id="header">
       <div id="header-title">
         <!-- <img id="logo" src="file:///android_asset/img/Logo.png" alt="logo" /> -->
-        <img id="logo" src="images/logo.png" alt="logo" width="50px" aria-hidden="true" />
+        <img
+          id="logo"
+          src="images/logo.png"
+          alt="logo"
+          width="50px"
+          aria-hidden="true"
+        />
         <h1>Ringtones</h1>
       </div>
     </div>
@@ -145,7 +155,10 @@ body {
       var pg = 1;
       $(".fa-angle-double-left").click(function () {
         if (pg <= 1) {
-          alert("No previous page :(");
+          Swal.fire({
+            icons: "error",
+            text: "No previous page :(",
+          });
         } else {
           pg -= 1;
           fire();
@@ -159,7 +172,10 @@ body {
         if ($(this).attr("URL").indexOf("undefined")) {
           location.href = $(this).attr("URL");
         } else {
-          alert("File corrupted!");
+          Swal.fire({
+            icon: "warning",
+            text: "File corrupted!",
+          });
         }
       });
       $("#ring").on("click", "li", function () {
@@ -167,7 +183,10 @@ body {
           aud.src = $(this).attr("URL");
           aud.play();
         } else {
-          alert("File corrupted!");
+          Swal.fire({
+            icon: "warning",
+            text: "File corrupted!",
+          });
         }
       });
       $("#go").click(function () {
@@ -191,9 +210,10 @@ body {
                 );
               });
             } else {
-              alert(
-                "Nothing were found :-(\n\nTry making a new search instead!"
-              );
+              Swal.fire({
+                icon: "error",
+                text: "Nothing were found :-(\n\nTry making a new search instead!",
+              });
               $(".fa").hide();
               pg = 1;
             }

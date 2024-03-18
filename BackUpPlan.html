@@ -1,359 +1,165 @@
 <!DOCTYPE html>
+<html>
 <head>
-<title>Media Player</title>
-<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-<meta name="HandheldFriendly" content="true">
-<link href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' rel='stylesheet' type='text/css'>
-<style>
-* {
--webkit-user-select: none;
-outline: none;
-}
-select{
--webkit-appearance: none;
-}
-body{
-background: #333;
-color: white;
-}
-#MyTitle{
-font-weight: bold;
-overflow: hidden;
-text-align: center;
-width: 100%;
-}
-.marquee{
-text-align: center;
-white-space: nowrap;
-width: 100%;
-transform:translateX(100%);
-animation: scroll-left 10s linear infinite;
-}
-@keyframes scroll-left{0%{ 
-transform: translateX(100%); 		
-}100%{ 
-transform: translateX(-100%); 
-}}
-#btns button{
-background: #555;
-border: none;
-border-radius: 50%;
-color: white;
-text-align: center;
-height: 35px;
-width: 35px;
-}
-#btns #prev, #btns #next{
-height: 45px;
-width: 45px;
-}
-#btns #play, #btns #pause{
-font-size: 22px;
-font-weight: bold;
-height: 55px;
-width: 55px;
-}
-#btns #play{
-color: #00FF00;
-}
-#btns #pause{
-color: #FF0000;
-}
-i{
-font-size: 0px;
-}
-#pbRate{
-background: #555;
-border: none;
-border-radius: 30px;
-color: white;
-text-align-last: center;
-width: 10%;
-}
-#progress-bar {
-display: block;
-height: 5px;
-margin-left: 28%;
-margin-top: 10px;
-position: absolute;
-width: 40%;
-background: url(https://i.ibb.co/n108ZL0/progress-bg.png) no-repeat;
-}
-#progress{
-float: left;
-background: url(https://i.ibb.co/nC43tVd/progress.png) no-repeat;
-display: inline-block;
-height: 5px;
-}
-.PBP{
-margin-top: 35px;
-width: 98%;
-}
-#current{
-display: block;
-float: left;
-position: absolute;
-font-weight: bold;
-}
-#duration{
-float: right;
-font-weight: bold;
-}
-#playlist{
-display: block;
-margin: auto;
-background: #555;
-padding: 10px;
-border-radius: 10px;
-}
-#playlist li{
-list-style: none;
-background: #444;
-border: 1px solid #555;
-color: white;
-padding: 10px;
-border-radius: 10px;
-margin: 5px 0;
-cursor: pointer;
-}
-#playlist li.active{
-background: #555;
-color: white;
-font-weight: bold;
-}
-.active::before{
-content: "Selected:";
-font-size: 0px;
-}
-#Toast{
-background: black;
-bottom: 5px;
-display: none;
-position: fixed;
-text-align: center;
-width: 100%;
-}
-#main,#tmp{
-display: none;
-}
-#myInput{
-background: #444;
-border: none;
-border-radius: 10px;
-color: white;
-display: block;
-margin: 3px auto;
-padding: 12px;
-font-size: 18px;
-}
-#searchResult{
-text-align: center;
-}
-</style>
+    <title>App Store</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="HandheldFriendly" content="true">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        * {
+            -webkit-user-select: none;
+            font-size: 20px;
+            outline: none;
+        }
+
+        body {
+            background: #333;
+            color: white;
+        }
+
+        fieldset {
+            background: #444;
+            text-align: center;
+            border: 1px solid #555;
+            border-radius: 10px;
+            padding: 10px;
+            margin: 20px auto;
+            width: 90%;
+        }
+
+        #main p {
+            background: #555;
+            border: 1px solid black;
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            height: 90px;
+            justify-content: center;
+            overflow: hidden;
+            padding: 5px;
+            margin: 10px 0;
+        }
+
+        #main select,
+        #main input[type=text],
+        button {
+            -webkit-appearance: none;
+            background: #555;
+            border: 1px solid black;
+            color: white;
+            text-align: center;
+            height: 40px;
+            width: 32%;
+            padding: 5px;
+        }
+
+        #main input[type=text] {
+            width: 80%;
+        }
+
+        #i {
+            font-size: 75%;
+        }
+
+        .fa-angle-double-right,
+        .fa-angle-double-left {
+            font-size: 30px;
+            text-align: left;
+            position: absolute;
+            right: 25px;
+            width: 5%;
+        }
+
+        .fa-angle-double-left {
+            left: 25px;
+        }
+
+        #bk {
+            border-radius: 30px;
+            display: none;
+            width: 30%;
+            background: #555;
+            border: 1px solid #444;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            margin: 20px auto;
+        }
+        hr {
+            border-color: black;
+        }
+    </style>
 </head>
 <body>
-<div id="main">
-<div id="MyTitle"><div id="Title"></div></div>
-<audio id="MyPlayer"></audio>
-<div class="PBP"><span id="current"><i>Current Duration</i>0<i>Minutes &</i>:00<i>Seconds</i></span>
-<div id="progress-bar"><span id="progress"></span></div>
-<span id="duration"><i>Total Duration</i>0<i>Minutes &</i>:00<i>Seconds</i></span></div>
-<br/><br/>
-<center><div id="btns">
-<div id="Toast" aria-live="polite"></div>
-<button class="fa fa-backward" id="rewind"><i>Rewind</i></button>
-<button class="fa fa-step-backward" id="prev"><i>Previous</i></button>
-<button class="fa fa-play" id="play"><i>Play</i></button>
-<button class="fa fa-pause" id="pause"><i>Pause</i></button>
-<button class="fa fa-step-forward" id="next"><i>Next</i></button>
-<button class="fa fa-forward" id="forward"><i>Forward</i></button>
-<br/>
-<select id="pbRate" title="PlayBack Speed">
-<optgroup label="PlayBack Speed">
-<option value="0.5">0.5X</option>
-<option value="1" selected>1X</option>
-<option value="1.5">1.5X</option>
-<option value="2">2X</option>
-<option value="2.5">2.5X</option>
-<option value="3">3X</option>
-</optgroup>
+    <center><button id="bk">Go Back</button></center>
+    <fieldset id="main">
+        <legend>App Store</legend>
+        <b title="Previous Page, button" class="fa fa-angle-double-left"></b>
+        <b title="Next Page, button" class="fa fa-angle-double-right"></b>
+        <input id="t" type="text" placeholder="Type or paste a query..." />
+        <hr>
+<select id="a" title="Category">
+<option value="All" selected="selected">- Any -</option><option value="517">Activators For Microsoft Products</option><option value="518">Backup And Restore</option><option value="181">Books & Reference</option><option value="516">CD/DVD Tools</option><option value="94">compression and archiving</option><option value="547">Educational</option><option value="55">File Sharing</option><option value="999">Financial</option><option value="128">ftp client</option><option value="4">Games</option><option value="18">Internet</option><option value="65">Lifestyle</option><option value="7">Miscellaneous</option><option value="6">Ms Office</option><option value="1">Multimedia</option><option value="137">News And Magazines</option><option value="3">Operating system</option><option value="57">Programming tools</option><option value="64">Social</option><option value="2">Software for visually impaired</option><option value="112">System Utilities</option><option value="127">text editors and converters</option><option value="5">Text to speech</option><option value="785">VPN and Proxy</option></select>
+<select id="b" title="Operating System"><option value="All" selected="selected">- Any -</option><option value="10">Apple iOS</option><option value="20">Apple Mac OS (OSX)</option><option value="9">Google Android</option><option value="19">Linux</option><option value="8">Microsoft Windows</option>
 </select>
+        <button onclick="fire()">FIND</button>
+<div id="result">
+<i aria-live="polite">Please wait...</i>
 </div>
-</center>
-<br/>
-<input type="text" id="myInput" placeholder="Search for news..."/>
-<div id="searchResult" aria-live="polite"></div>
-<div id="playlist">
-</div>
-</div>
-<div id="tmp"></div>
-<h5><center>Please wait while I take you to the page...</center></h5>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
-<script>
-var Player = document.querySelector('#MyPlayer');
-var mediaIndex = 0;
-var playlistSize = 0;
-$.get("https://ubsa.in/smartprogrammers/fire.php?url="+"http://newsonair.nic.in/Public-Speak.aspx",function(data){
-$.each($(data).find("audio:not('audio:eq(0)')").parent(),function(){
-$("#playlist").append("<li URL='"+$(this).find("audio").attr("src")+"'>"+$(this).text()+"</li>");
-});
-$("h5").remove();
-$("#main").show();
-    $('#pause').hide();
-    playlistSize = $('#playlist li').length;
-    var mediaToShow = $('#playlist li').eq(mediaIndex);
-    Activate(mediaToShow);
-CtrlMarquee();
-});
-function Activate(elem) {    $('#Title').text(elem.text());
-     $(Player).attr('src',elem.attr('URL'));
-    $('#playlist li').removeClass('active');
-    elem.addClass('active');
-}
 
-$('#play').click(function () {
-    playMedia();
-});
+    </fieldset>
+<div id="dwn"></div>
 
-$('#pause').click(function () {
-    Player.pause();
-    $('#play').show();
-    $('#pause').hide();
-    $('#Toast').text('Media paused!');
-    SToast();
-});
-
-$('#next').click(function () {
-    Player.pause();
-    var next = $('#playlist li.active').next();
-    if (next.length == 0) {
-        next = $('#playlist li:first-child');
-    }
-    Activate(next);
-    setMediaIndex(1);
-    playMedia();
-});
-
-$('#prev').click(function () {
-    Player.pause();
-    var prev = $('#playlist li.active').prev();
-    if (prev.length == 0) {
-        prev = $('#playlist li:last-child');
-    }
-    Activate(prev);
-    setMediaIndex(-1);
-    playMedia();
-});
-
-$('#rewind').click(function () {
-    Player.currentTime -= 10.0;
-    Player.play();
-    $('#play').hide();
-    $('#pause').show();
-    $('#Toast').text('Rewinded: 10-S');
-    SToast();
-    showCurrent();
-});
-
-$('#forward').click(function () {
-    Player.currentTime += 10.0;
-    Player.play();
-    $('#play').hide();
-    $('#pause').show();
-    $('#Toast').text('Forwarded: 10-S');
-    SToast();
-    showCurrent();
-});
-
-$('#playlist').on('click', 'li', function () {
-    Activate($(this));
-    mediaIndex = $(this).index();
-    playMedia();
-});
-
-function playMedia() {
-    Player.playbackRate = $("#pbRate").val();
-    Player.play();
-    $('#play').hide();
-    $('#pause').show();
-    $('#Toast').text('Now Playing: ' + $('#Title').text());
-    SToast();
-    showCurrent();
-    CtrlMarquee();
-}
-
-function CtrlMarquee() {
-    if ($('#Title').text().replace(/\s{2,}|\n/g,"").length > 25) {
-        $('#Title').addClass('marquee');
-    } else {
-        $('#Title').removeClass('marquee');
-    }
-}
-
-function setMediaIndex(val) {
-    var temp = val < 0 ? mediaIndex - 1 : mediaIndex + 1;
-    if (temp < 0) mediaIndex = playlistSize - 1;
-    else if (temp >= playlistSize) mediaIndex = 0;
-    else mediaIndex = temp;
-}
-
-function showCurrent() {
-    $(Player).bind('timeupdate', function () {
-        var s = parseInt(Player.currentTime % 60);
-        var m = parseInt(Player.currentTime / 60) % 60;
-        if (s < 10) {
-            s = '0' + s;
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+        var pg = 0;
+        $(".fa-angle-double-left").click(function () {
+            if (pg == 0) {
+                alert("No previous page :(");
+            } else {
+                pg -= 1;
+                fire();
+            }
+        });
+        $(".fa-angle-double-right").click(function () {
+            pg += 1;
+            fire();
+        });
+        function fire() {
+            $(".fa").hide();
+            $.get("https://ubsa.in/smartprogrammers/fire.php?url=" + encodeURIComponent("https://blindhelp.net/software?sp=req-now&title=" + $("#t").val().replace(/ /g, "+") + "&field_category_tid=" + $("#a").val() + "&os=" + $("#b").val() + "&page=" + pg), function (data) {
+                $(".fa").show();
+                if ($(data).find(".field-name-title").find("a").attr("href")) {
+                    $("#result").empty();
+                    $.each($(data).find(".field-name-title"), function () {
+                        $("#result").append("<p><i id='i' URL='https://blindhelp.net" + $(this).find("a").attr("href") + "?sp=req-now'>" + $(this).find("a").text() + "</i></p>");
+                    });
+                } else {
+                    alert("Nothing was found :-(\n\nTry making a new search instead!");
+                    $(".fa").hide();
+                    pg = 0;
+                }
+            });
         }
-        $('#current').html("<i>Current Duration</i>" + m + "<i>Minutes &</i>" + ":" + s + "<i>Seconds</i>");
-        var value = 0;
-        if (Player.currentTime > 0) {
-            value = Math.floor((100 / Player.duration) * Player.currentTime);
-        }
-        var minutes = parseInt(Player.duration / 60, 10);
-        var seconds = parseInt(Player.duration % 60);
-        $('#duration').html("<i>Total Duration</i>" + minutes + "<i>Minutes &</i>" + ":" + seconds + "<i>Seconds</i>");
-        $('#progress').css('width', value + '%');
-    });
-}
-
-function SToast() {
-    $('#Toast').show();
-    setTimeout(function () {
-        $('#Toast').hide();
-    }, 1500);
-}
-$('#pbRate').change(function(){
-Player.playbackRate = $(this).val();
-});
-$(Player).bind('ended', function(){
-$('#next').click();
-});
-$("#myInput").keyup(function() {
-    var filter = $(this).val(), count = 0;
-    if (filter == "") {
-        $("#searchResult").hide()
-    }
-    else {
-        $("#searchResult").show()
-    }
-    $("#playlist li").each(function() {
-        if ($(this).text().replace(/\s+/g, " ").search(new RegExp(filter, "i")) < 0) {
-            $(this).hide();
-        } else {
-            $(this).show();
-            count++;
-        }
-    });
-    if (count == "0") {
-        $("#searchResult").text("No match found!");
-    } else
-    if (count == "1") {
-        $("#searchResult").text("Only 1 match.");
-    } else {
-        $("#searchResult").text("We found " + count + " matches.");
-    }
-});
-</script>
+        fire();
+        $("#result").on("click", "#i", function () {
+            $.get("https://ubsa.in/smartprogrammers/fire.php?url=" + encodeURIComponent($(this).attr("URL")), function (data) {
+                $("#main").hide();
+                $("#dwn").empty().show();
+                $("#bk").show();
+                window.scrollTo(0, 0);
+                $("#dwn").append("<i>" + $(data).find("div[property='content:encoded']").html() + "</i><br><br>");
+                $.each($(data).find(".label-above").nextUntil("br"), function () {
+                    $("#dwn").append($(this).html() + "<br><br>");
+                });
+            });
+        });
+        $("#bk").click(function () {
+            $("#bk,#dwn").hide();
+            $("#main").show();
+            window.scrollTo(0, 0);
+        });
+    </script>
 </body>
 </html>
