@@ -17,7 +17,8 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.0/themes/prism.min.css"
     />
     <!-- <link rel="stylesheet" href="Style/style.css"> -->
-    <link rel="stylesheet" href="Style/style1.css">
+    <link rel="stylesheet" href="Style/style1.css" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- <style>
       * {
             -webkit-user-select: none;
@@ -132,138 +133,165 @@
       }
     </style> -->
 
-<style>
-  /* * {
+    <style>
+      /* * {
         -webkit-user-select: none;
     } */
-  body {
-    font-family: "Roboto", sans-serif;
-    /* background-color: #f5f5f5; */
-    margin: 0;
-    /* padding: 10px; */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    height: 90vh;
-    gap: 20px;
-  }
-  #chatContainer {
-    background-color: #c9c9c947;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    /* width: 100%; */
-    /* max-width: 400px; */
-    height: 80vh;
-    display: flex;
-    flex-direction: column;
-    margin: 10px;
-  }
-  #messages {
-    flex: 1;
-    overflow-y: scroll;
-    padding: 10px;
-    display: flex;
-    flex-direction: column;
-  }
-  .user-message,
-  .assistant-message {
-    margin: 5px;
-    padding: 10px;
-    border-radius: 10px;
-    max-width: 70%;
-  }
-  .user-message {
-    background-color: #587cff;
-    color: #fff;
-    align-self: flex-end;
-    box-shadow: 4px 4px 8px #0000005c;
-  }
-  .assistant-message {
-    background-color: #ffffff59;
-    color: #fff;
-    align-self: flex-start;
-    font-size: 14px;
-    box-shadow: 0px 25px 20px -20px rgba(0, 0, 0, 0.45);
-    font-weight: 400;
-  }
-  .assistant-message pre {
-    background-color: #f5f5f5;
-    padding: 10px;
-    border-radius: 5px;
-    overflow-x: auto;
-    margin-top: 5px;
-  }
-  input {
-    width: calc(70% - 20px);
-    padding: 8px;
-    margin: 5px 10px;
-    border: none;
-    border-radius: 5px;
-    outline: none;
-  }
-  button {
-    width: calc(30% - 20px);
-    padding: 8px;
-    margin: 5px 10px;
-    border: none;
-    border-radius: 5px;
-    /* background-color: #587cff; */
-    background-image: linear-gradient(45deg, #1e00c5ba, #7300f1);
-    color: #fff;
-    cursor: pointer;
-  }
-  #title {
-    height: 0px;
-    opacity: 0;
-    width: 0px;
-  }
-  #wave .dot {
-    display: inline-block;
-    width: 5px;
-    height: 5px;
-    border-radius: 50%;
-    margin-right: 0.5px;
-    background: white;
-    animation: wave 1s linear infinite;
-    animation-delay: -0.9s;
-  }
-  #speak {
-    display: none;
-    height: 0px;
-    opacity: 0;
-    width: 0px;
-  }
-  #wave .dot.two {
-    animation-delay: -0.7s;
-  }
-  #wave .dot:nth-child(3) {
-    animation-delay: -0.6s;
-  }
-  @keyframes wave {
-    0%,
-    60%,
-    100% {
-      transform: initial;
-    }
-    30% {
-      transform: translateY(-15px);
-    }
-  }
+      body {
+        font-family: "Roboto", sans-serif;
+        /* background-color: #f5f5f5; */
+        margin: 0;
+        /* padding: 10px; */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        height: 90vh;
+        gap: 20px;
+      }
+      #chatContainer {
+        background-color: #c9c9c947;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        /* width: 100%; */
+        /* max-width: 400px; */
+        height: 80vh;
+        display: flex;
+        flex-direction: column;
+        margin: 10px;
+      }
+      #messages {
+        flex: 1;
+        overflow-y: scroll;
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        width: 308px;
+      }
+      .user-message,
+      .assistant-message {
+        margin: 5px;
+        padding: 10px;
+        border-radius: 10px;
+        max-width: 70%;
+      }
+      .user-message {
+        background-color: #587cff;
+        color: #fff;
+        align-self: flex-end;
+        box-shadow: 4px 4px 8px #0000005c;
+      }
+      .assistant-message {
+        background-color: #ffffff59;
+        color: #fff;
+        align-self: flex-start;
+        font-size: 14px;
+        box-shadow: 0px 25px 20px -20px rgba(0, 0, 0, 0.45);
+        font-weight: 400;
+      }
+      .assistant-message pre {
+        background-color: #f5f5f5;
+        padding: 10px;
+        border-radius: 5px;
+        overflow-x: auto;
+        margin-top: 5px;
+      }
+      input {
+        width: calc(70% - 20px);
+        padding: 8px;
+        margin: 5px 10px;
+        border: none;
+        border-radius: 5px;
+        outline: none;
+      }
+      button {
+        width: calc(30% - 20px);
+        padding: 8px;
+        margin: 5px 10px;
+        border: none;
+        border-radius: 5px;
+        /* background-color: #587cff; */
+        background-image: linear-gradient(45deg, #1e00c5ba, #7300f1);
+        color: #fff;
+        cursor: pointer;
+      }
+      #title {
+        height: 0px;
+        opacity: 0;
+        width: 0px;
+      }
+      #wave .dot {
+        display: inline-block;
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        margin-right: 0.5px;
+        background: white;
+        animation: wave 1s linear infinite;
+        animation-delay: -0.9s;
+      }
+      #speak {
+        display: none;
+        height: 0px;
+        opacity: 0;
+        width: 0px;
+      }
+      #wave .dot.two {
+        animation-delay: -0.7s;
+      }
+      #wave .dot:nth-child(3) {
+        animation-delay: -0.6s;
+      }
+      @keyframes wave {
+        0%,
+        60%,
+        100% {
+          transform: initial;
+        }
+        30% {
+          transform: translateY(-15px);
+        }
+      }
 
-  #header {
-    width: 100%;
-  }
+      #header {
+        width: 100%;
+      }
 
-  .ai_image{
-    width: 50px;
-  }
+      .ai_image {
+        width: 50px;
+      }
 
-  .ai_image > img{
-    width: 80%;
-  }
-</style>
+      .ai_image > img {
+        width: 80%;
+      }
+
+      /* SWEET ALERT MESSAGE */
+      div:where(.swal2-container) button:where(.swal2-styled).swal2-confirm {
+        width: 68px;
+      }
+      .swal2-modal,
+      .swal2-container.in {
+        background: #ffffff4f;
+        backdrop-filter: blur(26px);
+      }
+      .swal2-title {
+        color: white;
+      }
+      .swal2-html-container {
+        color: white !important;
+        letter-spacing: 1px;
+      }
+      .swal2-success-circular-line-left {
+        display: none;
+      }
+      .swal2-success-circular-line-right {
+        display: none;
+      }
+      .swal2-success-fix {
+        display: none;
+      }
+    </style>
   </head>
   <body>
     <div id="header">
@@ -287,11 +315,13 @@
           can I assist you today?
         </div>
       </div>
-      <div style="display: flex; align-items: center; background-color: #bfbfbf4d;">
+      <div
+        style="display: flex; align-items: center; background-color: #bfbfbf4d"
+      >
         <input type="text" id="userInput" placeholder="Type your message..." />
         <button onclick="sendMessage()">
           <div id="title">Send</div>
-          <i class="fas fa-paper-plane" style="font-size: 16px;"></i>
+          <i class="fas fa-paper-plane" style="font-size: 16px"></i>
         </button>
       </div>
     </div>
@@ -395,6 +425,13 @@
     ></script>
 
     <script>
+      window.onload = function () {
+        Swal.fire({
+          title: "Important",
+          text: "You can copy messages by long-pressing on them.",
+        });
+      };
+
       function sendMessage() {
         var userMessage = $("#userInput").val().trim();
         if (userMessage === "") return;
@@ -474,9 +511,19 @@
           .writeText($(this).text())
           .then(function () {
             speak("Text successfully copied to clipboard");
+            Swal.fire({
+              icon: "success",
+              title: "Copied!",
+              text: "Text successfully copied to clipboard",
+            });
           })
           .catch(function (err) {
             speak("Unable to copy text to clipboard " + err);
+            Swal.fire({
+              icon: "error",
+              title: "Oops...",
+              text: "Unable to copy text to clipboard " + err,
+            });
           });
       });
     </script>
