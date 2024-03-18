@@ -9,7 +9,6 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
     />
-    <!-- <link rel="stylesheet" href="Style/style.css" /> -->
     <link rel="stylesheet" href="Style/style1.css" />
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <style>
@@ -46,110 +45,25 @@
         border: none;
         padding: 0;
       }
+      center > button {
+        margin-block-start: 20px;
+        padding: 6px;
+        border-radius: 7px;
+        border: none;
+        background: #ffffff5e;
+        color: #ffffff;
+        font-size: 17px;
+        font-weight: 500;
+      }
     </style>
-    <!-- <style>
-      * {
-        /* -webkit-user-select: none; */
-        font-size: 20px;
-        outline: none;
-      }
-
-      body {
-        background: #333;
-        color: white;
-      }
-
-      fieldset {
-        background: #444;
-        text-align: center;
-        border: 1px solid #555;
-        border-radius: 10px;
-        padding: 10px;
-        margin: 20px auto;
-        width: 90%;
-      }
-
-      #main p {
-        background: #555;
-        border: 1px solid black;
-        border-radius: 20px;
-        display: flex;
-        flex-direction: column;
-        height: 90px;
-        justify-content: center;
-        overflow: hidden;
-        padding: 5px;
-        margin: 10px 0;
-      }
-
-      #main select,
-      #main input[type="text"],
-      button {
-        /* -webkit-appearance: none; */
-        background: #555;
-        border: 1px solid black;
-        color: white;
-        text-align: center;
-        height: 40px;
-        width: 32%;
-        padding: 5px;
-      }
-
-      #main input[type="text"] {
-        width: 80%;
-      }
-
-      #i {
-        font-size: 75%;
-      }
-
-      .fa-angle-double-right,
-      .fa-angle-double-left {
-        font-size: 30px;
-        text-align: left;
-        position: absolute;
-        right: 25px;
-        width: 5%;
-      }
-
-      .fa-angle-double-left {
-        left: 25px;
-      }
-
-      #bk {
-        border-radius: 30px;
-        display: none;
-        width: 30%;
-        background: #555;
-        border: 1px solid #444;
-        color: white;
-        text-align: center;
-        padding: 10px;
-        margin: 20px auto;
-      }
-      hr {
-        border-color: black;
-      }
-    </style> -->
   </head>
   <body class="app_store_container">
     <div class="app_store_box">
-      <!-- <button id="bk" style="display: none"> -->
-      <!-- <div id="header-icons"> -->
-        <i
-        class="fas fa-arrow-left icon"
-        title="Back, Button"
-        id="bk"
-        style="display: none"
-        aria-label="Back button"
-      ></i>
-      <!-- </div> -->
-      <!-- </button> -->
       <h2>App Store</h2>
       <img src="images/open.png" alt="" aria-hidden="true" />
     </div>
+    <center><button id="bk" style="display: none">Go Back</button></center>
     <fieldset id="main">
-      <!-- <legend>App Store</legend> -->
       <div class="prev_next-input">
         <b title="Previous Page, button" class="fa fa-angle-double-left"></b>
         <b title="Next Page, button" class="fa fa-angle-double-right"></b>

@@ -4,8 +4,8 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="HandheldFriendly" content="true">
-<!-- <link rel="stylesheet" href="Style/style.css"> -->
 <link rel="stylesheet" href="Style/style1.css">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <style>
   h3{
     text-align: center;
@@ -28,44 +28,32 @@
     background: #ffffff47;
     border-radius: 4px;
   }
+  .swal2-modal,
+      .swal2-container.in {
+        background: #ffffff4f;
+        backdrop-filter: blur(26px);
+      }
+      .swal2-title {
+        color: white;
+      }
+      .swal2-html-container {
+        color: white !important;
+        letter-spacing: 1px;
+      }
+      .swal2-success-circular-line-left {
+        display: none;
+      }
+      .swal2-success-circular-line-right {
+        display: none;
+      }
+      .swal2-success-fix {
+        display: none;
+      }
 </style>
-<!-- <style>
-*{
--webkit-user-select: none;
-border-color: black;
-}
-body{
-background: #333;
-text-align: center;
-color: white;
-}
-i{
-background: #444;
-border-radius: 20px;
-display: block;
-margin: 5px;
-padding: 8px 11%;
-}
-strong{
-background: #444;
-border-radius: 10px;
-display: inline-block;
-margin: 3px;
-padding: 10px;
-width: 25%;
-}
-h3,#title{
-margin: 5px;
-}
-a,#main{
-display: none;
-}
-</style> -->
 </head>
 <body class="main">
     <div id="header">
         <div id="header-title">
-          <!-- <img id="logo" src="file:///android_asset/img/Logo.png" alt="logo" /> -->
           <img id="logo" src="images/logo.png" alt="logo" width="50px" aria-hidden="true" />
           <h1>E-Paper</h1>
         </div>
@@ -118,7 +106,9 @@ $(document).on("click","strong",function(){
 if($(this).attr("URL") != "undefined"){
 window.open($(this).attr("URL"));
 }else{
-alert("Kindly wait till 7:30 AM :-)");
+Swal.fire({
+  text: "Kindly wait till 7:30 AM :-)"
+})
 }});});});
 </script>
 </body>
