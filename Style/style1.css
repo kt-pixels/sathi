@@ -511,14 +511,13 @@ APP STORE PAGE CODING STARTED FROM HERE
 
 /* Main Container */
 
-.app_store_box {
+/* .app_store_box {
   background-color: rgba(255, 255, 255, 0.361);
   padding: 10px;
-  /* border-radius: 10px; */
   display: flex;
   gap: 10px;
   box-shadow: 0px 25px 20px -20px rgba(0, 0, 0, 0.45);
-}
+} */
 
 .app_store_box > button {
   background-color: transparent;
@@ -658,32 +657,6 @@ APP STORE PAGE CODING STARTED FROM HERE
   border-radius: 10px;
   backdrop-filter: blur(40px);
 }
-
-/* #dwn::before {
-  content: "";
-  position: fixed;
-  width: 200px;
-  height: 200px;
-  background-color: #0024f37a;
-  top: 0;
-  left: 0;
-  border-radius: 100px;
-  filter: blur(70px);
-  z-index: -99;
-} */
-
-/* #dwn::after {
-  content: "";
-  position: fixed;
-  width: 200px;
-  height: 200px;
-  background-color: #0024f37a;
-  right: 0;
-  bottom: 0;
-  border-radius: 100px;
-  filter: blur(100px);
-  z-index: -99;
-} */
 
 #dwn > i {
   font-style: normal;
