@@ -25,9 +25,18 @@
 
     <style>
       .swiper-container {
-        width: 100%;
-        overflow: hidden;
-      }
+      width: 100%;
+      overflow: hidden;
+    }
+    .swiper-wrapper {
+      justify-content: space-between;
+    }
+    .swiper-slide {
+      display: flex;
+      justify-content: center; /* Center content horizontally */
+      align-items: center; /* Center content vertically */
+      margin: 0 auto; /* Set margin to auto for equal margins on both sides */
+    }
       .button {
         text-align: center;
       }
@@ -36,9 +45,6 @@
       }
       .button p {
         margin-top: 10px;
-      }
-      .swiper-wrapper {
-        justify-content: space-between;
       }
       hr {
         margin-block-start: 0;

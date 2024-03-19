@@ -322,10 +322,7 @@ a {
 } */
 
 .info-category {
-  /* border-bottom: 1px solid rgba(128, 128, 128, 0.35); */
-  margin-block-end: 20px;
   padding-block-end: 12px;
-  margin: 10px;
 }
 
 .info-category > .swiper-slide > .button {
