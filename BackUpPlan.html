@@ -1,135 +1,89 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>App Store</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <meta name="HandheldFriendly" content="true" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
-    />
-    <link rel="stylesheet" href="Style/style1.css" />
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <style>
-      * {
-        /* font-size: 20px; */
-        outline: none;
-      }
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="Style/style1.css">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.9.0/dist/sweetalert2.min.js"></script>
+<title>MS - Speech</title>
+<style>
+textarea{
+width: 89%; 
+height: 500px; 
+margin: 10px; 
+padding: 10px; 
+font-size: 16px; 
+background-color: #ffffff40; 
+color: white; 
+border: none;
+outline: none;
+border-radius: 10px;
+box-shadow: 0 1px 1px rgba(0,0,0,0.12), 0 2px 2px rgba(0,0,0,0.12);
+backdrop-filter: blur(50px);
+}
 
-      fieldset {
-        text-align: center;
-        border: none;
-        padding: 10px;
-        margin: 0px auto;
-        width: 90%;
-      }
+textarea::placeholder{
+    color: rgba(255, 255, 255, 0.788);
+}
+select, button{
+    margin: 5px;
+    padding: 7px;
+    font-size: 14px;
+    background-color: #ffffff;
+    border: none;
+    width: 30%;
+    color: black;
+    border-radius: 5px;
+}
+button{
+background-color: transparent;
+margin: 0px 5px;
+padding: 5px;
+color: #fff;
+border: none;
+font-size: 20px;
+}
+button:hover{ 
+color: #eee;
+}
+iframe{
+border: none;
+height: 0px;
+opacity: 0;
+width: 0px;
+}
+#stopButton{
+display: none;
+}
+.swal2-modal,.swal2-container.in{
+background: #333;
+}
+.fa-sr-only{
+font-size: 0px;
+opacity: 0;
+}
+.controllers{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border-radius: 10px;
+    margin-block-end: -33px;
+    align-items: center;
+}
 
-      #main p {
-        background: #ffffff38;
-        border: 1px solid white;
-        border-radius: 8px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        overflow: hidden;
-        margin: 10px 0;
-        font-weight: 400;
-        font-style: normal;
-        font-size: 18px;
-        padding: 10px;
-      }
+#counter{
+  font-weight: 500;
+}
 
-      #main select,
-      #main input[type="text"],
-      button {
-        -webkit-appearance: none;
-        background-color: rgba(139, 139, 139, 0.517);
-        border: none;
-        color: white;
-        text-align: center;
-        height: 40px;
-        width: 32%;
-        border-radius: 5px;
-        font-size: 16px;
-      }
-
-      #main input[type="text"] {
-        width: 96%;
-      }
-      #main input::placeholder {
-        color: white;
-      }
-
-      #i {
-        font-size: 75%;
-      }
-
-      .fa-angle-double-right,
-      .fa-angle-double-left {
-        font-size: 20px;
-        top: 20px;
-        text-align: left;
-        position: absolute;
-        right: 25px;
-        width: 5%;
-      }
-
-      .fa-angle-double-left {
-        left: 25px;
-      }
-
-      #bk {
-        border-radius: 8px;
-        display: none;
-        width: 30%;
-        background: #ffffff61;
-        border: none;
-        color: white;
-        text-align: center;
-        padding: 6px;
-        margin: 20px auto;
-      }
-      hr {
-        border: none;
-        height: 1px;
-        background-color: gray;
-      }
-
-      #result {
-        display: block;
-      }
-      #result > i {
-        display: flex;
-        margin-block-start: 20px;
-        background-color: rgba(255, 255, 255, 0.234);
-        border-radius: 4px;
-        padding: 5px;
-        width: 96%;
-        font-size: 18px;
-        align-items: center;
-        justify-content: center;
-        font-weight: 500;
-      }
-      #dwn {
-        display: none;
-      }
-      #dwn > i > .rtejustify{
-        margin-block-start: 0;
-      }
-      i {
-        font-size: 14px;
-      }
-      #main {
-        margin-block-start: 24px;
-      }
-      .swal2-modal,
+.swal2-title{
+    color: white;
+}
+.swal2-modal,
       .swal2-container.in {
         background: #ffffff4f;
         backdrop-filter: blur(26px);
-      }
-      .swal2-title {
-        color: white;
       }
       .swal2-html-container {
         color: white !important;
@@ -144,154 +98,86 @@
       .swal2-success-fix {
         display: none;
       }
-      div:where(.swal2-container) button:where(.swal2-styled).swal2-confirm {
-        width: 72px;
-        height: 46px;
-      }
-      #main select{
-        padding: 5px;
-      }
-      #dwn{
-        margin-block-start: 0;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="app_store_box">
-      <h2>App Store</h2>
-      <img src="images/open.png" alt="" aria-hidden="true" />
-    </div>
-    <center><button id="bk">Go Back</button></center>
-    <fieldset id="main">
-      <!-- <legend>App Store</legend> -->
-      <b title="Previous Page, button" class="fa fa-angle-double-left"></b>
-      <b title="Next Page, button" class="fa fa-angle-double-right"></b>
-      <input id="t" type="text" placeholder="Type or paste a query..." />
-      <hr />
-      <select id="a" title="Category">
-        <option value="All" selected="selected">- Any -</option>
-        <option value="517">Activators For Microsoft Products</option>
-        <option value="518">Backup And Restore</option>
-        <option value="181">Books & Reference</option>
-        <option value="516">CD/DVD Tools</option>
-        <option value="94">compression and archiving</option>
-        <option value="547">Educational</option>
-        <option value="55">File Sharing</option>
-        <option value="999">Financial</option>
-        <option value="128">ftp client</option>
-        <option value="4">Games</option>
-        <option value="18">Internet</option>
-        <option value="65">Lifestyle</option>
-        <option value="7">Miscellaneous</option>
-        <option value="6">Ms Office</option>
-        <option value="1">Multimedia</option>
-        <option value="137">News And Magazines</option>
-        <option value="3">Operating system</option>
-        <option value="57">Programming tools</option>
-        <option value="64">Social</option>
-        <option value="2">Software for visually impaired</option>
-        <option value="112">System Utilities</option>
-        <option value="127">text editors and converters</option>
-        <option value="5">Text to speech</option>
-        <option value="785">VPN and Proxy</option>
-      </select>
-      <select id="b" title="Operating System">
-        <option value="All" selected="selected">- Any -</option>
-        <option value="10">Apple iOS</option>
-        <option value="20">Apple Mac OS (OSX)</option>
-        <option value="9">Google Android</option>
-        <option value="19">Linux</option>
-        <option value="8">Microsoft Windows</option>
-      </select>
-      <button onclick="fire()">FIND</button>
-      <div id="result">
-        <i aria-live="polite">Please wait...</i>
+</style>
+</head>
+<body class="main">
+    <div id="header">
+        <div id="header-title">
+          <img id="logo" src="images/logo.png" alt="logo" width="50px" aria-hidden="true" />
+<h1>MS - Speech</h1>
+        </div>
       </div>
-    </fieldset>
-    <div id="dwn"></div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script>
-      var pg = 0;
-      $(".fa-angle-double-left").click(function () {
-        if (pg == 0) {
-          //   alert("");
-          Swal.fire({
-            icon: "error",
-            text: "No previous page :(",
-          });
-        } else {
-          pg -= 1;
-          fire();
-        }
-      });
-      $(".fa-angle-double-right").click(function () {
-        pg += 1;
-        fire();
-      });
-      function fire() {
-        $(".fa").hide();
-        $.get(
-          "https://ubsa.in/smartprogrammers/fire.php?url=" +
-            encodeURIComponent(
-              "https://blindhelp.net/software?sp=req-now&title=" +
-                $("#t").val().replace(/ /g, "+") +
-                "&field_category_tid=" +
-                $("#a").val() +
-                "&os=" +
-                $("#b").val() +
-                "&page=" +
-                pg
-            ),
-          function (data) {
-            $(".fa").show();
-            if ($(data).find(".field-name-title").find("a").attr("href")) {
-              $("#result").empty();
-              $.each($(data).find(".field-name-title"), function () {
-                $("#result").append(
-                  "<p><i id='i' URL='https://blindhelp.net" +
-                    $(this).find("a").attr("href") +
-                    "?sp=req-now'>" +
-                    $(this).find("a").text() +
-                    "</i></p>"
-                );
-              });
-            } else {
-              Swal.fire({
-                icon: "error",
-                text : "Nothing was found :-(\n\nTry making a new search instead!"
-              })
-              $(".fa").hide();
-              pg = 0;
-            }
-          }
-        );
-      }
-      fire();
-      $("#result").on("click", "#i", function () {
-        $.get(
-          "https://ubsa.in/smartprogrammers/fire.php?url=" +
-            encodeURIComponent($(this).attr("URL")),
-          function (data) {
-            $("#main").hide();
-            $("#dwn").empty().show();
-            $("#bk").show();
-            window.scrollTo(0, 0);
-            $("#dwn").append(
-              "<i>" +
-                $(data).find("div[property='content:encoded']").html() +
-                "</i><br><br>"
-            );
-            $.each($(data).find(".label-above").nextUntil("br"), function () {
-              $("#dwn").append($(this).html() + "<br><br>");
-            });
-          }
-        );
-      });
-      $("#bk").click(function () {
-        $("#bk,#dwn").hide();
-        $("#main").show();
-        window.scrollTo(0, 0);
-      });
-    </script>
-  </body>
+<textarea id="textInput" placeholder="Enter your text here..."></textarea><br>
+<div class="controllers">
+    <select id="voiceSelection">
+        <option value="af-ZA-AdriNeural">Adri (Afrikaans [ZA] - Female)</option><option value="af-ZA-WillemNeural">Willem (Afrikaans [ZA] - Male)</option><option value="am-ET-MekdesNeural">Mekdes (Amharic [ET] - Female)</option><option value="am-ET-AmehaNeural">Ameha (Amharic [ET] - Male)</option><option value="ar-AE-FatimaNeural">Fatima (Arabic [AE] - Female)</option><option value="ar-AE-HamdanNeural">Hamdan (Arabic [AE] - Male)</option><option value="ar-BH-LailaNeural">Laila (Arabic [BH] - Female)</option><option value="ar-BH-AliNeural">Ali (Arabic [BH] - Male)</option><option value="ar-DZ-AminaNeural">Amina (Arabic [DZ] - Female)</option><option value="ar-DZ-IsmaelNeural">Ismael (Arabic [DZ] - Male)</option><option value="ar-EG-SalmaNeural">Salma (Arabic [EG] - Female)</option><option value="ar-EG-ShakirNeural">Shakir (Arabic [EG] - Male)</option><option value="ar-IQ-RanaNeural">Rana (Arabic [IQ] - Female)</option><option value="ar-IQ-BasselNeural">Bassel (Arabic [IQ] - Male)</option><option value="ar-JO-SanaNeural">Sana (Arabic [JO] - Female)</option><option value="ar-JO-TaimNeural">Taim (Arabic [JO] - Male)</option><option value="ar-KW-NouraNeural">Noura (Arabic [KW] - Female)</option><option value="ar-KW-FahedNeural">Fahed (Arabic [KW] - Male)</option><option value="ar-LB-LaylaNeural">Layla (Arabic [LB] - Female)</option><option value="ar-LB-RamiNeural">Rami (Arabic [LB] - Male)</option><option value="ar-LY-ImanNeural">Iman (Arabic [LY] - Female)</option><option value="ar-LY-OmarNeural">Omar (Arabic [LY] - Male)</option><option value="ar-MA-MounaNeural">Mouna (Arabic [MA] - Female)</option><option value="ar-MA-JamalNeural">Jamal (Arabic [MA] - Male)</option><option value="ar-OM-AyshaNeural">Aysha (Arabic [OM] - Female)</option><option value="ar-OM-AbdullahNeural">Abdullah (Arabic [OM] - Male)</option><option value="ar-QA-AmalNeural">Amal (Arabic [QA] - Female)</option><option value="ar-QA-MoazNeural">Moaz (Arabic [QA] - Male)</option><option value="ar-SA-ZariyahNeural">Zariyah (Arabic [SA] - Female)</option><option value="ar-SA-HamedNeural">Hamed (Arabic [SA] - Male)</option><option value="ar-SY-AmanyNeural">Amany (Arabic [SY] - Female)</option><option value="ar-SY-LaithNeural">Laith (Arabic [SY] - Male)</option><option value="ar-TN-ReemNeural">Reem (Arabic [TN] - Female)</option><option value="ar-TN-HediNeural">Hedi (Arabic [TN] - Male)</option><option value="ar-YE-MaryamNeural">Maryam (Arabic [YE] - Female)</option><option value="ar-YE-SalehNeural">Saleh (Arabic [YE] - Male)</option><option value="az-AZ-BanuNeural">Banu (Azerbaijani [AZ] - Female)</option><option value="az-AZ-BabekNeural">Babek (Azerbaijani [AZ] - Male)</option><option value="bg-BG-KalinaNeural">Kalina (Bulgarian [BG] - Female)</option><option value="bg-BG-BorislavNeural">Borislav (Bulgarian [BG] - Male)</option><option value="bn-BD-NabanitaNeural">Nabanita (Bangla [BD] - Female)</option><option value="bn-BD-PradeepNeural">Pradeep (Bangla [BD] - Male)</option><option value="bn-IN-TanishaaNeural">Tanishaa (Bangla [IN] - Female)</option><option value="bn-IN-BashkarNeural">Bashkar (Bangla [IN] - Male)</option><option value="bs-BA-VesnaNeural">Vesna (Bosnian [BA] - Female)</option><option value="bs-BA-GoranNeural">Goran (Bosnian [BA] - Male)</option><option value="ca-ES-JoanaNeural">Joana (Catalan [ES-CT] - Female)</option><option value="ca-ES-EnricNeural">Enric (Catalan [ES-CT] - Male)</option><option value="cs-CZ-VlastaNeural">Vlasta (Czech [CZ] - Female)</option><option value="cs-CZ-AntoninNeural">Antonin (Czech [CZ] - Male)</option><option value="cy-GB-NiaNeural">Nia (Welsh [GB-WLS] - Female)</option><option value="cy-GB-AledNeural">Aled (Welsh [GB-WLS] - Male)</option><option value="da-DK-ChristelNeural">Christel (Danish [DK] - Female)</option><option value="da-DK-JeppeNeural">Jeppe (Danish [DK] - Male)</option><option value="de-AT-IngridNeural">Ingrid (German [AT] - Female)</option><option value="de-AT-JonasNeural">Jonas (German [AT] - Male)</option><option value="de-CH-LeniNeural">Leni (German [CH] - Female)</option><option value="de-CH-JanNeural">Jan (German [CH] - Male)</option><option value="de-DE-KatjaNeural">Katja (German [DE] - Female)</option><option value="de-DE-ConradNeural">Conrad (German [DE] - Male)</option><option value="de-DE-AmalaNeural">Amala (German [DE] - Female)</option><option value="de-DE-KillianNeural">Killian (German [DE] - Male)</option><option value="el-GR-AthinaNeural">Athina (Greek [GR] - Female)</option><option value="el-GR-NestorasNeural">Nestoras (Greek [GR] - Male)</option><option value="en-AU-NatashaNeural">Natasha (English [AU] - Female)</option><option value="en-AU-WilliamNeural">William (English [AU] - Male)</option><option value="en-CA-ClaraNeural">Clara (English [CA] - Female)</option><option value="en-CA-LiamNeural">Liam (English [CA] - Male)</option><option value="en-GB-SoniaNeural">Sonia (English [GB] - Female)</option><option value="en-GB-RyanNeural">Ryan (English [GB] - Male)</option><option value="en-GB-LibbyNeural">Libby (English [GB] - Female)</option><option value="en-GB-MaisieNeural">Maisie (English [GB] - Female)</option><option value="en-GB-ThomasNeural">Thomas (English [GB] - Male)</option><option value="en-HK-YanNeural">Yan (English [HK] - Female)</option><option value="en-HK-SamNeural">Sam (English [HK] - Male)</option><option value="en-IE-EmilyNeural">Emily (English [IE] - Female)</option><option value="en-IE-ConnorNeural">Connor (English [IE] - Male)</option><option value="en-IN-NeerjaNeural">Neerja (English [IN] - Female)</option><option value="en-IN-PrabhatNeural">Prabhat (English [IN] - Male)</option><option value="en-KE-AsiliaNeural">Asilia (English [KE] - Female)</option><option value="en-KE-ChilembaNeural">Chilemba (English [KE] - Male)</option><option value="en-NG-EzinneNeural">Ezinne (English [NG] - Female)</option><option value="en-NG-AbeoNeural">Abeo (English [NG] - Male)</option><option value="en-NZ-MollyNeural">Molly (English [NZ] - Female)</option><option value="en-NZ-MitchellNeural">Mitchell (English [NZ] - Male)</option><option value="en-PH-RosaNeural">Rosa (English [PH] - Female)</option><option value="en-PH-JamesNeural">James (English [PH] - Male)</option><option value="en-SG-LunaNeural">Luna (English [SG] - Female)</option><option value="en-SG-WayneNeural">Wayne (English [SG] - Male)</option><option value="en-TZ-ImaniNeural">Imani (English [TZ] - Female)</option><option value="en-TZ-ElimuNeural">Elimu (English [TZ] - Male)</option><option value="en-US-JennyNeural">Jenny (English [US] - Female)</option><option value="en-US-GuyNeural">Guy (English [US] - Male)</option><option value="en-US-AriaNeural">Aria (English [US] - Female)</option><option value="en-US-AmberNeural">Amber (English [US] - Female)</option><option value="en-US-AnaNeural">Ana (English [US] - Female)</option><option value="en-US-AshleyNeural">Ashley (English [US] - Female)</option><option value="en-US-BrandonNeural">Brandon (English [US] - Male)</option><option value="en-US-ChristopherNeural">Christopher (English [US] - Male)</option><option value="en-US-CoraNeural">Cora (English [US] - Female)</option><option value="en-US-ElizabethNeural">Elizabeth (English [US] - Female)</option><option value="en-US-EricNeural">Eric (English [US] - Male)</option><option value="en-US-JacobNeural">Jacob (English [US] - Male)</option><option value="en-US-MichelleNeural">Michelle (English [US] - Female)</option><option value="en-US-MonicaNeural">Monica (English [US] - Female)</option><option value="en-US-RogerNeural">Roger (English [US] - Male)</option><option value="en-US-SteffanNeural">Steffan (English [US] - Male)</option><option value="en-ZA-LeahNeural">Leah (English [ZA] - Female)</option><option value="en-ZA-LukeNeural">Luke (English [ZA] - Male)</option><option value="es-AR-ElenaNeural">Elena (Spanish [AR] - Female)</option><option value="es-AR-TomasNeural">Tomas (Spanish [AR] - Male)</option><option value="es-BO-SofiaNeural">Sofia (Spanish [BO] - Female)</option><option value="es-BO-MarceloNeural">Marcelo (Spanish [BO] - Male)</option><option value="es-CL-CatalinaNeural">Catalina (Spanish [CL] - Female)</option><option value="es-CL-LorenzoNeural">Lorenzo (Spanish [CL] - Male)</option><option value="es-CO-SalomeNeural">Salome (Spanish [CO] - Female)</option><option value="es-CO-GonzaloNeural">Gonzalo (Spanish [CO] - Male)</option><option value="es-CR-MariaNeural">Maria (Spanish [CR] - Female)</option><option value="es-CR-JuanNeural">Juan (Spanish [CR] - Male)</option><option value="es-CU-BelkysNeural">Belkys (Spanish [CU] - Female)</option><option value="es-CU-ManuelNeural">Manuel (Spanish [CU] - Male)</option><option value="es-DO-RamonaNeural">Ramona (Spanish [DO] - Female)</option><option value="es-DO-EmilioNeural">Emilio (Spanish [DO] - Male)</option><option value="es-EC-AndreaNeural">Andrea (Spanish [EC] - Female)</option><option value="es-EC-LuisNeural">Luis (Spanish [EC] - Male)</option><option value="es-ES-ElviraNeural">Elvira (Spanish [ES] - Female)</option><option value="es-ES-AlvaroNeural">Alvaro (Spanish [ES] - Male)</option><option value="es-GQ-TeresaNeural">Teresa (Spanish [GQ] - Female)</option><option value="es-GQ-JavierNeural">Javier (Spanish [GQ] - Male)</option><option value="es-GT-MartaNeural">Marta (Spanish [GT] - Female)</option><option value="es-GT-AndresNeural">Andres (Spanish [GT] - Male)</option><option value="es-HN-KarlaNeural">Karla (Spanish [HN] - Female)</option><option value="es-HN-CarlosNeural">Carlos (Spanish [HN] - Male)</option><option value="es-MX-DaliaNeural">Dalia (Spanish [MX] - Female)</option><option value="es-MX-JorgeNeural">Jorge (Spanish [MX] - Male)</option><option value="es-NI-YolandaNeural">Yolanda (Spanish [NI] - Female)</option><option value="es-NI-FedericoNeural">Federico (Spanish [NI] - Male)</option><option value="es-PA-MargaritaNeural">Margarita (Spanish [PA] - Female)</option><option value="es-PA-RobertoNeural">Roberto (Spanish [PA] - Male)</option><option value="es-PE-CamilaNeural">Camila (Spanish [PE] - Female)</option><option value="es-PE-AlexNeural">Alex (Spanish [PE] - Male)</option><option value="es-PR-KarinaNeural">Karina (Spanish [PR] - Female)</option><option value="es-PR-VictorNeural">Victor (Spanish [PR] - Male)</option><option value="es-PY-TaniaNeural">Tania (Spanish [PY] - Female)</option><option value="es-PY-MarioNeural">Mario (Spanish [PY] - Male)</option><option value="es-SV-LorenaNeural">Lorena (Spanish [SV] - Female)</option><option value="es-SV-RodrigoNeural">Rodrigo (Spanish [SV] - Male)</option><option value="es-US-PalomaNeural">Paloma (Spanish [US] - Female)</option><option value="es-US-AlonsoNeural">Alonso (Spanish [US] - Male)</option><option value="es-UY-ValentinaNeural">Valentina (Spanish [UY] - Female)</option><option value="es-UY-MateoNeural">Mateo (Spanish [UY] - Male)</option><option value="es-VE-PaolaNeural">Paola (Spanish [VE] - Female)</option><option value="es-VE-SebastianNeural">Sebastian (Spanish [VE] - Male)</option><option value="et-EE-AnuNeural">Anu (Estonian [EE] - Female)</option><option value="et-EE-KertNeural">Kert (Estonian [EE] - Male)</option><option value="fa-IR-DilaraNeural">Dilara (Persian [IR] - Female)</option><option value="fa-IR-FaridNeural">Farid (Persian [IR] - Male)</option><option value="fi-FI-SelmaNeural">Selma (Finnish [FI] - Female)</option><option value="fi-FI-HarriNeural">Harri (Finnish [FI] - Male)</option><option value="fi-FI-NooraNeural">Noora (Finnish [FI] - Female)</option><option value="fil-PH-BlessicaNeural">Blessica (Filipino (Tagalog) [PH] - Female)</option><option value="fil-PH-AngeloNeural">Angelo (Filipino (Tagalog) [PH] - Male)</option><option value="fr-BE-CharlineNeural">Charline (French [BE] - Female)</option><option value="fr-BE-GerardNeural">Gerard (French [BE] - Male)</option><option value="fr-CA-SylvieNeural">Sylvie (French [CA] - Female)</option><option value="fr-CA-JeanNeural">Jean (French [CA] - Male)</option><option value="fr-CA-AntoineNeural">Antoine (French [CA] - Male)</option><option value="fr-CH-ArianeNeural">Ariane (French [CH] - Female)</option><option value="fr-CH-FabriceNeural">Fabrice (French [CH] - Male)</option><option value="fr-FR-DeniseNeural">Denise (French [FR] - Female)</option><option value="fr-FR-HenriNeural">Henri (French [FR] - Male)</option><option value="fr-FR-EloiseNeural">Eloise (French [FR] - Female)</option><option value="ga-IE-OrlaNeural">Orla (Irish [IE] - Female)</option><option value="ga-IE-ColmNeural">Colm (Irish [IE] - Male)</option><option value="gl-ES-SabelaNeural">Sabela (Galician [ES-GA] - Female)</option><option value="gl-ES-RoiNeural">Roi (Galician [ES-GA] - Male)</option><option value="gu-IN-DhwaniNeural">Dhwani (Gujarati [IN] - Female)</option><option value="gu-IN-NiranjanNeural">Niranjan (Gujarati [IN] - Male)</option><option value="he-IL-HilaNeural">Hila (Hebrew [IL] - Female)</option><option value="he-IL-AvriNeural">Avri (Hebrew [IL] - Male)</option><option value="hi-IN-SwaraNeural">Swara (Hindi [IN] - Female)</option><option value="hi-IN-MadhurNeural">Madhur (Hindi [IN] - Male)</option><option value="hr-HR-GabrijelaNeural">Gabrijela (Croatian [HR] - Female)</option><option value="hr-HR-SreckoNeural">Srecko (Croatian [HR] - Male)</option><option value="hu-HU-NoemiNeural">Noemi (Hungarian [HU] - Female)</option><option value="hu-HU-TamasNeural">Tamas (Hungarian [HU] - Male)</option><option value="id-ID-GadisNeural">Gadis (Indonesian [ID] - Female)</option><option value="id-ID-ArdiNeural">Ardi (Indonesian [ID] - Male)</option><option value="is-IS-GudrunNeural">Gudrun (Icelandic [IS] - Female)</option><option value="is-IS-GunnarNeural">Gunnar (Icelandic [IS] - Male)</option><option value="it-IT-ElsaNeural">Elsa (Italian [IT] - Female)</option><option value="it-IT-IsabellaNeural">Isabella (Italian [IT] - Female)</option><option value="it-IT-DiegoNeural">Diego (Italian [IT] - Male)</option><option value="ja-JP-NanamiNeural">Nanami (Japanese [JP] - Female)</option><option value="ja-JP-KeitaNeural">Keita (Japanese [JP] - Male)</option><option value="jv-ID-SitiNeural">Siti (Javanese [ID] - Female)</option><option value="jv-ID-DimasNeural">Dimas (Javanese [ID] - Male)</option><option value="ka-GE-EkaNeural">Eka (Georgian [GE] - Female)</option><option value="ka-GE-GiorgiNeural">Giorgi (Georgian [GE] - Male)</option><option value="kk-KZ-AigulNeural">Aigul (Kazakh [KZ] - Female)</option><option value="kk-KZ-DauletNeural">Daulet (Kazakh [KZ] - Male)</option><option value="km-KH-SreymomNeural">Sreymom (Khmer [KH] - Female)</option><option value="km-KH-PisethNeural">Piseth (Khmer [KH] - Male)</option><option value="kn-IN-SapnaNeural">Sapna (Kannada [IN] - Female)</option><option value="kn-IN-GaganNeural">Gagan (Kannada [IN] - Male)</option><option value="ko-KR-SunHiNeural">Sun Hi (Korean [KR] - Female)</option><option value="ko-KR-InJoonNeural">In Joon (Korean [KR] - Male)</option><option value="lo-LA-KeomanyNeural">Keomany (Lao [LA] - Female)</option><option value="lo-LA-ChanthavongNeural">Chanthavong (Lao [LA] - Male)</option><option value="lt-LT-OnaNeural">Ona (Lithuanian [LT] - Female)</option><option value="lt-LT-LeonasNeural">Leonas (Lithuanian [LT] - Male)</option><option value="lv-LV-EveritaNeural">Everita (Latvian [LV] - Female)</option><option value="lv-LV-NilsNeural">Nils (Latvian [LV] - Male)</option><option value="mk-MK-MarijaNeural">Marija (Macedonian [MK] - Female)</option><option value="mk-MK-AleksandarNeural">Aleksandar (Macedonian [MK] - Male)</option><option value="ml-IN-SobhanaNeural">Sobhana (Malayalam [IN] - Female)</option><option value="ml-IN-MidhunNeural">Midhun (Malayalam [IN] - Male)</option><option value="mn-MN-YesuiNeural">Yesui (Mongolian [MN] - Female)</option><option value="mn-MN-BataaNeural">Bataa (Mongolian [MN] - Male)</option><option value="mr-IN-AarohiNeural">Aarohi (Marathi [IN] - Female)</option><option value="mr-IN-ManoharNeural">Manohar (Marathi [IN] - Male)</option><option value="ms-MY-YasminNeural">Yasmin (Malay [MY] - Female)</option><option value="ms-MY-OsmanNeural">Osman (Malay [MY] - Male)</option><option value="mt-MT-GraceNeural">Grace (Maltese [MT] - Female)</option><option value="mt-MT-JosephNeural">Joseph (Maltese [MT] - Male)</option><option value="my-MM-NilarNeural">Nilar (Myanmar (Burmese) [MM] - Female)</option><option value="my-MM-ThihaNeural">Thiha (Myanmar (Burmese) [MM] - Male)</option><option value="nb-NO-PernilleNeural">Pernille (Norwegian [NO] - Female)</option><option value="nb-NO-FinnNeural">Finn (Norwegian [NO] - Male)</option><option value="nb-NO-IselinNeural">Iselin (Norwegian [NO] - Female)</option><option value="ne-NP-HemkalaNeural">Hemkala (Nepali [NP] - Female)</option><option value="ne-NP-SagarNeural">Sagar (Nepali [NP] - Male)</option><option value="nl-BE-DenaNeural">Dena (Dutch [BE] - Female)</option><option value="nl-BE-ArnaudNeural">Arnaud (Dutch [BE] - Male)</option><option value="nl-NL-FennaNeural">Fenna (Dutch [NL] - Female)</option><option value="nl-NL-MaartenNeural">Maarten (Dutch [NL] - Male)</option><option value="nl-NL-ColetteNeural">Colette (Dutch [NL] - Female)</option><option value="pl-PL-MarekNeural">Marek (Polish [PL] - Male)</option><option value="pl-PL-ZofiaNeural">Zofia (Polish [PL] - Female)</option><option value="ps-AF-LatifaNeural">Latifa (Pashto [AF] - Female)</option><option value="ps-AF-GulNawazNeural">GulNawaz (Pashto [AF] - Male)</option><option value="pt-BR-FranciscaNeural">Francisca (Portuguese [BR] - Female)</option><option value="pt-BR-AntonioNeural">Antonio (Portuguese [BR] - Male)</option><option value="pt-PT-RaquelNeural">Raquel (Portuguese [PT] - Female)</option><option value="pt-PT-DuarteNeural">Duarte (Portuguese [PT] - Male)</option><option value="pt-PT-FernandaNeural">Fernanda (Portuguese [PT] - Female)</option><option value="ro-RO-AlinaNeural">Alina (Romanian [RO] - Female)</option><option value="ro-RO-EmilNeural">Emil (Romanian [RO] - Male)</option><option value="ru-RU-SvetlanaNeural">Svetlana (Russian [RU] - Female)</option><option value="ru-RU-DmitryNeural">Dmitry (Russian [RU] - Male)</option><option value="ru-RU-DariyaNeural">Dariya (Russian [RU] - Female)</option><option value="si-LK-ThiliniNeural">Thilini (Sinhala [LK] - Female)</option><option value="si-LK-SameeraNeural">Sameera (Sinhala [LK] - Male)</option><option value="sk-SK-ViktoriaNeural">Viktoria (Slovak [SK] - Female)</option><option value="sk-SK-LukasNeural">Lukas (Slovak [SK] - Male)</option><option value="sl-SI-PetraNeural">Petra (Slovenian [SI] - Female)</option><option value="sl-SI-RokNeural">Rok (Slovenian [SI] - Male)</option><option value="so-SO-UbaxNeural">Ubax (Somali [SO] - Female)</option><option value="so-SO-MuuseNeural">Muuse (Somali [SO] - Male)</option><option value="sq-AL-AnilaNeural">Anila (Albanian [AL] - Female)</option><option value="sq-AL-IlirNeural">Ilir (Albanian [AL] - Male)</option><option value="sr-RS-SophieNeural">Sophie (Serbian [RS] - Female)</option><option value="sr-RS-NicholasNeural">Nicholas (Serbian [RS] - Male)</option><option value="su-ID-TutiNeural">Tuti (Sundanese [ID] - Female)</option><option value="su-ID-JajangNeural">Jajang (Sundanese [ID] - Male)</option><option value="sv-SE-SofieNeural">Sofie (Swedish [SE] - Female)</option><option value="sv-SE-MattiasNeural">Mattias (Swedish [SE] - Male)</option><option value="sv-SE-HilleviNeural">Hillevi (Swedish [SE] - Female)</option><option value="sw-KE-ZuriNeural">Zuri (Swahili [KE] - Female)</option><option value="sw-KE-RafikiNeural">Rafiki (Swahili [KE] - Male)</option><option value="sw-TZ-RehemaNeural">Rehema (Swahili [TZ] - Female)</option><option value="sw-TZ-DaudiNeural">Daudi (Swahili [TZ] - Male)</option><option value="ta-IN-PallaviNeural">Pallavi (Tamil [IN] - Female)</option><option value="ta-IN-ValluvarNeural">Valluvar (Tamil [IN] - Male)</option><option value="ta-LK-SaranyaNeural">Saranya (Tamil [LK] - Female)</option><option value="ta-LK-KumarNeural">Kumar (Tamil [LK] - Male)</option><option value="ta-MY-KaniNeural">Kani (Tamil [MY] - Female)</option><option value="ta-MY-SuryaNeural">Surya (Tamil [MY] - Male)</option><option value="ta-SG-VenbaNeural">Venba (Tamil [SG] - Female)</option><option value="ta-SG-AnbuNeural">Anbu (Tamil [SG] - Male)</option><option value="te-IN-ShrutiNeural">Shruti (Telugu [IN] - Female)</option><option value="te-IN-MohanNeural">Mohan (Telugu [IN] - Male)</option><option value="th-TH-PremwadeeNeural">Premwadee (Thai [TH] - Female)</option><option value="th-TH-NiwatNeural">Niwat (Thai [TH] - Male)</option><option value="th-TH-AcharaNeural">Achara (Thai [TH] - Female)</option><option value="tr-TR-EmelNeural">Emel (Turkish [TR] - Female)</option><option value="tr-TR-AhmetNeural">Ahmet (Turkish [TR] - Male)</option><option value="uk-UA-PolinaNeural">Polina (Ukrainian [UA] - Female)</option><option value="uk-UA-OstapNeural">Ostap (Ukrainian [UA] - Male)</option><option value="ur-IN-GulNeural">Gul (Urdu [IN] - Female)</option><option value="ur-IN-SalmanNeural">Salman (Urdu [IN] - Male)</option><option value="ur-PK-UzmaNeural">Uzma (Urdu [PK] - Female)</option><option value="ur-PK-AsadNeural">Asad (Urdu [PK] - Male)</option><option value="uz-UZ-MadinaNeural">Madina (Uzbek [UZ] - Female)</option><option value="uz-UZ-SardorNeural">Sardor (Uzbek [UZ] - Male)</option><option value="vi-VN-HoaiMyNeural">Hoai My (Vietnamese [VN] - Female)</option><option value="vi-VN-NamMinhNeural">Nam Minh (Vietnamese [VN] - Male)</option><option value="zh-CN-XiaoxiaoNeural">Xiaoxiao (Chinese [CN] - Female)</option><option value="zh-CN-YunxiNeural">Yunxi (Chinese [CN] - Male)</option><option value="zh-CN-YunjianNeural">Yunjian (Chinese [CN] - Male)</option><option value="zh-CN-XiaoyiNeural">Xiaoyi (Chinese [CN] - Female)</option><option value="zh-CN-YunyangNeural">Yunyang (Chinese [CN] - Male)</option><option value="zh-CN-YunxiaNeural">Yunxia (Chinese [CN] - Male)</option><option value="zh-CN-liaoning-XiaobeiNeural">Xiaobei (Chinese [CN] - Female)</option><option value="zh-CN-shaanxi-XiaoniNeural">Xiaoni (Chinese [CN] - Female)</option><option value="zh-HK-HiuMaanNeural">Hiu Maan (Chinese [HK] - Female)</option><option value="zh-HK-WanLungNeural">Wan Lung (Chinese [HK] - Male)</option><option value="zh-HK-HiuGaaiNeural">Hiu Gaai (Chinese [HK] - Female)</option><option value="zh-TW-HsiaoChenNeural">Hsiao Chen (Chinese [TW] - Female)</option><option value="zh-TW-YunJheNeural">Yun Jhe (Chinese [TW] - Male)</option><option value="zh-TW-HsiaoYuNeural">Hsiao Yu (Chinese [TW] - Female)</option><option value="zu-ZA-ThandoNeural">Thando (Zulu [ZA] - Female)</option><option value="zu-ZA-ThembaNeural">Themba (Zulu [ZA] - Male)</option>
+        </select>    
+        <!-- <button id="convertButton">Play</button>
+        <button id="stopButton">Stop</button>
+        <button id="downloadButton">Download</button> -->
+        <button id="convertButton"><i class="fa fa-play" aria-hidden="true"></i><span class="fa-sr-only">Play</span></button>
+<button id="stopButton"><i class="fa fa-pause" aria-hidden="true"></i><span class="fa-sr-only">Stop</span></button>
+<button id="downloadButton"><i class="fa fa-download" aria-hidden="true"></i><span class="fa-sr-only">Download</span></button>
+<div id="counter">0/2500</div>
+
+</div>
+<br>
+<audio id="audioPlayer"></audio>
+<iframe aria-hidden"true" id="frame"></iframe>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+  
+let audioData;
+$("#convertButton").click(() => {
+const textInput = $("#textInput").val();
+const selectedVoice = $("#voiceSelection").val();
+if(textInput.length > 2500){
+Swal.fire("Oops!", "Your text exceeds the maximum character limit which is 2500", "error");
+} else if(textInput.length < 2){
+Swal.fire("Oops!", "Your text is too short!", "error");
+} else {
+$("#convertButton").text(":WAIT:").prop("disabled",true);;
+fetch('https://ubsa.in/smartprogrammers/TTS/mSpeech.php',{
+method: 'POST',
+headers: {
+'Content-Type': 'application/x-www-form-urlencoded',
+},
+body: new URLSearchParams({text:textInput,voice:selectedVoice})
+}).then(response => response.arrayBuffer()).then(data => {
+audioData = new Blob([data], { type: 'audio/mpeg' });
+$("#audioPlayer").attr("src", URL.createObjectURL(audioData));
+$("#convertButton").text("Play").prop("disabled",false);;
+$("audio")[0].play();
+}).catch(error => {
+Swal.fire("Oops!",""+error,"error");
+});
+}});
+$("#downloadButton").click(() => {
+if (audioData) {
+const reader = new FileReader();
+reader.onloadend = function(){
+$.post("https://ubsa.in/smartprogrammers/TTS/gen.php", { email: localStorage.userEmail, rawData: reader.result }, function(path){
+$("#frame").attr("src","https://ubsa.in/smartprogrammers/TTS/gen.php?get="+path).load();
+});
+};
+reader.readAsDataURL(audioData);
+} else {
+Swal.fire("Sorry :(","No audio available for download.","error");
+}
+});
+$("#stopButton").click(() => {
+$("audio")[0].pause();
+});
+$("audio").on("play",() => {
+$("select").focus();
+$("#convertButton").hide();
+$("#stopButton").show();
+});
+$("audio").on("ended error pause",() => {
+$("select").focus();
+$("#convertButton").show();
+$("#stopButton").hide();
+});
+</script>
+</body>
 </html>
