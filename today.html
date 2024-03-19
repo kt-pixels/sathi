@@ -102,7 +102,9 @@ $.get(proxy+"http://www.univarta.com/"+$(this).attr("tg"),function(details){
 $.each($(details).find(".storydetails"),
 function(){
 Swal.fire({
-        text: $(this).text().replace(/।/g, "।\n").replace(/:-/g, ":-\n"),
+          html: '<div style="white-space: normal; text-align: justify;">' + 
+            $(this).html().replace(/।/g, "।<br>").replace(/:-/g, ":-<br>").trim() +
+          '</div>',
         showCloseButton: false,
             showCancelButton: false,
             showConfirmButton: true,
